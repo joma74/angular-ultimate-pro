@@ -81,4 +81,5 @@ typings
 
 dist/
 build/
-target/!.gitkeep
+target/*
+!*/.gitkeep
