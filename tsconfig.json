@@ -16,9 +16,13 @@
 		"maxNodeModuleJsDepth": 0,
 		"target": "es5",
 		"noUnusedLocals": true,
-		"noUnusedParameters": true
+		"noUnusedParameters": true,
+		"types": ["node", "testcafe"]
 	},
 	"exclude": ["build", "dist", "node_modules", "target"],
 	"include": ["config/**/*", "src/**/*"],
-	"compileOnSave": false
+	"compileOnSave": false,
+	"typeAcquisition": {
+		"enable": true
+	}
 }
