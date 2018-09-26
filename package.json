@@ -29,7 +29,8 @@
 		"build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
 	},
 	"resolutions": {
-		"**/@types/webpack": "~3"
+		"**/@types/webpack": "~3",
+		"**/typescript": "~3"
 	},
 	"devDependencies": {
 		"@types/core-js": "^2.5.0",
@@ -74,7 +75,7 @@
 		"tslint": "^5.10.0",
 		"tslint-config-prettier": "^1.13.0",
 		"tslint-eslint-rules": "^5.3.1",
-		"typescript": "~2",
+		"typescript": "~3",
 		"webpack": "~3",
 		"webpack-dev-server": "2.11.2",
 		"webpack-merge": "~3"
