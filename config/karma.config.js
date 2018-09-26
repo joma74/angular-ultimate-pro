@@ -19,7 +19,7 @@ module.exports = function(config) {
 		// @ts-ignore
 		customLaunchers: {
 			Chrome_travis_ci: {
-				base: "Chrome",
+				base: "ChromeHeadless",
 				flags: ["--no-sandbox"],
 			},
 		},

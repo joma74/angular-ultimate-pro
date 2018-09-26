@@ -23,9 +23,9 @@
 		"start": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
 		"test:karma:once": "karma start karma.config.js",
 		"test:karma:watch": "karma start karma.config.js --auto-watch --no-single-run",
-		"test:serverncafe:once": "start-server-and-test start http-get://localhost:4001/index.html test:cafe:once",
+		"test:servencafe:once": "start-server-and-test start http-get://localhost:4001/index.html test:cafe:once",
 		"test:cafe:once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
-		"ci": "npm-run-all _lint tsc:validate clean test:karma:once test:serverncafe:once",
+		"ci": "npm-run-all _lint tsc:validate clean test:karma:once test:servencafe:once",
 		"build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
 	},
 	"resolutions": {
