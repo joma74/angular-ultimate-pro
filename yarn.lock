@@ -105,7 +105,7 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
-"@types/extract-text-webpack-plugin@^3.0":
+"@types/extract-text-webpack-plugin@^3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.3.tgz#b4ef831c7ea7bc0585ccabc61e8b0d6cd69fccc3"
   dependencies:
@@ -190,7 +190,7 @@
   dependencies:
     source-map "^0.6.1"
 
-"@types/webpack-dev-server@^2.9.4":
+"@types/webpack-dev-server@^2":
   version "2.9.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-dev-server/-/webpack-dev-server-2.9.6.tgz#423d96ae2a0956543b18cb399a0841bf20f77b24"
   dependencies:
@@ -199,11 +199,11 @@
     "@types/serve-static" "*"
     "@types/webpack" "*"
 
-"@types/webpack-env@^1.13.6":
+"@types/webpack-env@^1":
   version "1.13.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
 
-"@types/webpack-merge@^0.0.8":
+"@types/webpack-merge@^0":
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/@types/webpack-merge/-/webpack-merge-0.0.8.tgz#bff43e254ee1652efa9989db5b4e24da90c02cb4"
   dependencies:
@@ -3011,7 +3011,7 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-extract-text-webpack-plugin@^3.0.2:
+extract-text-webpack-plugin@^3:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
   dependencies:
