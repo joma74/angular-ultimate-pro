@@ -194,6 +194,15 @@
   dependencies:
     source-map "^0.6.1"
 
+"@types/webpack-dev-server@*":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@types/webpack-dev-server/-/webpack-dev-server-3.1.1.tgz#12ae26194b3e1b8a317559592659921f282583c2"
+  dependencies:
+    "@types/express" "*"
+    "@types/http-proxy-middleware" "*"
+    "@types/serve-static" "*"
+    "@types/webpack" "*"
+
 "@types/webpack-dev-server@^2":
   version "2.9.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-dev-server/-/webpack-dev-server-2.9.6.tgz#423d96ae2a0956543b18cb399a0841bf20f77b24"
@@ -214,12 +223,13 @@
     "@types/webpack" "*"
 
 "@types/webpack@*", "@types/webpack@~3":
-  version "3.8.14"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.14.tgz#e2bfdf7f604b3f7dc776eaa17446d7f7538f3de7"
+  version "3.8.16"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.16.tgz#14fa71b35e49292c433697da73371ec1937575fd"
   dependencies:
     "@types/node" "*"
     "@types/tapable" "^0"
     "@types/uglify-js" "*"
+    "@types/webpack-dev-server" "*"
     source-map "^0.6.0"
 
 abbrev@1:
