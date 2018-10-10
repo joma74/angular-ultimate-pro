@@ -3,8 +3,13 @@ import { Component } from "@angular/core"
 import "../assets/css/styles.css"
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
+  selector: "app-root",
+  template: `
+	<div>
+		<auth-form (submitted)="createUser($event)"></auth-form>
+		<auth-form (submitted)="loginUser($event)"></auth-form>
+	</div>
+  `,
 })
 export class AppComponent {
   public title: string
