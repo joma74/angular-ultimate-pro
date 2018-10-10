@@ -147,8 +147,8 @@
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.8.9.tgz#e028c891e8551fdf6de905d959581fc4fa0b5509"
 
 "@types/karma@^1":
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-1.7.6.tgz#7ba38922889bf289868472170c3fe3cbc66b2356"
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-1.7.7.tgz#447f38edf7c171bef9f2b9b641121d54a34b8810"
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
