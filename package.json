@@ -36,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn _lint-js && tsc_validate_once && lint-staged"
+      "pre-commit": "yarn tsc_validate_once && lint-staged"
     }
   },
   "lint-staged": {
