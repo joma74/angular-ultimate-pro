@@ -15,22 +15,35 @@
 	},
 	"scripts": {
 		"clean": "del 'target/*' '!.gitkeep'",
-		"_lint": "tslint --project '.' 'src/**/*.ts' './config/**/*.js'",
-		"lint": "yarn run _lint --fix",
-		"tsc:validate": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true; exitCode=$?; echo $exitCode; exit $exitCode",
-		"tsc:trace": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true --traceResolution true  | tee target/tsc.trace.log; echo $?",
-		"tsc:listFiles": "node_modules/typescript/bin/tsc --project ./jsconfig.json --noEmit true --listFiles  | tee target/tsc.listFiles.log; echo $?",
+		"_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' './config/**/*.js'",
+		"lint-js-fix": "yarn run _lint --fix",
+		"tsc_validate_watch": "yarn tsc_validate_once -- --watch",
+		"tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
+		"check-staged": "lint-staged",
 		"start": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
-		"test:karma:once": "karma start karma.config.js",
-		"test:karma:watch": "karma start karma.config.js --auto-watch --no-single-run",
-		"test:servencafe:once": "start-server-and-test start http-get://localhost:4001/index.html test:cafe:once",
-		"test:cafe:once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
-		"ci": "npm-run-all _lint tsc:validate clean test:karma:once test:servencafe:once",
+		"test_karma_once": "karma start karma.config.js",
+		"test_karma_watch": "karma start karma.config.js --auto-watch --no-single-run",
+		"test_servencafe_once": "start-server-and-test start http-get://localhost:4001/index.html test_cafe_once",
+		"test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
+		"ci": "npm-run-all _lint-js tsc_validate_once clean test_karma_once test_servencafe_once",
 		"build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
 	},
 	"resolutions": {
 		"**/@types/webpack": "~3",
 		"**/typescript": "~3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn tsc_validate_once && lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,ts,tsx}": [
+			"yarn run _lint --"
+		],
+		"*.{js,ts,tsx,json,md}": [
+			"prettier --list-different"
+		]
 	},
 	"devDependencies": {
 		"@types/core-js": "^2.5.0",
@@ -51,6 +64,7 @@
 		"file-loader": "^1.1.11",
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "~3",
+		"husky": "^1.1.1",
 		"jasmine-core": "^3.1.0",
 		"json-server": "^0.13.0",
 		"karma": "^1",
@@ -59,6 +73,7 @@
 		"karma-jasmine-html-reporter": "^1.1.0",
 		"karma-sourcemap-loader": "^0.3.7",
 		"karma-webpack": "~3",
+		"lint-staged": "^7.3.0",
 		"node-sass": "^4.9.0",
 		"npm-run-all": "^4.1.3",
 		"null-loader": "^0.1.1",
