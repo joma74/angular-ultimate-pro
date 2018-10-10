@@ -14,9 +14,9 @@
         "chrome",
         "-S",
         "-s",
-        "target/reports/screenshots/actual/",
+        "target/reports/screenshots/actual",
         "-p",
-        "${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png",
+        "'${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png'",
         "${file}"
       ],
       "cwd": "${workspaceFolder}",
