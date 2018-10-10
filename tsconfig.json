@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./target",
+    "outDir": "./target/tsjs",
     "allowJs": true,
     "baseUrl": "./src",
     "checkJs": true,
