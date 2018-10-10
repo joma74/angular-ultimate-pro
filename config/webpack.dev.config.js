@@ -18,38 +18,38 @@ const publicPath = "/"
  * @type {import("webpack-dev-server").Configuration}
  */
 const devServer = {
-	before(app) {
-		app.use("/api", jsonServer.router(cpd + "/db.json"))
-	},
-	clientLogLevel: "warning",
-	compress: true,
-	contentBase: contentNotFromWebpackIsServedFrom,
-	historyApiFallback: true,
-	host: "0.0.0.0",
-	hot: true,
-	port: 4001,
-	stats: "minimal",
-	watchContentBase: false,
+  before(app) {
+    app.use("/api", jsonServer.router(cpd + "/db.json"))
+  },
+  clientLogLevel: "warning",
+  compress: true,
+  contentBase: contentNotFromWebpackIsServedFrom,
+  historyApiFallback: true,
+  host: "0.0.0.0",
+  hot: true,
+  port: 4001,
+  stats: "minimal",
+  watchContentBase: false,
 }
 /**
  * @type {import ("webpack").Configuration}
  */
 const devConfig = {
-	devServer,
-	devtool: "cheap-module-eval-source-map",
-	output: {
-		chunkFilename: "[id].chunk.js",
-		filename: "[name].js",
-		path: helpers.root("dist"),
-		publicPath,
-	},
-	plugins: [
-		new CheckerPlugin(),
+  devServer,
+  devtool: "cheap-module-eval-source-map",
+  output: {
+    chunkFilename: "[id].chunk.js",
+    filename: "[name].js",
+    path: helpers.root("dist"),
+    publicPath,
+  },
+  plugins: [
+    new CheckerPlugin(),
 
-		new ExtractTextPlugin("[name].css"),
+    new ExtractTextPlugin("[name].css"),
 
-		new webpack.HotModuleReplacementPlugin(),
-	],
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 }
 
 module.exports = webpackMerge(commonConfig, devConfig)

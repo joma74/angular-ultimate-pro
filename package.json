@@ -17,6 +17,8 @@
     "clean": "del 'target/*' '!.gitkeep'",
     "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' './src/**/*.js' './config/**/*.js'",
     "lint-js-fix": "yarn run _lint-js --fix",
+    "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md}'",
+    "prettier-fix": "yarn run prettier --write",
     "tsc_validate_watch": "yarn tsc_validate_once --watch",
     "tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
     "check-staged": "lint-staged",
@@ -34,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn tsc_validate_once && lint-staged"
+      "pre-commit": "yarn _lint-js && tsc_validate_once && lint-staged"
     }
   },
   "lint-staged": {
@@ -42,7 +44,7 @@
       "yarn run _lint-js"
     ],
     "*.{js,ts,tsx,json,md}": [
-      "prettier --write --list-different"
+      "prettier --list-different"
     ]
   },
   "devDependencies": {
