@@ -8,12 +8,12 @@ import { AppModule } from "./app/app.module"
 declare var module: __WebpackModuleApi.Module
 
 if (process.env.ENV === "production") {
-	enableProdMode()
+  enableProdMode()
 } else {
-	// Enables Hot Module Replacement.
-	if (module.hot) {
-		module.hot.accept()
-	}
+  // Enables Hot Module Replacement.
+  if (module.hot) {
+    module.hot.accept()
+  }
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)

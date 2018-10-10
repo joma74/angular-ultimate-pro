@@ -1,116 +1,116 @@
 {
-	"name": "angular-ultimate-pro",
-	"version": "0.0.1",
-	"description": "Replay after https://github.com/UltimateAngular/angular-fundamentals-src",
-	"main": "main",
-	"repository": "https://github.com/joma74/angular-ultimate-fundamentals.git",
-	"author": "joma74 <dev-mails@gmx.net>",
-	"license": "MIT",
-	"private": false,
-	"config": {
-		"target": "target",
-		"reports": "target/reports",
-		"screenshots": "target/reports/screenshots/actual/",
-		"screenshot-path-pattern": "${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png"
-	},
-	"scripts": {
-		"clean": "del 'target/*' '!.gitkeep'",
-		"_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' './config/**/*.js'",
-		"lint-js-fix": "yarn run _lint --fix",
-		"tsc_validate_watch": "yarn tsc_validate_once -- --watch",
-		"tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
-		"check-staged": "lint-staged",
-		"start": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
-		"test_karma_once": "karma start karma.config.js",
-		"test_karma_watch": "karma start karma.config.js --auto-watch --no-single-run",
-		"test_servencafe_once": "start-server-and-test start http-get://localhost:4001/index.html test_cafe_once",
-		"test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
-		"ci": "npm-run-all _lint-js tsc_validate_once clean test_karma_once test_servencafe_once",
-		"build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
-	},
-	"resolutions": {
-		"**/@types/webpack": "~3",
-		"**/typescript": "~3"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "yarn tsc_validate_once && lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.{js,ts,tsx}": [
-			"yarn run _lint --"
-		],
-		"*.{js,ts,tsx,json,md}": [
-			"prettier --list-different"
-		]
-	},
-	"devDependencies": {
-		"@types/core-js": "^2.5.0",
-		"@types/extract-text-webpack-plugin": "^3",
-		"@types/html-webpack-plugin": "2.11.3",
-		"@types/jasmine": "^2.8.8",
-		"@types/karma": "^1",
-		"@types/webpack": "~3",
-		"@types/webpack-dev-server": "^2",
-		"@types/webpack-env": "^1",
-		"@types/webpack-merge": "^0",
-		"angular2-template-loader": "^0.6.2",
-		"awesome-typescript-loader": "~4",
-		"cross-env": "^5.2.0",
-		"css-loader": "^0.28.11",
-		"del-cli": "^1.1.0",
-		"extract-text-webpack-plugin": "^3",
-		"file-loader": "^1.1.11",
-		"html-loader": "^0.5.5",
-		"html-webpack-plugin": "~3",
-		"husky": "^1.1.1",
-		"jasmine-core": "^3.1.0",
-		"json-server": "^0.13.0",
-		"karma": "^1",
-		"karma-chrome-launcher": "^2.2.0",
-		"karma-jasmine": "^1.1.2",
-		"karma-jasmine-html-reporter": "^1.1.0",
-		"karma-sourcemap-loader": "^0.3.7",
-		"karma-webpack": "~3",
-		"lint-staged": "^7.3.0",
-		"node-sass": "^4.9.0",
-		"npm-run-all": "^4.1.3",
-		"null-loader": "^0.1.1",
-		"postcss-loader": "^2.1.6",
-		"prettier": "^1.13.4",
-		"raw-loader": "^0.5.1",
-		"rimraf": "^2.6.2",
-		"sass-loader": "^7.0.3",
-		"start-server-and-test": "^1.7.1",
-		"style-loader": "^0.21.0",
-		"tailwindcss": "^0.6.4",
-		"testcafe": "^0.22.0",
-		"testcafe-angular-selectors": "^0.3.0",
-		"tslint": "^5.10.0",
-		"tslint-config-prettier": "^1.13.0",
-		"tslint-eslint-rules": "^5.3.1",
-		"typescript": "~3",
-		"webpack": "~3",
-		"webpack-dev-server": "2.11.2",
-		"webpack-merge": "~3"
-	},
-	"dependencies": {
-		"@angular/common": "~4",
-		"@angular/compiler": "~4",
-		"@angular/core": "~4",
-		"@angular/forms": "~4",
-		"@angular/http": "~4",
-		"@angular/platform-browser": "~4",
-		"@angular/platform-browser-dynamic": "~4",
-		"@angular/router": "~4",
-		"core-js": "^2.5.7",
-		"rxjs": "~5.4.2",
-		"zone.js": "^0.8.26"
-	},
-	"engineStrict": true,
-	"engines": {
-		"node": ">= 8.9.4",
-		"yarn": ">= 1.7.0"
-	}
+  "name": "angular-ultimate-pro",
+  "version": "0.0.1",
+  "description": "Replay after https://github.com/UltimateAngular/angular-fundamentals-src",
+  "main": "main",
+  "repository": "https://github.com/joma74/angular-ultimate-fundamentals.git",
+  "author": "joma74 <dev-mails@gmx.net>",
+  "license": "MIT",
+  "private": false,
+  "config": {
+    "target": "target",
+    "reports": "target/reports",
+    "screenshots": "target/reports/screenshots/actual/",
+    "screenshot-path-pattern": "${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png"
+  },
+  "scripts": {
+    "clean": "del 'target/*' '!.gitkeep'",
+    "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' './src/**/*.js' './config/**/*.js'",
+    "lint-js-fix": "yarn run _lint-js --fix",
+    "tsc_validate_watch": "yarn tsc_validate_once --watch",
+    "tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
+    "check-staged": "lint-staged",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
+    "test_karma_once": "karma serve karma.config.js",
+    "test_karma_watch": "karma serve karma.config.js --auto-watch --no-single-run",
+    "test_servencafe_once": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_once",
+    "test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
+    "ci": "npm-run-all _lint-js tsc_validate_once clean test_karma_once test_servencafe_once",
+    "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
+  },
+  "resolutions": {
+    "**/@types/webpack": "~3",
+    "**/typescript": "~3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn tsc_validate_once && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "yarn run _lint-js"
+    ],
+    "*.{js,ts,tsx,json,md}": [
+      "prettier --write --list-different"
+    ]
+  },
+  "devDependencies": {
+    "@types/core-js": "^2.5.0",
+    "@types/extract-text-webpack-plugin": "^3",
+    "@types/html-webpack-plugin": "2.11.3",
+    "@types/jasmine": "^2.8.8",
+    "@types/karma": "^1",
+    "@types/webpack": "~3",
+    "@types/webpack-dev-server": "^2",
+    "@types/webpack-env": "^1",
+    "@types/webpack-merge": "^0",
+    "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "~4",
+    "cross-env": "^5.2.0",
+    "css-loader": "^0.28.11",
+    "del-cli": "^1.1.0",
+    "extract-text-webpack-plugin": "^3",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "~3",
+    "husky": "^1.1.1",
+    "jasmine-core": "^3.1.0",
+    "json-server": "^0.13.0",
+    "karma": "^1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2",
+    "karma-jasmine-html-reporter": "^1.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "~3",
+    "lint-staged": "^7.3.0",
+    "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.3",
+    "null-loader": "^0.1.1",
+    "postcss-loader": "^2.1.6",
+    "prettier": "^1.13.4",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.0.3",
+    "start-server-and-test": "^1.7.1",
+    "style-loader": "^0.21.0",
+    "tailwindcss": "^0.6.4",
+    "testcafe": "^0.22.0",
+    "testcafe-angular-selectors": "^0.3.0",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "tslint-eslint-rules": "^5.3.1",
+    "typescript": "~3",
+    "webpack": "~3",
+    "webpack-dev-server": "2.11.2",
+    "webpack-merge": "~3"
+  },
+  "dependencies": {
+    "@angular/common": "~4",
+    "@angular/compiler": "~4",
+    "@angular/core": "~4",
+    "@angular/forms": "~4",
+    "@angular/http": "~4",
+    "@angular/platform-browser": "~4",
+    "@angular/platform-browser-dynamic": "~4",
+    "@angular/router": "~4",
+    "core-js": "^2.5.7",
+    "rxjs": "~5.4.2",
+    "zone.js": "^0.8.26"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">= 8.9.4",
+    "yarn": ">= 1.7.0"
+  }
 }

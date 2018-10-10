@@ -1,0 +1,43 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "protocol": "inspector",
+      "name": "Launch test files with TestCafe",
+      "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
+      "args": [
+        "chrome",
+        "-S",
+        "-s",
+        "target/reports/screenshots/actual/",
+        "-p",
+        "${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png",
+        "${file}"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch webpack-dev-server",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "args": [
+        "--watch",
+        "--hot",
+        "--no-progress",
+        "--config=webpack.config.js"
+      ],
+      "stopOnEntry": true
+    }
+  ]
+}
