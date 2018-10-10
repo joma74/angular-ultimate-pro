@@ -15,6 +15,24 @@ const testName = "dom_has_critical_elements"
 test(testName, async (t) => {
   // await t.debug()
   await t.takeScreenshot()
+  await checkHeading(t)
+
+  const imageAngularFirst = await AngularSelector().find(
+    "img[data-desc='angular-first']",
+  )
+  await t.expect(imageAngularFirst.visible).ok()
+
+  const imageAngularSecond = await AngularSelector().find(
+    "img[data-desc='angular-second']",
+  )
+  await t.expect(imageAngularSecond.visible).ok()
+})
+
+/**
+ *
+ * @param {TestController} t
+ */
+async function checkHeading(t) {
   const heading = AngularSelector().find("h1[data-desc='heading']")
   const headingText = await heading.innerText
   const expected = Mustache.render(
@@ -27,4 +45,4 @@ test(testName, async (t) => {
     },
   )
   await t.expect(headingText).eql(expected)
-})
+}
