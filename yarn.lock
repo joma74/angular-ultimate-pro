@@ -214,8 +214,8 @@
     "@types/webpack" "*"
 
 "@types/webpack@*", "@types/webpack@~3":
-  version "3.8.14"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.14.tgz#e2bfdf7f604b3f7dc776eaa17446d7f7538f3de7"
+  version "3.8.15"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.15.tgz#d767038ce77e5d15047f078132558389ff985fb7"
   dependencies:
     "@types/node" "*"
     "@types/tapable" "^0"
