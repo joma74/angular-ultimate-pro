@@ -25,6 +25,10 @@ test(testName, async (t) => {
 
   const buttonsubmitLogin = authForm.find("button").nth(1)
   await t.click(buttonsubmitLogin)
+
+  const { log } = await t.getBrowserConsoleMessages()
+  await t.expect(log[2]).contains("Create account")
+  await t.expect(log[3]).contains("Login")
 })
 
 /**
