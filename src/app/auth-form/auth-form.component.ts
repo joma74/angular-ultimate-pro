@@ -29,7 +29,8 @@ import { User } from "./auth-form.interface"
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-8">
-			<button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+			<button
+				class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
 				type="submit">
 				Submit
 			</button>
