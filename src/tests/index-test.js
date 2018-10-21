@@ -24,13 +24,18 @@ test(testName, async (t) => {
   await t.expect(buttonJoinsUs.innerText).eql("Join us")
   await t.click(buttonJoinsUs)
 
+  const rememberMe = authForm.find("input[type=checkbox]")
+  await t.click(rememberMe)
+
   const buttonLogin = authForm.find("button").nth(1)
   await t.expect(buttonLogin.innerText).eql("Login")
   await t.click(buttonLogin)
 
   const { log } = await t.getBrowserConsoleMessages()
-  await t.expect(log[2]).contains("Create account")
-  await t.expect(log[3]).contains("Login")
+  await t.expect(log[2]).eql('Create account {"email":"","password":""}')
+  await t
+    .expect(log[3])
+    .eql('Login {"email":"","password":"","rememberMe":true}')
 })
 
 /**

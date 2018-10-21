@@ -17,6 +17,7 @@ import "../assets/css/styles.css"
 			<div class="bg-grey-light" style="width: 2px"></div>
 			<auth-form (submitted)="loginUser($event)">
 				<h3 data-desc="heading-2">Login</h3>
+				<auth-remember (checked)="rememberUser($event)"></auth-remember>
 				<button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
 					Login
 				</button>
@@ -26,13 +27,20 @@ import "../assets/css/styles.css"
   `,
 })
 export class AppComponent {
+  public rememberMe: boolean = false
+
   public createUser(user: User) {
     // tslint:disable-next-line:no-console
-    console.log("Create account", user)
+    console.log("Create account", JSON.stringify(user))
   }
 
   public loginUser(user: User) {
+    const loggable = Object.assign({}, user, this)
     // tslint:disable-next-line:no-console
-    console.log("Login", user)
+    console.log("Login", JSON.stringify(loggable))
+  }
+
+  public rememberUser(remember: boolean) {
+    this.rememberMe = remember
   }
 }

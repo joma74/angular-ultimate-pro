@@ -29,6 +29,10 @@ import { User } from "./auth-form.interface"
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-8">
+			<ng-content select="auth-remember"></ng-content>
+		</div>
+		<div class="no-m-coll"></div>
+		<div class="mt-4">
 			<ng-content select="button"></ng-content>
 		</div>
       </form>
