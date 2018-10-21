@@ -22,3 +22,13 @@ declare module "json-server" {
   const _a: any
   export = _a
 }
+
+declare module "webpack-disk-plugin" {
+  const _a: any
+  export = _a
+}
+
+declare module "prettyFormat" {
+  const _a: any
+  export = _a
+}
