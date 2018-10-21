@@ -21,6 +21,7 @@
     "forin": true,
     "import-spacing": true,
     "indent": [true, "spaces", 2],
+    "interface-name": false,
     "linebreak-style": [true, "unix"],
     "no-arg": true,
     "no-conditional-assignment": true,
