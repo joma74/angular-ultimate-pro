@@ -20,11 +20,13 @@ test(testName, async (t) => {
   await checkHeading(t, authForm, "heading-1", "Create account")
   await checkHeading(t, authForm, "heading-2", "Login")
 
-  const buttonSubmitCreateAccount = authForm.find("button").nth(0)
-  await t.click(buttonSubmitCreateAccount)
+  const buttonJoinsUs = authForm.find("button").nth(0)
+  await t.expect(buttonJoinsUs.innerText).eql("Join us")
+  await t.click(buttonJoinsUs)
 
-  const buttonsubmitLogin = authForm.find("button").nth(1)
-  await t.click(buttonsubmitLogin)
+  const buttonLogin = authForm.find("button").nth(1)
+  await t.expect(buttonLogin.innerText).eql("Login")
+  await t.click(buttonLogin)
 
   const { log } = await t.getBrowserConsoleMessages()
   await t.expect(log[2]).contains("Create account")
