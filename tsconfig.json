@@ -24,6 +24,6 @@
   "include": ["config/**/*", "src/**/*"],
   "compileOnSave": false,
   "typeAcquisition": {
-    "enable": true
+    "enable": false
   }
 }

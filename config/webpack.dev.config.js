@@ -6,6 +6,8 @@ const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 const { CheckerPlugin } = require("awesome-typescript-loader")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+var DiskPlugin = require("webpack-disk-plugin")
+const prettyFormat = require("pretty-format")
 
 /**
  * Current Project Dir
@@ -52,4 +54,70 @@ const devConfig = {
   ],
 }
 
-module.exports = webpackMerge(commonConfig, devConfig)
+/**
+ * @type {import ("webpack").Configuration}
+ */
+const cssConfig = {
+  entry: "./config/dummy",
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+              },
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                config: {
+                  path: path.resolve(__dirname),
+                },
+              },
+            },
+          ],
+        }),
+      },
+    ],
+  },
+  output: {
+    filename: "dummy.js",
+    path: path.resolve(cpd, "target"),
+  },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin("styles.css"),
+    // Write out asset files to disk.
+    new DiskPlugin({
+      files: [
+        {
+          asset: /\.css$/,
+          output: {
+            filename: "styles.css",
+          },
+        },
+      ],
+      output: {
+        path: path.resolve(cpd, "target"),
+      },
+    }),
+  ],
+  resolve: {
+    alias: {
+      "@css": path.resolve(cpd, "src/assets/css/"),
+    },
+  },
+}
+
+const webpackConfig = [webpackMerge(commonConfig, devConfig), cssConfig]
+
+const output = prettyFormat(webpackConfig, { highlight: true })
+
+// tslint:disable-next-line:no-console
+console.log(output)
+
+module.exports = webpackConfig

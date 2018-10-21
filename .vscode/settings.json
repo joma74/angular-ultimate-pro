@@ -3,5 +3,9 @@
 	"prettier.ignorePath": ".prettierignore",
 	"prettier.requireConfig": false,
 	"tslint.jsEnable": true,
-	"prettier.tslintIntegration": true
+	"prettier.tslintIntegration": true,
+	"path-autocomplete.pathMappings": {
+		"@home": "${folder}",
+		"@css": "${folder}/src/assets/css"
+	},
 }
