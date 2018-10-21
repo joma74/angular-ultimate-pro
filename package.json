@@ -22,7 +22,7 @@
     "tsc_validate_watch": "yarn tsc_validate_once --watch",
     "tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
     "check-staged": "lint-staged",
-    "serve": "cross-env NODE_ENV=development webpack-dev-server --watch --hot --no-progress --config=webpack.config.js",
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --watch --no-progress --config=webpack.config.js",
     "test_karma_once": "karma start karma.config.js",
     "test_karma_watch": "karma start karma.config.js --auto-watch --no-single-run",
     "test_servencafe_once": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_once",
@@ -54,6 +54,7 @@
     "@types/jasmine": "^2.8.8",
     "@types/karma": "^1",
     "@types/mustache": "^0.8.31",
+    "@types/pretty-format": "^20.0.0",
     "@types/webpack": "~3",
     "@types/webpack-dev-server": "^2",
     "@types/webpack-env": "^1",
@@ -83,6 +84,7 @@
     "null-loader": "^0.1.1",
     "postcss-loader": "^2.1.6",
     "prettier": "^1.13.4",
+    "pretty-format": "^23.6.0",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
@@ -97,6 +99,7 @@
     "typescript": "~3",
     "webpack": "~3",
     "webpack-dev-server": "2.11.2",
+    "webpack-disk-plugin": "^0.0.2",
     "webpack-merge": "~3"
   },
   "dependencies": {
