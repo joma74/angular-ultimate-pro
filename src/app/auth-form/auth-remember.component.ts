@@ -9,7 +9,7 @@ import { Component, EventEmitter, Output } from "@angular/core"
 			type="checkbox"
 			(change)="onChecked($event.target.checked)"
 		>
-		<label class="text-grey font-bold inline align-middle text-sm"
+		<label class="text-grey-darker font-bold inline align-middle text-sm"
 			for="remember-me"
 		>
 			Keep me logged in
