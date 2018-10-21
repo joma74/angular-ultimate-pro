@@ -24,7 +24,7 @@ test(testName, async (t) => {
   await t.expect(buttonJoinsUs.innerText).eql("Join us")
   await t.click(buttonJoinsUs)
 
-  const rememberMe = authForm.find("input[type=checkbox]")
+  const rememberMe = authForm.find("label[for=remember-me]")
   await t.click(rememberMe)
 
   const buttonLogin = authForm.find("button").nth(1)

@@ -3,12 +3,18 @@ import { Component, EventEmitter, Output } from "@angular/core"
 @Component({
   selector: "auth-remember",
   template: `
-	<label>
-		<input type="checkbox"
+	<div class="leading-by-font">
+		<input class="w-3 h-3 mr-2 inline align-middle"
+			id="remember-me" 
+			type="checkbox"
 			(change)="onChecked($event.target.checked)"
 		>
-		Keep me logged in
-	</label>
+		<label class="text-grey font-bold inline align-middle text-sm"
+			for="remember-me"
+		>
+			Keep me logged in
+		</label>
+	</div>
   `,
 })
 export class AuthRememberComponent {

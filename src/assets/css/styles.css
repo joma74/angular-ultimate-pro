@@ -9,3 +9,7 @@
   content: " ";
   display: table;
 }
+
+.leading-byfont {
+  line-height: normal;
+}
