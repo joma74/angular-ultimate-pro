@@ -3,3 +3,9 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.no-m-coll:before,
+.no-m-coll:after {
+  content: " ";
+  display: table;
+}
