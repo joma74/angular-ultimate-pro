@@ -1,6 +1,7 @@
 import {
   AfterContentInit,
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   EventEmitter,
@@ -68,6 +69,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @Output()
   public submitted: EventEmitter<User> = new EventEmitter<User>()
 
+  constructor(private cd: ChangeDetectorRef) {}
+
   public ngAfterViewInit(): void {
     // tslint:disable-next-line:no-console
     // this.message.days = 30 // -> ERROR Error: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: '28'. Current value: '30'
@@ -75,6 +78,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
       this.message.forEach((message) => {
         message.days = 29
       })
+      this.cd.detectChanges()
     }
   }
 
