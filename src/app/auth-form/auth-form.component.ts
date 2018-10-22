@@ -4,9 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   Output,
   QueryList,
+  ViewChild,
   ViewChildren,
 } from "@angular/core"
 
@@ -27,7 +29,7 @@ import { AuthRememberComponent } from "./auth-remember.component"
 			<input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" 
 				type="email" 
 				name="email" 
-			ngModel>
+			ngModel #email>
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-4">
@@ -45,9 +47,6 @@ import { AuthRememberComponent } from "./auth-remember.component"
             <auth-message 
                 [style.display]="(showMessage ? 'inherit' : 'none')">
             </auth-message>
-            <auth-message 
-                [style.display]="(showMessage ? 'inherit' : 'none')">
-            </auth-message>
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-4">
@@ -59,6 +58,9 @@ import { AuthRememberComponent } from "./auth-remember.component"
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   public showMessage: boolean
+
+  @ViewChild("email")
+  public email: ElementRef
 
   @ViewChildren(AuthMessageComponent)
   public message: QueryList<AuthMessageComponent>
@@ -73,6 +75,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   public ngAfterViewInit(): void {
     // tslint:disable-next-line:no-console
+    const emailElm: HTMLInputElement = this.email.nativeElement
+    emailElm.setAttribute("placeholder", "Enter your email address")
+    emailElm.focus()
     // this.message.days = 30 // -> ERROR Error: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: '28'. Current value: '30'
     if (this.message) {
       this.message.forEach((message) => {

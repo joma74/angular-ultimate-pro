@@ -18,7 +18,6 @@ import "../assets/css/styles.css"
 			<auth-form (submitted)="loginUser($event)">
 				<h3 data-desc="heading-2">Login</h3>
                 <auth-remember (checked)="rememberUser($event)"></auth-remember>
-                <auth-remember (checked)="rememberUser($event)"></auth-remember>
 				<button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
 					Login
 				</button>
