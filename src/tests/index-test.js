@@ -21,20 +21,20 @@ test(testName, async (t) => {
   await checkHeading(t, authForm, "heading-1", "Create account")
   await checkHeading(t, authForm, "heading-2", "Login")
 
-  const buttonJoinsUs = authForm.find("button").nth(0)
+  const buttonJoinsUs = await authForm.find("button").nth(0)
   await t.expect(buttonJoinsUs.innerText).eql("Join us")
   await t.click(buttonJoinsUs)
 
-  const rememberMe = authForm.find("label[for^=remember-me-]")
+  const rememberMe = await authForm.find("label[for^=remember-me-]")
   await t.click(rememberMe)
 
   const authMessage = AngularSelector("auth-message")
   const messageParaText = await authMessage.find("p").innerText
   await t
     .expect(messageParaText.trim())
-    .eql("You will be logged in for 28 days")
+    .eql("You will be logged in for 29 days")
 
-  const buttonLogin = authForm.find("button").nth(1)
+  const buttonLogin = await authForm.find("button").nth(1)
   await t.expect(buttonLogin.innerText).eql("Login")
   await t.click(buttonLogin)
 
@@ -53,7 +53,7 @@ test(testName, async (t) => {
  * @param {string} expectedHeadingText
  */
 async function checkHeading(t, component, dataDescOf, expectedHeadingText) {
-  const heading = component.find(`h3[data-desc='${dataDescOf}']`)
-  const headingText = await heading.innerText
+  const heading = await component.find(`h3[data-desc='${dataDescOf}']`)
+  const headingText = heading.innerText
   await t.expect(headingText).eql(expectedHeadingText)
 }
