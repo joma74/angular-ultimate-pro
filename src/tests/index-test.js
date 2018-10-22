@@ -38,7 +38,8 @@ test(testName, async (t) => {
   await t.expect(buttonLogin.innerText).eql("Login")
   await t.click(buttonLogin)
 
-  const { log } = await t.getBrowserConsoleMessages()
+  const { log, error } = await t.getBrowserConsoleMessages()
+  await t.expect(error.length).eql(0, JSON.stringify(error))
   await t.expect(log[2]).eql('Create account {"email":"","password":""}')
   await t
     .expect(log[3])
