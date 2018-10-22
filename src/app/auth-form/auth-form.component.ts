@@ -1,13 +1,16 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   Component,
   ContentChildren,
   EventEmitter,
   Output,
   QueryList,
+  ViewChild,
 } from "@angular/core"
 
 import { User } from "./auth-form.interface"
+import { AuthMessageComponent } from "./auth-message.component"
 import { AuthRememberComponent } from "./auth-remember.component"
 
 @Component({
@@ -38,9 +41,9 @@ import { AuthRememberComponent } from "./auth-remember.component"
 		<div class="no-m-coll"></div>
 		<div class="mt-6">
 			<ng-content select="auth-remember"></ng-content>
-			<p *ngIf="showMessage" class="italic text-sm text-grey mt-2">
-				You will be logged in for 30 days
-			</p>
+            <auth-message 
+                [style.display]="(showMessage ? 'inherit' : 'none')">
+            </auth-message>
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-4">
@@ -50,8 +53,11 @@ import { AuthRememberComponent } from "./auth-remember.component"
     </div>
   `,
 })
-export class AuthFormComponent implements AfterContentInit {
+export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   public showMessage: boolean
+
+  @ViewChild(AuthMessageComponent)
+  public message: AuthMessageComponent
 
   @ContentChildren(AuthRememberComponent)
   public remember: QueryList<AuthRememberComponent>
@@ -59,7 +65,15 @@ export class AuthFormComponent implements AfterContentInit {
   @Output()
   public submitted: EventEmitter<User> = new EventEmitter<User>()
 
+  public ngAfterViewInit(): void {
+    // tslint:disable-next-line:no-console
+    // this.message.days = 30 // -> ERROR Error: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: '28'. Current value: '30'
+  }
+
   public ngAfterContentInit(): void {
+    if (this.message) {
+      this.message.days = 28
+    }
     if (this.remember) {
       this.remember.forEach((item) => {
         item.checked.subscribe((checked: boolean) => {

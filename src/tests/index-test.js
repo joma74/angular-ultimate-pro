@@ -28,6 +28,12 @@ test(testName, async (t) => {
   const rememberMe = authForm.find("label[for^=remember-me-]")
   await t.click(rememberMe)
 
+  const authMessage = AngularSelector("auth-message")
+  const messageParaText = await authMessage.find("p").innerText
+  await t
+    .expect(messageParaText.trim())
+    .eql("You will be logged in for 28 days")
+
   const buttonLogin = authForm.find("button").nth(1)
   await t.expect(buttonLogin.innerText).eql("Login")
   await t.click(buttonLogin)
