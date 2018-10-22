@@ -8,6 +8,7 @@ import {
   EventEmitter,
   Output,
   QueryList,
+  Renderer,
   ViewChild,
   ViewChildren,
 } from "@angular/core"
@@ -71,13 +72,18 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @Output()
   public submitted: EventEmitter<User> = new EventEmitter<User>()
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private renderer: Renderer, private cd: ChangeDetectorRef) {}
 
   public ngAfterViewInit(): void {
-    // tslint:disable-next-line:no-console
     const emailElm: HTMLInputElement = this.email.nativeElement
-    emailElm.setAttribute("placeholder", "Enter your email address")
-    emailElm.focus()
+    // emailElm.setAttribute("placeholder", "Enter your email address")
+    this.renderer.setElementAttribute(
+      emailElm,
+      "placeholder",
+      "Enter your email address",
+    )
+    // emailElm.focus()
+    this.renderer.invokeElementMethod(emailElm, "focus")
     // this.message.days = 30 // -> ERROR Error: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: '28'. Current value: '30'
     if (this.message) {
       this.message.forEach((message) => {
