@@ -32,10 +32,9 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "program": "${workspaceRoot}/node_modules/.bin/webpack-dev-server",
       "args": [
         "--watch",
-        "--hot",
         "--no-progress",
         "--config=webpack.config.js"
       ],

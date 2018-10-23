@@ -50,47 +50,6 @@ const devConfig = {
 
     new ExtractTextPlugin("[name].css"),
 
-    new webpack.HotModuleReplacementPlugin(),
-  ],
-}
-
-/**
- * @type {import ("webpack").Configuration}
- */
-const cssConfig = {
-  entry: "./config/dummy",
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                importLoaders: 1,
-              },
-            },
-            {
-              loader: "postcss-loader",
-              options: {
-                config: {
-                  path: path.resolve(__dirname),
-                },
-              },
-            },
-          ],
-        }),
-      },
-    ],
-  },
-  output: {
-    filename: "dummy.js",
-    path: path.resolve(cpd, "target"),
-  },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new ExtractTextPlugin("styles.css"),
     // Write out asset files to disk.
     new DiskPlugin({
       files: [
@@ -105,15 +64,12 @@ const cssConfig = {
         path: path.resolve(cpd, "target"),
       },
     }),
+
+    new webpack.HotModuleReplacementPlugin(),
   ],
-  resolve: {
-    alias: {
-      "@css": path.resolve(cpd, "src/assets/css/"),
-    },
-  },
 }
 
-const webpackConfig = [webpackMerge(commonConfig, devConfig), cssConfig]
+const webpackConfig = [webpackMerge(commonConfig, devConfig)]
 
 const output = prettyFormat(webpackConfig, { highlight: true })
 
