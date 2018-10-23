@@ -6,7 +6,7 @@ const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 const { CheckerPlugin } = require("awesome-typescript-loader")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
-var DiskPlugin = require("webpack-disk-plugin")
+const DiskPlugin = require("webpack-disk-plugin")
 const prettyFormat = require("pretty-format")
 
 /**
