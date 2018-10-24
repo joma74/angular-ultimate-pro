@@ -12,6 +12,7 @@ import { AuthRememberComponent } from "./auth-remember.component"
     AuthRememberComponent,
     AuthMessageComponent,
   ],
+  entryComponents: [AuthFormComponent],
   exports: [AuthFormComponent, AuthRememberComponent, AuthMessageComponent],
   imports: [CommonModule, FormsModule],
 })
