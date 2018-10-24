@@ -7094,8 +7094,8 @@ staged-git-files@1.1.1:
   resolved "https://registry.yarnpkg.com/staged-git-files/-/staged-git-files-1.1.1.tgz#37c2218ef0d6d26178b1310719309a16a59f8f7b"
 
 start-server-and-test@^1.7.1:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.7.4.tgz#0fce5cf5fe388cafab864f7947303f28b6832919"
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.7.5.tgz#33c6ffb71a2a24db2b713af711b55c334e5e20e0"
   dependencies:
     bluebird "3.5.2"
     check-more-types "2.24.0"
