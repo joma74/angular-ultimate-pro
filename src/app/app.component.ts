@@ -16,10 +16,10 @@ import "../assets/css/styles.css"
 	<div class="container mx-auto bg-grey-lighter mt-10 p-8 shadow-md">
 		<div class="flex flex-row justify-around">
             <div #entry>
-            <h3 data-desc="heading-2">Login</h3>
-            <button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Login
-            </button>
+                <h3 data-desc="heading-2">Login</h3>
+                <button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Login
+                </button>
             </div>
 		</div>
 	</div>
@@ -35,7 +35,7 @@ export class AppComponent implements AfterContentInit {
     const authFormFactory = this.resolver.resolveComponentFactory(
       AuthFormComponent,
     )
-    const component = this.entry.createComponent(authFormFactory)
+    this.entry.createComponent(authFormFactory)
   }
 
   public loginUser(user: User) {
