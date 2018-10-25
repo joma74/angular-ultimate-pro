@@ -16,6 +16,7 @@ import "../assets/css/styles.css"
   template: `
     <div class="container mx-auto bg-grey-lighter mt-10 p-8 shadow-md">
         <button (click)="destroyComponent()"
+            data-desc="destroy"
             class="mb-4 bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             Destroy me
         </button>
@@ -47,7 +48,6 @@ export class AppComponent implements AfterContentInit {
   }
 
   public destroyComponent() {
-    // tslint:disable-next-line:no-console
-    console.log(this.component)
+    this.component.destroy()
   }
 }

@@ -1,5 +1,6 @@
 // @ts-ignore
 import { AngularSelector, waitForAngular } from "testcafe-angular-selectors"
+import { Selector } from "testcafe"
 
 const fixtureName = "Index_Page_Test"
 
@@ -16,11 +17,13 @@ test(testName, async (t) => {
 
   await t.takeScreenshot()
 
-  const authForm = AngularSelector("auth-form")
+  const authForm = Selector("auth-form")
+  await t.expect(authForm.exists).ok()
 
   await checkHeading(t, authForm, "heading-2", "Login")
 
   const buttonLogin = await authForm.find("button").nth(0)
+  await t.expect(buttonLogin.exists).ok()
 
   const rememberMe = await authForm.find("label[for^=remember-me-]")
   await t.click(rememberMe)
@@ -32,6 +35,12 @@ test(testName, async (t) => {
   await t
     .expect(log[2])
     .eql('Login {"email":"","password":"","rememberMe":true}')
+
+  const destroyButton = Selector("button[data-desc='destroy']")
+  await t.expect(destroyButton).ok()
+  await t.click(destroyButton)
+  const authFormDestroyed = Selector("auth-form")
+  await t.expect(authFormDestroyed.exists).notOk()
 })
 
 /**
