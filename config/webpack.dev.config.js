@@ -48,7 +48,7 @@ const devConfig = {
   plugins: [
     new CheckerPlugin(),
 
-    new ExtractTextPlugin("[name].css"),
+    new ExtractTextPlugin("of[name].css"),
 
     // Write out asset files to disk.
     new DiskPlugin({

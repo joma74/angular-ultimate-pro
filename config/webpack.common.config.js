@@ -105,7 +105,7 @@ const webpackConfig = {
     }),
 
     new PreloadWebpackPlugin({
-      include: "allChunks",
+      include: ["app", "vendor", "polyfills"],
       rel: "preload",
     }),
 
