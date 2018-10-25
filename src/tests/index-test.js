@@ -35,12 +35,24 @@ test(testName, async (t) => {
   await t
     .expect(log[2])
     .eql('Login {"email":"","password":"","rememberMe":true}')
+})
+
+const testName2 = "can_destroy_component"
+
+test(testName2, async (t) => {
+  // await t.debug()
+  await t.takeScreenshot()
+
+  const authForm = Selector("auth-form")
+  await t.expect(authForm.exists).ok()
 
   const destroyButton = Selector("button[data-desc='destroy']")
   await t.expect(destroyButton).ok()
   await t.click(destroyButton)
   const authFormDestroyed = Selector("auth-form")
   await t.expect(authFormDestroyed.exists).notOk()
+
+  await t.takeScreenshot()
 })
 
 /**
