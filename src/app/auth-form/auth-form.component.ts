@@ -13,7 +13,7 @@ import {
   ViewChildren,
 } from "@angular/core"
 
-import { User } from "./auth-form.interface"
+import { Remember, User } from "./auth-form.interface"
 import { AuthMessageComponent } from "./auth-message.component"
 import { AuthRememberComponent } from "./auth-remember.component"
 
@@ -22,7 +22,7 @@ import { AuthRememberComponent } from "./auth-remember.component"
   template: `
 	<div class="no-m-coll">
 	  <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
-		<ng-content select="h3"></ng-content>
+        <h3 data-desc="heading-2">{{title}}</h3>  
 		<div class="mt-4">
 			<label class="block text-grey-darker text-sm font-bold mb-2">
 				Email address
@@ -44,21 +44,27 @@ import { AuthRememberComponent } from "./auth-remember.component"
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-6">
-			<ng-content select="auth-remember"></ng-content>
+            <auth-remember (checked)="rememberUser($event)"></auth-remember>
             <auth-message 
                 [style.display]="(showMessage ? 'inherit' : 'none')">
             </auth-message>
 		</div>
 		<div class="no-m-coll"></div>
 		<div class="mt-4">
-			<ng-content select="button"></ng-content>
+            <button class="bg-purple hover:bg-purple-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Login
+            </button>
 		</div>
       </form>
     </div>
   `,
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
+  public title: string = "No title given"
+
   public showMessage: boolean
+
+  public rememberMe: boolean = false
 
   @ViewChild("email")
   public email: ElementRef
@@ -70,7 +76,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   public remember: QueryList<AuthRememberComponent>
 
   @Output()
-  public submitted: EventEmitter<User> = new EventEmitter<User>()
+  public submitted: EventEmitter<User & Remember> = new EventEmitter()
 
   constructor(private renderer: Renderer, private cd: ChangeDetectorRef) {}
 
@@ -103,7 +109,13 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
     }
   }
 
+  public rememberUser(remember: boolean) {
+    this.rememberMe = remember
+  }
+
   public onSubmit(value: User) {
-    this.submitted.emit(value)
+    const rememberMe = this.rememberMe
+    const loggable = { ...value, rememberMe }
+    this.submitted.emit(loggable)
   }
 }
