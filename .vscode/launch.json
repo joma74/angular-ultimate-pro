@@ -8,12 +8,10 @@
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
-      "name": "Launch test files with TestCafe",
+      "name": "CHROME Launch test files with TestCafe",
       "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
       "args": [
-		"chrome",
-		"--speed",
-		"0.75",
+        "chrome",
         "-S",
         "-s",
         "target/reports/screenshots/actual",
@@ -23,6 +21,24 @@
       ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal"
+    },
+    {
+        "type": "node",
+        "request": "launch",
+        "protocol": "inspector",
+        "name": "FF Launch test files with TestCafe",
+        "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
+        "args": [
+          "firefox",
+          "-S",
+          "-s",
+          "target/reports/screenshots/actual",
+          "-p",
+          "'${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png'",
+          "${file}"
+        ],
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal"
     },
     {
       "type": "node",
