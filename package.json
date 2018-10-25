@@ -92,7 +92,7 @@
     "start-server-and-test": "^1.7.1",
     "style-loader": "^0.21.0",
     "tailwindcss": "^0.6.4",
-    "testcafe": "^0.22.0",
+    "testcafe": "^0.23.0-alpha.1",
     "testcafe-angular-selectors": "^0.3.0",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
