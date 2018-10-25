@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
-      "name": "Launch test files with TestCafe",
+      "name": "CHROME Launch test file with TestCafe",
       "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
       "args": [
         "chrome",
@@ -23,6 +23,24 @@
       "console": "integratedTerminal"
     },
     {
+        "type": "node",
+        "request": "launch",
+        "protocol": "inspector",
+        "name": "FF Launch test file with TestCafe",
+        "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
+        "args": [
+          "firefox",
+          "-S",
+          "-s",
+          "target/reports/screenshots/actual",
+          "-p",
+          "'${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png'",
+          "${file}"
+        ],
+        "cwd": "${workspaceFolder}",
+        "console": "integratedTerminal"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch webpack-dev-server",
@@ -33,7 +51,6 @@
       "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
       "args": [
         "--watch",
-        "--hot",
         "--no-progress",
         "--config=webpack.config.js"
       ],
