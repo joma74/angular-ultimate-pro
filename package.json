@@ -27,6 +27,8 @@
     "test_karma_watch": "karma start karma.config.js --auto-watch --no-single-run",
     "test_servencafe_once": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_once",
     "test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
+    "test_servencafe_live": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_live",
+    "test_cafe_live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
     "ci": "npm-run-all _lint-js tsc_validate_once clean test_karma_once test_servencafe_once",
     "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
   },
@@ -94,6 +96,7 @@
     "tailwindcss": "^0.6.4",
     "testcafe": "^0.23.0",
     "testcafe-angular-selectors": "^0.3.0",
+    "testcafe-live": "^0.1.3",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
     "tslint-eslint-rules": "^5.3.1",
