@@ -105,6 +105,7 @@ const webpackConfig = {
     }),
 
     new PreloadWebpackPlugin({
+      fileBlacklist: [/\.hot-update.js/],
       include: ["app", "vendor", "polyfills"],
       rel: "preload",
     }),
