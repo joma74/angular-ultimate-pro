@@ -20,9 +20,9 @@ import { AuthRememberComponent } from "./auth-remember.component"
 @Component({
   selector: "auth-form",
   template: `
-	<div class="no-m-coll">
+	<div class="no-m-coll mt-4">
 	  <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
-        <h3 data-desc="heading-2">{{title}}</h3>  
+        <h3 [attr.data-desc]="desc">{{title}}</h3>  
 		<div class="mt-4">
 			<label class="block text-grey-darker text-sm font-bold mb-2">
 				Email address
@@ -61,6 +61,8 @@ import { AuthRememberComponent } from "./auth-remember.component"
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   public title: string = "No title given"
+
+  public desc: string = "No desc given"
 
   public showMessage: boolean
 
