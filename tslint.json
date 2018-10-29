@@ -47,6 +47,7 @@
     "no-var-keyword": true,
     "object-curly-spacing": [true, "always"],
     "object-literal-shorthand": true,
+    "prefer-object-spread": false,
     "prefer-const": true,
     "switch-default": true,
     "ter-arrow-spacing": true,

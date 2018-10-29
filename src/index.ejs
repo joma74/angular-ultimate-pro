@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="/">
+  <meta charset="utf-8" />
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <title>Angular With Webpack</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+</head>
+
+<body>
+  <main-app>Loading...</main-app>
+  <% for (var chunk in htmlWebpackPlugin.options.bodys) { %>
+  <script
+    type="text/javascript"
+    src="<%= htmlWebpackPlugin.files.chunks[htmlWebpackPlugin.options.bodys[chunk]].entry %>"
+  ></script>
+  <% } %>
+</body>
+
+</html>

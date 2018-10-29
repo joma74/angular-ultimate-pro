@@ -27,6 +27,8 @@
     "test_karma_watch": "karma start karma.config.js --auto-watch --no-single-run",
     "test_servencafe_once": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_once",
     "test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
+    "test_servencafe_live": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_live",
+    "test_cafe_live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
     "ci": "npm-run-all _lint-js tsc_validate_once clean test_karma_once test_servencafe_once",
     "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
   },
@@ -83,6 +85,7 @@
     "npm-run-all": "^4.1.3",
     "null-loader": "^0.1.1",
     "postcss-loader": "^2.1.6",
+    "preload-webpack-plugin": "^2.3.0",
     "prettier": "^1.13.4",
     "pretty-format": "^23.6.0",
     "raw-loader": "^0.5.1",
@@ -113,6 +116,7 @@
     "@angular/router": "~4",
     "core-js": "^2.5.7",
     "rxjs": "~5.4.2",
+    "testcafe-live": "^0.1.3",
     "zone.js": "^0.8.26"
   },
   "engineStrict": true,

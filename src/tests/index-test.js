@@ -13,7 +13,6 @@ fixture(fixtureName)
 const testName = "dom_has_critical_elements"
 
 test(testName, async (t) => {
-  // await t.debug()
   await t.takeScreenshot()
   await checkHeading(t)
 

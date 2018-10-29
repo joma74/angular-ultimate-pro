@@ -1,5 +1,7 @@
 const helpers = require("./helpers")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const PreloadWebpackPlugin = require("preload-webpack-plugin")
 const path = require("path")
 const webpack = require("webpack")
 
@@ -56,24 +58,26 @@ const webpackConfig = {
         exclude: /node_modules/,
         include: helpers.root("src", "assets", "css"),
         test: /\.css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-              sourceMap: true,
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              config: {
-                path: "./config/",
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                sourceMap: true,
               },
             },
-          },
-        ],
+            {
+              loader: "postcss-loader",
+              options: {
+                config: {
+                  path: "./config/",
+                },
+              },
+            },
+          ],
+        }),
       },
       {
         include: helpers.root("src", "app"),
@@ -93,11 +97,21 @@ const webpackConfig = {
     ),
 
     new webpack.optimize.CommonsChunkPlugin({
+      minChunks: Infinity,
       names: ["app", "vendor", "polyfills"],
     }),
 
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      //   bodys: ["polyfills", "vendor", "app"],
+      //   chunks: ["app", "vendor", "polyfills"],
+      inject: true,
+      template: "src/index.ejs",
+    }),
+
+    new PreloadWebpackPlugin({
+      fileBlacklist: [/\.hot-update.js/],
+      include: ["app", "vendor", "polyfills"],
+      rel: "preload",
     }),
 
     new webpack.NamedModulesPlugin(),
