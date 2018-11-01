@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
-      "name": "CHROME Launch test files with TestCafe",
+      "name": "CHROME Launch test file with TestCafe",
       "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
       "args": [
         "chrome",
@@ -26,7 +26,7 @@
         "type": "node",
         "request": "launch",
         "protocol": "inspector",
-        "name": "FF Launch test files with TestCafe",
+        "name": "FF Launch test file with TestCafe",
         "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
         "args": [
           "firefox -P TestCafeUser",
