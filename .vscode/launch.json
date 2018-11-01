@@ -31,9 +31,7 @@
           "name": "FF Launch test file with TestCafe",
           "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
           "args": [
-            "firefox",
-            "--speed",
-            "0.75",
+            "firefox -P TestCafeUser",
             "-S",
             "-s",
             "target/reports/screenshots/actual",
