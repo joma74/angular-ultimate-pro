@@ -1,6 +1,6 @@
 // @ts-ignore
-import { AngularSelector, waitForAngular } from "testcafe-angular-selectors"
-var Mustache = require("mustache")
+import { waitForAngular } from "testcafe-angular-selectors"
+import { Selector } from "testcafe"
 
 const fixtureName = "Index_Page_Test"
 
@@ -10,38 +10,12 @@ fixture(fixtureName)
     await waitForAngular()
   })
 
-const testName = "dom_has_critical_elements"
+const testName = "dom_has_ng_template_text"
 
 test(testName, async (t) => {
   await t.takeScreenshot()
-  await checkHeading(t)
 
-  const imageAngularFirst = await AngularSelector().find(
-    "img[data-desc='angular-first']",
-  )
-  await t.expect(imageAngularFirst.visible).ok()
+  const text = await Selector("html > body > main-app > div").innerText
 
-  const imageAngularSecond = await AngularSelector().find(
-    "img[data-desc='angular-second']",
-  )
-  await t.expect(imageAngularSecond.visible).ok()
+  await t.expect(text).eql("Tedd Motto : England, UK")
 })
-
-/**
- *
- * @param {TestController} t
- */
-async function checkHeading(t) {
-  const heading = AngularSelector().find("h1[data-desc='heading']")
-  const headingText = await heading.innerText
-  const expected = Mustache.render(
-    "{{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{ patch }}",
-    {
-      major: "3",
-      minor: "12",
-      patch: "0",
-      title: "Hello",
-    },
-  )
-  await t.expect(headingText).eql(expected)
-}

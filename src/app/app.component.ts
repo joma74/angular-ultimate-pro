@@ -4,15 +4,14 @@ import "../assets/css/styles.css"
 
 @Component({
   selector: "main-app",
-  templateUrl: "./app.component.html",
+  template: `
+    <div class="container mx-auto bg-grey-lighter mt-10 p-8 shadow-md">
+        <ng-container [ngTemplateOutlet]="tmpl">
+        </ng-container>
+        <ng-template #tmpl>
+            Tedd Motto : England, UK
+        </ng-template>
+    </div>
+  `,
 })
-export class AppComponent {
-  public title: string
-  public major: number = 3
-  public minor: number = 12
-  public patch: number = 0
-  public logo: string = "assets/images/angular.png"
-  constructor() {
-    this.title = "Hello"
-  }
-}
+export class AppComponent {}
