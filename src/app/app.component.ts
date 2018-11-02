@@ -1,18 +1,40 @@
-import { Component } from "@angular/core"
-
-import "../assets/css/styles.css"
+import { ChangeDetectionStrategy, Component } from "@angular/core"
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.Default,
   selector: "main-app",
-  templateUrl: "./app.component.html",
+  template: `
+    <div>
+      <button (click)="addProp()">Add property to user</button>
+      <button (click)="changeUser()">Change user object</button>
+      <button (click)="changeName()">Change name property</button>
+      <div class="users">
+        <example-one [user]="user"></example-one>
+        <example-two [user]="user"></example-two>
+      </div>
+    </div>
+  `,
 })
 export class AppComponent {
-  public title: string
-  public major: number = 3
-  public minor: number = 12
-  public patch: number = 0
-  public logo: string = "assets/images/angular.png"
-  constructor() {
-    this.title = "Hello"
+  public user: any = {
+    age: 44,
+    location: "California",
+    name: "Mark Hoppus",
+  }
+
+  public addProp() {
+    this.user.email = "blink@blink-182.net"
+  }
+
+  public changeName() {
+    this.user.name = "Travis Barker"
+  }
+
+  public changeUser() {
+    this.user = {
+      age: 41,
+      location: "California",
+      name: "Tom Delonge",
+    }
   }
 }

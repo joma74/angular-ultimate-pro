@@ -1,6 +1,6 @@
 // @ts-ignore
-import { AngularSelector, waitForAngular } from "testcafe-angular-selectors"
-var Mustache = require("mustache")
+import { waitForAngular } from "testcafe-angular-selectors"
+import { Selector } from "testcafe"
 
 const fixtureName = "Index_Page_Test"
 
@@ -10,38 +10,38 @@ fixture(fixtureName)
     await waitForAngular()
   })
 
-const testName = "dom_has_critical_elements"
+const testName = "change_detection_onpush_vs_default"
+
+const nameInPushChangeDetectionGroupSel = "example-one > div > h4"
+
+const nameInDefaultChangeDetectionGroupSel = "example-two > div > h4"
 
 test(testName, async (t) => {
   await t.takeScreenshot()
-  await checkHeading(t)
 
-  const imageAngularFirst = await AngularSelector().find(
-    "img[data-desc='angular-first']",
-  )
-  await t.expect(imageAngularFirst.visible).ok()
+  await checkName(t, nameInPushChangeDetectionGroupSel, "Mark Hoppus")
 
-  const imageAngularSecond = await AngularSelector().find(
-    "img[data-desc='angular-second']",
-  )
-  await t.expect(imageAngularSecond.visible).ok()
+  await checkName(t, nameInDefaultChangeDetectionGroupSel, "Mark Hoppus")
+
+  const buttonChangeNameProperty = await Selector("main-app")
+    .find("button")
+    .withText("Change name property")
+  await t.click(buttonChangeNameProperty)
+
+  await checkName(t, nameInPushChangeDetectionGroupSel, "Mark Hoppus")
+
+  await checkName(t, nameInDefaultChangeDetectionGroupSel, "Travis Barker")
+
+  await t.takeScreenshot()
 })
 
 /**
  *
  * @param {TestController} t
+ * @param {string} forCssSelector
+ * @param {string} expectedName
  */
-async function checkHeading(t) {
-  const heading = AngularSelector().find("h1[data-desc='heading']")
-  const headingText = await heading.innerText
-  const expected = Mustache.render(
-    "{{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{ patch }}",
-    {
-      major: "3",
-      minor: "12",
-      patch: "0",
-      title: "Hello",
-    },
-  )
-  await t.expect(headingText).eql(expected)
+async function checkName(t, forCssSelector, expectedName) {
+  const selectedName = await Selector("main-app").find(forCssSelector).innerText
+  await t.expect(selectedName).eql(expectedName)
 }
