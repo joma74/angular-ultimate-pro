@@ -1,6 +1,6 @@
 // @ts-ignore
-import { AngularSelector, waitForAngular } from "testcafe-angular-selectors"
-var Mustache = require("mustache")
+import { waitForAngular } from "testcafe-angular-selectors"
+import { Selector } from "testcafe"
 
 const fixtureName = "Index_Page_Test"
 
@@ -10,38 +10,20 @@ fixture(fixtureName)
     await waitForAngular()
   })
 
-const testName = "dom_has_critical_elements"
+const testName = "creditcardinput_max16_4groups"
+
+const digitCardNumberInputSel = "body > main-app > div > div > label > input"
 
 test(testName, async (t) => {
   await t.takeScreenshot()
-  await checkHeading(t)
 
-  const imageAngularFirst = await AngularSelector().find(
-    "img[data-desc='angular-first']",
-  )
-  await t.expect(imageAngularFirst.visible).ok()
+  let digitCardNumberInput = await Selector(digitCardNumberInputSel)
 
-  const imageAngularSecond = await AngularSelector().find(
-    "img[data-desc='angular-second']",
-  )
-  await t.expect(imageAngularSecond.visible).ok()
+  await t
+    .typeText(digitCardNumberInput, "12345678", { speed: 0.75 })
+    .typeText(digitCardNumberInput, "901234567", { speed: 0.25 })
+
+  digitCardNumberInput = await Selector(digitCardNumberInputSel)
+
+  await t.expect(digitCardNumberInput.value).eql("1234 5678 9012 3456")
 })
-
-/**
- *
- * @param {TestController} t
- */
-async function checkHeading(t) {
-  const heading = AngularSelector().find("h1[data-desc='heading']")
-  const headingText = await heading.innerText
-  const expected = Mustache.render(
-    "{{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{ patch }}",
-    {
-      major: "3",
-      minor: "12",
-      patch: "0",
-      title: "Hello",
-    },
-  )
-  await t.expect(headingText).eql(expected)
-}
