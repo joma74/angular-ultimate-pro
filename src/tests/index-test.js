@@ -35,13 +35,14 @@ test(testName2, async (t) => {
 
   let digitCardNumberInput = await Selector(digitCardNumberInputSel)
 
-  await t.typeText(digitCardNumberInput, "123f5678", { speed: 0.75 })
+  await t.typeText(digitCardNumberInput, "123f5678", { speed: 0.5 })
 
   digitCardNumberInput = await Selector(digitCardNumberInputSel)
 
   await t.expect(digitCardNumberInput.value).eql("123f 5678")
-  const borderStyleBottomColor = await digitCardNumberInput.getStyleProperty(
-    "border-bottom-color",
-  )
-  await t.expect(borderStyleBottomColor).eql("rgb(255, 0, 0)")
+  const styles = await digitCardNumberInput.style
+  await t.expect(styles["border-top-color"]).eql("rgb(255, 0, 0)")
+  await t.expect(styles["border-right-color"]).eql("rgb(255, 0, 0)")
+  await t.expect(styles["border-bottom-color"]).eql("rgb(255, 0, 0)")
+  await t.expect(styles["border-left-color"]).eql("rgb(255, 0, 0)")
 })
