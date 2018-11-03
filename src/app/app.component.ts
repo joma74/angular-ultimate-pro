@@ -10,7 +10,7 @@ import "../assets/css/styles.css"
             <label class="text-xl">
                 Credit Card Number
                 <input
-                    class="w-full border rounded mt-4 py-2 px-3 border-grey leading-tight"
+                    class="w-full appearance-none focus:outline-none border-2 rounded mt-4 py-2 px-3 border-grey leading-tight"
                     name="credit-card"
                     type="text"
                     placeholder="Enter your 16-digit card number"
