@@ -4,8 +4,8 @@ import { Directive, HostBinding, HostListener } from "@angular/core"
   selector: "[credit-card]",
 })
 export class CreditCardDirective {
-  @HostBinding("style.border")
-  public border: string
+  @HostBinding("style.border-color")
+  public borderColor: string
 
   @HostListener("input", ["$event"])
   public onKeyDown(event: KeyboardEvent) {
@@ -21,9 +21,9 @@ export class CreditCardDirective {
     // ['1234', '1234']
     elm.value = numbers.join(" ")
 
-    this.border = ""
+    this.borderColor = ""
     if (/[^\d]+/.test(trimmed)) {
-      this.border = "2px solid red"
+      this.borderColor = "red"
     }
   }
 }
