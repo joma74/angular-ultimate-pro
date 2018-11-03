@@ -3,3 +3,15 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.no-m-coll:before,
+.no-m-coll:after {
+  content: " ";
+  display: table;
+}
+
+.tooltip {
+  @apply .bg-blue-light .text-grey-lightest .absolute .font-mono .text-xs .italic .whitespace-no-wrap .p-1;
+  bottom: 100%;
+  left: 50%;
+}
