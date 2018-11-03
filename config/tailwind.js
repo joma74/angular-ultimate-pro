@@ -25,7 +25,7 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-// let defaultConfig = require('tailwindcss/defaultConfig')()
+// let defaultConfig = require("tailwindcss/defaultConfig")()
 
 /*
 |-------------------------------------------------------------------------------
@@ -824,6 +824,7 @@ module.exports = {
   |   - responsive
   |   - hover
   |   - focus
+  |   - focus-within
   |   - active
   |   - group-hover
   |
