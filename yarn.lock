@@ -7454,8 +7454,8 @@ testcafe-reporter-xunit@^2.1.0:
   resolved "https://registry.yarnpkg.com/testcafe-reporter-xunit/-/testcafe-reporter-xunit-2.1.0.tgz#e6d66c572ce15af266706af0fd610b2a841dd443"
 
 testcafe@^0.23.1-alpha:
-  version "0.23.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/testcafe/-/testcafe-0.23.1-alpha.2.tgz#b7362caa3c27adcf79c4f0f5f1b0063963fee051"
+  version "0.23.1-alpha.3"
+  resolved "https://registry.yarnpkg.com/testcafe/-/testcafe-0.23.1-alpha.3.tgz#d3736e180729c2b543e54b06a1cdfaebe3de7320"
   dependencies:
     async-exit-hook "^1.1.2"
     babel-core "^6.22.1"
