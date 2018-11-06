@@ -5,6 +5,8 @@ const PreloadWebpackPlugin = require("preload-webpack-plugin")
 const path = require("path")
 const webpack = require("webpack")
 
+const isDev = process.env.NODE_ENV === "development"
+
 /**
  * Current Project Dir
  */
@@ -58,26 +60,29 @@ const webpackConfig = {
         exclude: /node_modules/,
         include: helpers.root("src", "assets", "css"),
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                importLoaders: 1,
-                sourceMap: true,
-              },
-            },
-            {
-              loader: "postcss-loader",
-              options: {
-                config: {
-                  path: "./config/",
+        use: [
+          "extracted-loader",
+          ...ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: [
+              {
+                loader: "css-loader",
+                options: {
+                  importLoaders: 1,
+                  sourceMap: isDev,
                 },
               },
-            },
-          ],
-        }),
+              {
+                loader: "postcss-loader",
+                options: {
+                  config: {
+                    path: "./config/",
+                  },
+                },
+              },
+            ],
+          }),
+        ],
       },
       {
         include: helpers.root("src", "app"),
