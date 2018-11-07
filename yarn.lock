@@ -143,8 +143,8 @@
     "@types/node" "*"
 
 "@types/jasmine@^2.8.8":
-  version "2.8.9"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.8.9.tgz#e028c891e8551fdf6de905d959581fc4fa0b5509"
+  version "2.8.11"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.8.11.tgz#0b5eba9e02616736b1a189112eacc163c3773b7b"
 
 "@types/karma@^1":
   version "1.7.7"
@@ -1253,7 +1253,11 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@3.5.2, bluebird@^3.3.0:
+bluebird@3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
+
+bluebird@^3.3.0:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.2.tgz#1be0908e054a751754549c270489c1505d4ab15a"
 
@@ -5159,8 +5163,8 @@ node-pre-gyp@^0.10.0:
     tar "^4"
 
 node-sass@^4.9.0:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.9.4.tgz#349bd7f1c89422ffe7e1e4b60f2055a69fbc5512"
+  version "4.10.0"
+  resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.10.0.tgz#dcc2b364c0913630945ccbf7a2bbf1f926effca4"
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -7093,16 +7097,16 @@ staged-git-files@1.1.1:
   resolved "https://registry.yarnpkg.com/staged-git-files/-/staged-git-files-1.1.1.tgz#37c2218ef0d6d26178b1310719309a16a59f8f7b"
 
 start-server-and-test@^1.7.1:
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.7.7.tgz#911c80ed5e7e6bda55dfd897104091a25477f241"
+  version "1.7.9"
+  resolved "https://registry.yarnpkg.com/start-server-and-test/-/start-server-and-test-1.7.9.tgz#bc475bca30e1f0f6b7c5f3e6c4b6685483f81a31"
   dependencies:
-    bluebird "3.5.2"
+    bluebird "3.5.3"
     check-more-types "2.24.0"
     debug "3.2.6"
     execa "0.11.0"
     lazy-ass "1.6.0"
     ps-tree "1.1.0"
-    wait-on "3.1.0"
+    wait-on "3.2.0"
 
 static-extend@^0.1.1:
   version "0.1.2"
@@ -7970,9 +7974,9 @@ void-elements@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
-wait-on@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-3.1.0.tgz#b53da3ec2655424e4dad187d382098f337ec4d08"
+wait-on@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/wait-on/-/wait-on-3.2.0.tgz#c83924df0fc42a675c678324c49c769d378bcb85"
   dependencies:
     core-js "^2.5.7"
     joi "^13.0.0"

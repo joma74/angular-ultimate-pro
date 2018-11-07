@@ -191,3 +191,10 @@ dist/
 build/
 target/*
 !*/.gitkeep
+
+# Firefox profile for user TestCafeUser
+config/profiles/firefox/TestCafeUser/*
+!config/profiles/firefox/TestCafeUser/cert9.db
+!config/profiles/firefox/TestCafeUser/cert_override.txt
+!config/profiles/firefox/TestCafeUser/prefs.js
+!config/profiles/firefox/TestCafeUser/xulstore.json
