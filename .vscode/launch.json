@@ -29,7 +29,7 @@
         "name": "FF Launch test file with TestCafe",
         "program": "${workspaceFolder}/node_modules/testcafe/bin/testcafe.js",
         "args": [
-          "firefox -P TestCafeUser",
+          "firefox -profile config/profiles/firefox/TestCafeUser -P TestCafeUser",
           "-S",
           "-s",
           "target/reports/screenshots/actual",
