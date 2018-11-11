@@ -42,7 +42,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
+    "*.{js,ts,tsx},!config/profiles": [
       "yarn run _lint-js"
     ],
     "*.{js,ts,tsx,json,md}": [
