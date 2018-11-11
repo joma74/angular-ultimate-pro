@@ -9,7 +9,11 @@ import { Product } from "../../models/product.interface"
     <div class="stock-inventory">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <stock-branch [parent]="form"></stock-branch>
-        <stock-selector [parent]="form" [products]="products"></stock-selector>
+        <stock-selector
+          [parent]="form"
+          [products]="products"
+          (added)="addStock($event)"
+        ></stock-selector>
         <stock-products [parent]="form"></stock-products>
         <div class="store-inventory__buttons">
           <button type="submit" [disabled]="form.invalid">Order stock</button>
@@ -50,15 +54,17 @@ export class StockInventoryComponent {
 
   public form = new FormGroup({
     selector: this.createStock({}),
-    stock: new FormArray([
-      this.createStock({ product_id: 1, quantity: 10 }),
-      this.createStock({ product_id: 3, quantity: 50 }),
-    ]),
+    stock: new FormArray([]),
     store: new FormGroup({
       branch: new FormControl(""),
       code: new FormControl(""),
     }),
   })
+
+  public addStock(stock: any) {
+    const control = this.form.get("stock") as FormArray
+    control.push(this.createStock(stock))
+  }
 
   public createStock(stock: any) {
     return new FormGroup({
