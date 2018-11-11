@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "types": ["node", "testcafe"]
   },
-  "exclude": ["build", "dist", "node_modules", "target"],
+  "exclude": ["build", "dist", "node_modules", "target", "config/profiles"],
   "include": ["config/**/*", "src/**/*"],
   "compileOnSave": false,
   "typeAcquisition": {
