@@ -9,7 +9,7 @@ import { Product } from "../../models/product.interface"
     <div class="stock-inventory">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <stock-branch [parent]="form"></stock-branch>
-        <stock-selector [parent]="form"></stock-selector>
+        <stock-selector [parent]="form" [products]="products"></stock-selector>
         <stock-products [parent]="form"></stock-products>
         <div class="store-inventory__buttons">
           <button type="submit" [disabled]="form.invalid">Order stock</button>
