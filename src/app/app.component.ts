@@ -15,19 +15,22 @@ import "../assets/css/styles.css"
   selector: "app-root",
   template: `
     <div class="container mx-auto bg-grey-lighter mt-10 p-8 shadow-md">
-        <button (click)="destroyComponent()"
-            data-desc="destroy"
-            class="mb-4 bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Destroy Login
-        </button>
-        <button (click)="moveComponent()"
-            data-desc="move"
-            class="mb-4 bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            Move Login <-> No tile given
-        </button>
-        <div #entry (submitted)='loginUser($event)'>
-        </div>
-	</div>
+      <button
+        (click)="destroyComponent()"
+        data-desc="destroy"
+        class="mb-4 bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Destroy Login
+      </button>
+      <button
+        (click)="moveComponent()"
+        data-desc="move"
+        class="mb-4 bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Move Login <-> No tile given
+      </button>
+      <div #entry (submitted)="loginUser($event)"></div>
+    </div>
   `,
 })
 export class AppComponent implements AfterContentInit {
