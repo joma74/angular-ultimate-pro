@@ -17,7 +17,7 @@
     "clean": "del 'target/*' '!.gitkeep'",
     "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' './src/**/*.js' './config/**/*.js'",
     "lint-js-fix": "yarn run _lint-js --fix",
-    "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md}'",
+    "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
     "prettier-fix": "yarn run prettier --write",
     "tsc_validate_watch": "yarn tsc_validate_once --watch",
     "tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
@@ -45,7 +45,7 @@
     "*.{js,ts,tsx}": [
       "yarn run _lint-js"
     ],
-    "*.{js,ts,tsx,json,md}": [
+    "*.{js,ts,tsx,json,md,html}": [
       "prettier --list-different"
     ]
   },
