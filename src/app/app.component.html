@@ -1,20 +1,16 @@
 <main>
-	<div class="container mx-auto bg-grey-lighter mt-10 p-8">
-		<h1
-		 class="font-mono text-lg text-grey-darkest text-center"
-		 data-desc='heading'
-		>
-			{{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{ patch }}
-		</h1>
-		<div class="flex flex-row items-center justify-center">
-			<img
-			 src="../assets/images/angular.png"
-			 data-desc='angular-first'
-			>
-			<img
-			 [src]="logo"
-			 data-desc='angular-second'
-			>
-		</div>
-	</div>
+  <div class="container mx-auto bg-grey-lighter mt-10 p-8">
+    <h1
+      class="font-mono text-lg text-grey-darkest text-center"
+      data-desc="heading"
+    >
+      {{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{
+        patch
+      }}
+    </h1>
+    <div class="flex flex-row items-center justify-center">
+      <img src="../assets/images/angular.png" data-desc="angular-first" />
+      <img [src]="logo" data-desc="angular-second" />
+    </div>
+  </div>
 </main>
