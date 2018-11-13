@@ -1,6 +1,9 @@
-import { Component } from "@angular/core"
+import { Component, OnInit } from "@angular/core"
 import { FormArray, FormBuilder, FormGroup } from "@angular/forms"
+import { Observable } from "rxjs"
 import { Product } from "../../models/product.interface"
+import { StockInventoryService } from "../../services/stock-inventory.service"
+import { Stock } from "./../../models/stock.interface"
 
 @Component({
   selector: "stock-inventory",
@@ -26,34 +29,10 @@ import { Product } from "../../models/product.interface"
     </div>
   `,
 })
-export class StockInventoryComponent {
-  public products: Product[] = [
-    {
-      id: 1,
-      name: "MacBook Pro",
-      price: 2800,
-    },
-    {
-      id: 2,
-      name: "USB-C Adapter",
-      price: 50,
-    },
-    {
-      id: 3,
-      name: "iPod",
-      price: 400,
-    },
-    {
-      id: 4,
-      name: "iPhone",
-      price: 900,
-    },
-    {
-      id: 5,
-      name: "Apple Watch",
-      price: 600,
-    },
-  ]
+export class StockInventoryComponent implements OnInit {
+  public products: Product[]
+
+  public productMap: Map<number, Product>
 
   public form = this.fb.group({
     selector: this.createStock({}),
@@ -64,7 +43,28 @@ export class StockInventoryComponent {
     }),
   })
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private stockService: StockInventoryService,
+  ) {}
+
+  public ngOnInit(): void {
+    const stocks$$ = this.stockService.getStock()
+    const products$$ = this.stockService.getProducts()
+
+    Observable.forkJoin(stocks$$, products$$).subscribe(
+      ([stocks, products]: [Stock[], Product[]]) => {
+        const myMap = products.map<[number, Product]>((product) => [
+          product.id,
+          product,
+        ])
+        this.productMap = new Map<number, Product>(myMap)
+        this.products = products
+
+        stocks.forEach((item) => this.addStock(item))
+      },
+    )
+  }
 
   public addStock(stock: any) {
     const control = this.form.get("stock") as FormArray
