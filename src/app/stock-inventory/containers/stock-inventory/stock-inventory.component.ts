@@ -1,5 +1,5 @@
 import { Component } from "@angular/core"
-import { FormArray, FormControl, FormGroup } from "@angular/forms"
+import { FormArray, FormBuilder, FormGroup } from "@angular/forms"
 import { Product } from "../../models/product.interface"
 
 @Component({
@@ -55,14 +55,16 @@ export class StockInventoryComponent {
     },
   ]
 
-  public form = new FormGroup({
+  public form = this.fb.group({
     selector: this.createStock({}),
-    stock: new FormArray([]),
-    store: new FormGroup({
-      branch: new FormControl(""),
-      code: new FormControl(""),
+    stock: this.fb.array([]),
+    store: this.fb.group({
+      branch: "",
+      code: "",
     }),
   })
+
+  constructor(private fb: FormBuilder) {}
 
   public addStock(stock: any) {
     const control = this.form.get("stock") as FormArray
@@ -76,9 +78,9 @@ export class StockInventoryComponent {
   }
 
   public createStock(stock: any) {
-    return new FormGroup({
-      product_id: new FormControl(parseInt(stock.product_id, 10) || ""),
-      quantity: new FormControl(stock.quantity || 10),
+    return this.fb.group({
+      product_id: parseInt(stock.product_id, 10) || "",
+      quantity: stock.quantity || 10,
     })
   }
 
