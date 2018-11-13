@@ -22,7 +22,8 @@
         "${file}"
       ],
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "stopOnEntry": false
     },
     {
         "type": "node",
