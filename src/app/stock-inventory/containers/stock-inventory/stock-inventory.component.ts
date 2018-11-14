@@ -98,9 +98,7 @@ export class StockInventoryComponent implements OnInit {
 
   public calculateTotal(value: Stock[]) {
     const total = value.reduce((prev, next) => {
-      return (
-        1 + prev + next.quantity * this.productMap.get(next.product_id).price
-      )
+      return prev + next.quantity * this.productMap.get(next.product_id).price
     }, 0)
     this.total = total
   }
