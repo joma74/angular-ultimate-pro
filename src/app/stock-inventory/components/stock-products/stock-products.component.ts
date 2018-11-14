@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core"
 import { FormArray, FormGroup } from "@angular/forms"
+import { Product } from "../../models/product.interface"
 @Component({
   selector: "stock-products",
   styleUrls: ["stock-products.component.scss"],
@@ -8,7 +9,14 @@ import { FormArray, FormGroup } from "@angular/forms"
       <div formArrayName="stock">
         <div *ngFor="let item of stocks; let i = index">
           <div class="stock-product__content" [formGroupName]="i">
-            <div class="stock-product__name">{{ item.value.product_id }}</div>
+            <div class="stock-product__name">
+              {{ getProduct(item.value.product_id).name }}
+            </div>
+            <div class="stock-product__price">
+              {{
+                getProduct(item.value.product_id).price | currency: "USD":true
+              }}
+            </div>
             <input
               type="number"
               step="10"
@@ -27,6 +35,9 @@ export class StockProductsComponent {
   @Input()
   public parent: FormGroup
 
+  @Input()
+  public map: Map<number, Product>
+
   @Output()
   public removed = new EventEmitter<any>()
 
@@ -34,7 +45,11 @@ export class StockProductsComponent {
     return (this.parent.get("stock") as FormArray).controls
   }
 
-  public onRemove(item: any, i: number) {
+  public getProduct(id: number) {
+    return this.map.get(id)
+  }
+
+  public onRemove(item: FormGroup, i: number) {
     this.removed.emit({ stock: item, index: i })
   }
 }

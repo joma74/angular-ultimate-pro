@@ -19,8 +19,12 @@ import { Stock } from "./../../models/stock.interface"
         ></stock-selector>
         <stock-products
           [parent]="form"
+          [map]="productMap"
           (removed)="removeStock($event)"
         ></stock-products>
+        <div class="stock-product__price">
+          Total: {{ total | currency: "USD":true }}
+        </div>
         <div class="store-inventory__buttons">
           <button type="submit" [disabled]="form.invalid">Order stock</button>
         </div>
@@ -33,6 +37,8 @@ export class StockInventoryComponent implements OnInit {
   public products: Product[]
 
   public productMap: Map<number, Product>
+
+  public total: number
 
   public form = this.fb.group({
     selector: this.createStock({}),
@@ -62,6 +68,12 @@ export class StockInventoryComponent implements OnInit {
         this.products = products
 
         stocks.forEach((item) => this.addStock(item))
+
+        this.calculateTotal(this.form.get("stock").value)
+
+        this.form.get("stock").valueChanges.subscribe((value) => {
+          this.calculateTotal(value)
+        })
       },
     )
   }
@@ -82,6 +94,15 @@ export class StockInventoryComponent implements OnInit {
       product_id: parseInt(stock.product_id, 10) || "",
       quantity: stock.quantity || 10,
     })
+  }
+
+  public calculateTotal(value: Stock[]) {
+    const total = value.reduce((prev, next) => {
+      return (
+        1 + prev + next.quantity * this.productMap.get(next.product_id).price
+      )
+    }, 0)
+    this.total = total
   }
 
   public onSubmit() {
