@@ -1,6 +1,14 @@
-import { Component, Input } from "@angular/core"
+import { Component, forwardRef, Input, Provider } from "@angular/core"
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms"
+
+const COUNTER_CONTROL_ACCESSOR: Provider = {
+  multi: true,
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => StockCounterComponent),
+}
 
 @Component({
+  providers: [COUNTER_CONTROL_ACCESSOR],
   selector: "stock-counter",
   styleUrls: ["stock-counter.component.scss"],
   template: `
@@ -28,7 +36,7 @@ import { Component, Input } from "@angular/core"
     </div>
   `,
 })
-export class StockCounterComponent {
+export class StockCounterComponent implements ControlValueAccessor {
   @Input()
   public step: number = 10
 
@@ -40,15 +48,35 @@ export class StockCounterComponent {
 
   public value: number = 10
 
+  private onTouch: () => void
+
+  private onModelChange: (value: any) => void
+
+  public writeValue(value: any): void {
+    this.value = value || 0
+  }
+
+  public registerOnChange(fn: any): void {
+    this.onModelChange = fn
+  }
+
+  public registerOnTouched(fn: any): void {
+    this.onTouch = fn
+  }
+
   public increment() {
     if (this.value < this.max) {
       this.value = this.value + this.step
+      this.onModelChange(this.value)
     }
+    this.onTouch()
   }
 
   public decrement() {
     if (this.value > this.min) {
       this.value = this.value - this.step
+      this.onModelChange(this.value)
     }
+    this.onTouch()
   }
 }
