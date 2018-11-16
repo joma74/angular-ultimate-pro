@@ -2,6 +2,9 @@
   background: rgba(0, 0, 0, 0.05);
   border-radius: 3px;
   overflow: hidden;
+  &.focused {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  }
   & > div > div {
     display: flex;
     align-items: center;
@@ -28,8 +31,8 @@
     color: #fff;
     font-weight: 500;
     &:disabled {
-      background: rgba(0, 0, 0, 0.1);
-      color: rgba(0, 0, 0, 0.4);
+      background-color: rgb(33, 56, 76);
+      color: rgb(33, 56, 76);
     }
   }
 }
