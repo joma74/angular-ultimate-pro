@@ -29,8 +29,9 @@ const COUNTER_CONTROL_ACCESSOR: Provider = {
               [disabled]="value === max"
               (click)="increment()"
             >
-              +</button
-            ><button
+              +
+            </button>
+            <button
               type="button"
               [disabled]="value === min"
               (click)="decrement()"
