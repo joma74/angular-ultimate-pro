@@ -44,6 +44,14 @@
         "console": "integratedTerminal"
     },
     {
+        "name": "CHROME Attach to",
+        "type": "chrome",
+        "request": "attach",
+        "port": 9222,
+        "url": "http://localhost:4001/",
+        "webRoot": "${workspaceFolder}"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch webpack-dev-server",
