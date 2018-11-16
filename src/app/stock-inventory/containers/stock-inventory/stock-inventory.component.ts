@@ -4,6 +4,7 @@ import { Observable } from "rxjs"
 import { Product } from "../../models/product.interface"
 import { StockInventoryService } from "../../services/stock-inventory.service"
 import { Stock } from "./../../models/stock.interface"
+import { StockValidators } from "./stock-inventory.validators"
 
 @Component({
   selector: "stock-inventory",
@@ -44,8 +45,8 @@ export class StockInventoryComponent implements OnInit {
     selector: this.createStock({}),
     stock: this.fb.array([]),
     store: this.fb.group({
-      branch: ["", Validators.required],
-      code: ["", Validators.required],
+      branch: ["", [Validators.required, StockValidators.checkBranch]],
+      code: ["", [Validators.required]],
     }),
   })
 
