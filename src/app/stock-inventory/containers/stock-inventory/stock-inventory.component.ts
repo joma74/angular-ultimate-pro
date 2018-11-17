@@ -41,14 +41,17 @@ export class StockInventoryComponent implements OnInit {
 
   public total: number
 
-  public form = this.fb.group({
-    selector: this.createStock({}),
-    stock: this.fb.array([]),
-    store: this.fb.group({
-      branch: ["", [Validators.required, StockValidators.checkBranch]],
-      code: ["", [Validators.required]],
-    }),
-  })
+  public form = this.fb.group(
+    {
+      selector: this.createStock({}),
+      stock: this.fb.array([]),
+      store: this.fb.group({
+        branch: ["", [Validators.required, StockValidators.checkBranch]],
+        code: ["", [Validators.required]],
+      }),
+    },
+    { validator: StockValidators.checkStockExists },
+  )
 
   constructor(
     private fb: FormBuilder,
