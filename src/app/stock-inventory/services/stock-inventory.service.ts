@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { Http, Response } from "@angular/http"
+import { Http, Response, URLSearchParams } from "@angular/http"
 import { Observable } from "rxjs/Observable"
 import { Product } from "../models/product.interface"
 import { Stock } from "../models/stock.interface"
@@ -24,6 +24,22 @@ export class StockInventoryService {
       .get("/api/products")
       .map((response: Response) => {
         return response.json()
+      })
+      .catch((error: any) => {
+        return Observable.throw(error.json())
+      })
+  }
+
+  public checkBranchId(id: string): Observable<boolean> {
+    const search = new URLSearchParams()
+    search.set("id", id)
+    return this.http
+      .get("/api/branches", { search })
+      .map((response: Response) => {
+        return response.json()
+      })
+      .map((response: any) => {
+        return !!response.length
       })
       .catch((error: any) => {
         return Observable.throw(error.json())

@@ -1,4 +1,10 @@
 {
+  "branches": [
+    { "id": "B182" },
+    { "id": "A799" },
+    { "id": "C390" },
+    { "id": "R262" }
+  ],
   "cart": [
     { "product_id": 1, "quantity": 10 },
     { "product_id": 3, "quantity": 50 }
