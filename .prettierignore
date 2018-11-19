@@ -2,3 +2,4 @@
 .vscode
 dist
 target
+config/profiles
