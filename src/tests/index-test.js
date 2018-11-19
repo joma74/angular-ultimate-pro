@@ -1,6 +1,6 @@
 // @ts-ignore
 import { AngularSelector, waitForAngular } from "testcafe-angular-selectors"
-var Mustache = require("mustache")
+import { Selector } from "testcafe"
 
 const fixtureName = "Index_Page_Test"
 
@@ -14,34 +14,21 @@ const testName = "dom_has_critical_elements"
 
 test(testName, async (t) => {
   await t.takeScreenshot()
-  await checkHeading(t)
 
-  const imageAngularFirst = await AngularSelector().find(
-    "img[data-desc='angular-first']",
-  )
-  await t.expect(imageAngularFirst.visible).ok()
+  /**
+   * @type {SelectorAPI}
+   */
+  const Inbox = AngularSelector("mail-app mail-folder")
+  const InboxHeader = Inbox.find("h2")
 
-  const imageAngularSecond = await AngularSelector().find(
-    "img[data-desc='angular-second']",
-  )
-  await t.expect(imageAngularSecond.visible).ok()
+  await t.expect(InboxHeader.visible).ok()
+  await t.expect(InboxHeader.innerText).eql("Inbox")
+
+  const Nav = Selector("main-app > div > div > nav")
+
+  const InboxNavHeader = Nav.find("a:nth-child(1)")
+  await t.expect(InboxNavHeader.innerText).eql("Inbox")
+
+  const TrashNavHeader = Nav.find("a:nth-child(2)")
+  await t.expect(TrashNavHeader.innerText).eql("Trash")
 })
-
-/**
- *
- * @param {TestController} t
- */
-async function checkHeading(t) {
-  const heading = AngularSelector().find("h1[data-desc='heading']")
-  const headingText = await heading.innerText
-  const expected = Mustache.render(
-    "{{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{ patch }}",
-    {
-      major: "3",
-      minor: "12",
-      patch: "0",
-      title: "Hello",
-    },
-  )
-  await t.expect(headingText).eql(expected)
-}
