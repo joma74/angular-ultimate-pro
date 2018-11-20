@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core"
+import { NavigationEnd, Router } from "@angular/router"
 
 @Component({
   selector: "main-app",
@@ -17,7 +18,12 @@ import { Component, OnInit } from "@angular/core"
   `,
 })
 export class AppComponent implements OnInit {
-  // constructor(private router: Router) {}
-  // tslint:disable-next-line:no-empty
-  public ngOnInit() {}
+  constructor(private router: Router) {}
+  public ngOnInit() {
+    this.router.events
+      .filter((event) => event instanceof NavigationEnd)
+      .subscribe((event) => {
+        console.log(event)
+      })
+  }
 }
