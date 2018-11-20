@@ -14,10 +14,12 @@ import { Component } from "@angular/core"
 })
 export class MailAppComponent {
   public onActivate(event: any) {
+    // tslint:disable-next-line:no-console
     console.log("Activate:", event)
   }
 
   public onDeactivate(event: any) {
+    // tslint:disable-next-line:no-console
     console.log("Deactivate:", event)
   }
 }

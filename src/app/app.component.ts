@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     this.router.events
       .filter((event) => event instanceof NavigationEnd)
       .subscribe((event) => {
+        // tslint:disable-next-line:no-console
         console.log(event)
       })
   }
