@@ -12,17 +12,23 @@ import { MailService } from "./mail.services"
 
 export const ROUTES: Routes = [
   {
-    component: MailFolderComponent,
-    path: "folder/:name",
-    resolve: { messages: MailFolderResolve },
-  },
-  {
-    component: MailViewComponent,
-    outlet: "pane",
-    path: "message/:id",
-    resolve: {
-      message: MailViewResolve,
-    },
+    children: [
+      {
+        component: MailFolderComponent,
+        path: "folder/:name",
+        resolve: { messages: MailFolderResolve },
+      },
+      {
+        component: MailViewComponent,
+        outlet: "pane",
+        path: "message/:id",
+        resolve: {
+          message: MailViewResolve,
+        },
+      },
+    ],
+    component: MailAppComponent,
+    path: "mail",
   },
 ]
 
