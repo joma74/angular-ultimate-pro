@@ -2,6 +2,8 @@ import { CommonModule } from "@angular/common"
 import { NgModule } from "@angular/core"
 import { RouterModule, Routes } from "@angular/router"
 
+import { AuthGuard } from "../auth/auth.guard"
+import { AuthModule } from "../auth/auth.module"
 import { MailAppComponent } from "./components/mail-app/mail-app.component"
 import { MailItemComponent } from "./components/mail-item/mail-item.component"
 import { MailViewComponent } from "./components/mail-view/mail-view.component"
@@ -12,6 +14,7 @@ import { MailService } from "./mail.services"
 
 export const ROUTES: Routes = [
   {
+    canActivate: [AuthGuard],
     children: [
       {
         component: MailFolderComponent,
@@ -40,7 +43,7 @@ export const ROUTES: Routes = [
     MailViewComponent,
   ],
   exports: [MailAppComponent],
-  imports: [CommonModule, RouterModule.forChild(ROUTES)],
+  imports: [AuthModule, CommonModule, RouterModule.forChild(ROUTES)],
   providers: [MailService, MailFolderResolve, MailViewResolve],
 })
 export class MailModule {}
