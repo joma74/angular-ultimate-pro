@@ -54,7 +54,7 @@ module.exports = function(config) {
     },
 
     port: 9876,
-    reporters: ["progress", "kjhtml"],
+    reporters: ["spec", "kjhtml"],
     singleRun: true,
   }
 
