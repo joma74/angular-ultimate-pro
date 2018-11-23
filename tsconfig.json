@@ -18,7 +18,7 @@
     "target": "es5",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": ["node", "testcafe"]
+    "types": ["node", "testcafe", "jasmine"]
   },
   "exclude": ["build", "dist", "node_modules", "target", "config/profiles"],
   "include": ["config/**/*", "src/**/*"],

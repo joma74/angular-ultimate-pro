@@ -142,17 +142,19 @@
     "@types/events" "*"
     "@types/node" "*"
 
-"@types/jasmine@^2.8.8":
+"@types/jasmine@^2":
   version "2.8.12"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.8.12.tgz#dfe606b07686c977f54d17cb8ebe6cae2e26f8ff"
   integrity sha512-eE+xeiGBPgQsNcyg61JBqQS6NtxC+s2yfOikMCnc0Z4NqKujzmSahmtjLCKVQU/AyrTEQ76TOwQBnr8wGP2bmA==
 
-"@types/karma@^1":
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-1.7.7.tgz#447f38edf7c171bef9f2b9b641121d54a34b8810"
+"@types/karma@^3":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-3.0.0.tgz#a9406fb7e4287a7b8e31ee8eafea552676c96958"
+  integrity sha512-Z79ClBGWKLz+2Lr95JB0GIDWraSBObg9gC0yTF3m7J42/IhqYT1k1NzCqGaJN2DggpgaagJvMR/2eoiVX+fk+w==
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
+    log4js "^3.0.0"
 
 "@types/lodash@^4.14.72":
   version "4.14.116"
@@ -1824,7 +1826,7 @@ colornames@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/colornames/-/colornames-1.1.1.tgz#f8889030685c7c4ff9e2a559f5077eb76a816f96"
 
-colors@^1.1.0, colors@^1.2.1:
+colors@^1.1.0, colors@^1.1.2, colors@^1.2.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.3.2.tgz#2df8ff573dfbf255af562f8ce7181d6b971a359b"
 
@@ -3370,7 +3372,7 @@ glob@^5.0.3:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
+glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.0.6, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
   dependencies:
@@ -4206,10 +4208,18 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
 
-jasmine-core@^3, jasmine-core@^3.3:
+jasmine-core@^3, jasmine-core@^3.3, jasmine-core@~3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.3.0.tgz#dea1cdc634bc93c7e0d4ad27185df30fa971b10e"
   integrity sha512-3/xSmG/d35hf80BEN66Y6g9Ca5l/Isdeg/j6zvbTYlTzeKinzmaTM4p9am5kYqOmE05D7s1t8FGjzdSnbUbceA==
+
+jasmine@^3:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-3.3.0.tgz#4f64e4aba2f9cbd30418957468c024c3b4c82551"
+  integrity sha512-haZzMvmoWSI2VCKfDgPqyEOPBQA7C1fgtIMgKNU4hVMcrVkWU5NPOWQqOTA6mVFyKcSUUrnkXu/ZEgY0bRnd6A==
+  dependencies:
+    glob "^7.0.6"
+    jasmine-core "~3.3.0"
 
 jest-get-type@^22.1.0:
   version "22.4.3"
@@ -4364,14 +4374,15 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
-karma-chrome-launcher@^2.2.0:
+karma-chrome-launcher@^2:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/karma-chrome-launcher/-/karma-chrome-launcher-2.2.0.tgz#cf1b9d07136cc18fe239327d24654c3dbc368acf"
+  integrity sha512-uf/ZVpAabDBPvdPdveyk1EPgbnloPvFFGgmRhYLTDH7gEB4nZdSBk8yTU47w1g/drLSx5uMOkjKk7IWKfWg/+w==
   dependencies:
     fs-access "^1.0.0"
     which "^1.2.1"
 
-karma-jasmine-html-reporter@^1.4.0:
+karma-jasmine-html-reporter@^1:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-1.4.0.tgz#1abbd30d4509a8c82b96707ae7d2fa4da459ca19"
   integrity sha512-0wxhwA8PLPpICZ4o2GRnPi67hf3JhfQm5WCB8nElh4qsE6wRNOTtrqooyBPNqI087Xr2SBhxLg5fU+BJ/qxRrw==
@@ -4383,11 +4394,19 @@ karma-jasmine@^2:
   dependencies:
     jasmine-core "^3.3"
 
-karma-sourcemap-loader@^0.3.7:
+karma-sourcemap-loader@^0:
   version "0.3.7"
   resolved "https://registry.yarnpkg.com/karma-sourcemap-loader/-/karma-sourcemap-loader-0.3.7.tgz#91322c77f8f13d46fed062b042e1009d4c4505d8"
+  integrity sha1-kTIsd/jxPUb+0GKwQuEAnUxFBdg=
   dependencies:
     graceful-fs "^4.1.2"
+
+karma-spec-reporter@^0.0.32:
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/karma-spec-reporter/-/karma-spec-reporter-0.0.32.tgz#2e9c7207ea726771260259f82becb543209e440a"
+  integrity sha1-LpxyB+pyZ3EmAln4K+y1QyCeRAo=
+  dependencies:
+    colors "^1.1.2"
 
 karma-webpack@~3:
   version "3.0.5"
@@ -7422,10 +7441,10 @@ testcafe-browser-tools@1.6.5:
     read-file-relative "^1.2.0"
     which-promise "^1.0.0"
 
-testcafe-hammerhead@14.4.1:
-  version "14.4.1"
-  resolved "https://registry.yarnpkg.com/testcafe-hammerhead/-/testcafe-hammerhead-14.4.1.tgz#93d5bd0108c15aaf31ebcf09d8e73fd98f9a82d2"
-  integrity sha512-Av2+sQ29Wr1euFY5RDLudnRrS9A9rj1LnWr6zvuqcWlXTiOTuQRp9hZNpC6RZxm7eEHHvr0MYSkV9E4Jzy5ccw==
+testcafe-hammerhead@14.4.2:
+  version "14.4.2"
+  resolved "https://registry.yarnpkg.com/testcafe-hammerhead/-/testcafe-hammerhead-14.4.2.tgz#fd721fa37ab7a5faf8014bf496cb10a1aaa60223"
+  integrity sha512-tj1aMMZcOyn6+f9iE/VZXOHQwMreLDCMWkBw+glEwOVPCCf+5pgSFytj7LbmrAcp+VXtoQnHhB1e29fqsqgfSQ==
   dependencies:
     bowser "1.6.0"
     brotli "^1.3.1"
@@ -7500,10 +7519,10 @@ testcafe-reporter-xunit@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/testcafe-reporter-xunit/-/testcafe-reporter-xunit-2.1.0.tgz#e6d66c572ce15af266706af0fd610b2a841dd443"
 
-testcafe@^0.23.0:
-  version "0.23.2"
-  resolved "https://registry.yarnpkg.com/testcafe/-/testcafe-0.23.2.tgz#0d0ad449f9d2c2aae63dfaf3f2fe1dff25a2a16a"
-  integrity sha512-zviKTmRnC/RAuh3QpE4qlvIU2sLItg0opBCAllAX8lVFv9LwBU8vnoVCJ83yKCs8/j7KQn1VJyIa0m8JCJFr5A==
+testcafe@^0.23.3-alpha:
+  version "0.23.3-alpha.1"
+  resolved "https://registry.yarnpkg.com/testcafe/-/testcafe-0.23.3-alpha.1.tgz#6008bb6b196505ac8c99b1a69c1f143a855eccf9"
+  integrity sha512-9c/TXC15tgGE/01xMA0SLQTpX59DCIeCUddI0iwTRdtxJZnNfrUt5btwzI71FPtIa+7wS2Lxg8Djq8qi1XhO6g==
   dependencies:
     async-exit-hook "^1.1.2"
     babel-core "^6.22.1"
@@ -7562,7 +7581,7 @@ testcafe@^0.23.0:
     source-map-support "^0.5.5"
     strip-bom "^2.0.0"
     testcafe-browser-tools "1.6.5"
-    testcafe-hammerhead "14.4.1"
+    testcafe-hammerhead "14.4.2"
     testcafe-legacy-api "3.1.8"
     testcafe-reporter-json "^2.1.0"
     testcafe-reporter-list "^2.1.0"
