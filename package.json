@@ -24,7 +24,7 @@
     "check-staged": "lint-staged",
     "serve": "cross-env NODE_ENV=development webpack-dev-server --watch --no-progress --config=webpack.config.js",
     "test_karma_once": "karma start karma.config.js",
-    "test_karma_watch": "karma start karma.config.js --auto-watch --no-single-run",
+    "test_karma_watch": "cross-env DEBUG= karma start karma.config.js --auto-watch --no-single-run",
     "test_servencafe_once": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_once",
     "test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/index-test.js",
     "test_servencafe_live": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_live",
