@@ -1,4 +1,4 @@
-import { DebugElement } from "@angular/core"
+import { DebugElement, NO_ERRORS_SCHEMA } from "@angular/core"
 import { ComponentFixture, TestBed } from "@angular/core/testing"
 import { ReactiveFormsModule } from "@angular/forms"
 import {
@@ -6,10 +6,6 @@ import {
   platformBrowserDynamicTesting,
 } from "@angular/platform-browser-dynamic/testing"
 import { Observable } from "rxjs"
-import { StockBranchComponent } from "../../components/stock-branch/stock-branch.component"
-import { StockCounterComponent } from "../../components/stock-counter/stock-counter.component"
-import { StockProductsComponent } from "../../components/stock-products/stock-products.component"
-import { StockSelectorComponent } from "../../components/stock-selector/stock-selector.component"
 import { Product } from "../../models/product.interface"
 import { Stock } from "../../models/stock.interface"
 import { StockInventoryService } from "../../services/stock-inventory.service"
@@ -34,17 +30,12 @@ describe("StockInventoryComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        StockInventoryComponent,
-        StockBranchComponent,
-        StockCounterComponent,
-        StockProductsComponent,
-        StockSelectorComponent,
-      ],
+      declarations: [StockInventoryComponent],
       imports: [ReactiveFormsModule],
       providers: [
         { provide: StockInventoryService, useClass: MockStoreInventoryService },
       ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
 
     fixture = TestBed.createComponent(StockInventoryComponent)
