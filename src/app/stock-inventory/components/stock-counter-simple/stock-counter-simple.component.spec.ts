@@ -59,6 +59,7 @@ describe("StockCounterSimpleComponent", () => {
     spyOn(component.changed, "emit").and.callThrough()
     component.step = 100
     component.increment()
+    expect(component.changed.emit).toHaveBeenCalledTimes(1)
     expect(component.changed.emit).toHaveBeenCalledWith(100)
   })
 })
