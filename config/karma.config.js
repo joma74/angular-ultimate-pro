@@ -13,7 +13,7 @@ module.exports = function(config) {
   var _config = {
     autoWatch: false,
     basePath: "",
-    browsers: ["Chrome"],
+    browsers: ["ChromeHeadless"],
     colors: true,
 
     // @ts-ignore
