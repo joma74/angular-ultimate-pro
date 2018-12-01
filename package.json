@@ -29,7 +29,7 @@
     "test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml --page-load-timeout 5000 src/tests/index-test.js",
     "test_servencafe_live": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_live",
     "test_cafe_live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
-    "ci": "npm-run-all _lint-js tsc_validate_once clean test_karma_once test_servencafe_once",
+    "ci": "npm-run-all _lint-js prettier tsc_validate_once clean test_karma_once test_servencafe_once",
     "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
   },
   "resolutions": {
