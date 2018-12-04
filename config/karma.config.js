@@ -18,6 +18,10 @@ module.exports = function(config) {
 
     // @ts-ignore
     customLaunchers: {
+      Chrome_debugging: {
+        base: "ChromeHeadless",
+        flags: ["--remote-debugging-port=9222"],
+      },
       Chrome_travis_ci: {
         base: "ChromeHeadless",
         flags: ["--no-sandbox", "--disable-gpu"],
@@ -60,6 +64,10 @@ module.exports = function(config) {
 
   if (process.env.TRAVIS) {
     _config.browsers = ["Chrome_travis_ci"]
+  }
+
+  if (process.env.DEBUG) {
+    _config.browsers = ["Chrome_debugging"]
   }
 
   config.set(_config)
