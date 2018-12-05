@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core"
+import { Inject, Injectable } from "@angular/core"
 import { Http, Response, URLSearchParams } from "@angular/http"
 import { Observable } from "rxjs/Observable"
 import { Product } from "../models/product.interface"
@@ -6,11 +6,16 @@ import { Stock } from "../models/stock.interface"
 
 @Injectable()
 export class StockInventoryService {
-  constructor(private http: Http) {}
+  constructor(
+    private http: Http,
+    @Inject("apiCart") private apiCart: string,
+    @Inject("apiProducts") private apiProducts: string,
+    @Inject("apiBranches") private apiBranches: string,
+  ) {}
 
   public getStock(): Observable<Stock[]> {
     return this.http
-      .get("/api/cart")
+      .get(this.apiCart)
       .map((response: Response) => {
         return response.json()
       })
@@ -21,7 +26,7 @@ export class StockInventoryService {
 
   public getProducts(): Observable<Product[]> {
     return this.http
-      .get("/api/products")
+      .get(this.apiProducts)
       .map((response: Response) => {
         return response.json()
       })
@@ -34,7 +39,7 @@ export class StockInventoryService {
     const search = new URLSearchParams()
     search.set("id", id)
     return this.http
-      .get("/api/branches", { search })
+      .get(this.apiBranches, { search })
       .map((response: Response) => {
         return response.json()
       })

@@ -20,6 +20,11 @@ import { StockInventoryService } from "./services/stock-inventory.service"
   ],
   exports: [StockInventoryComponent],
   imports: [CommonModule, HttpModule, ReactiveFormsModule],
-  providers: [StockInventoryService],
+  providers: [
+    StockInventoryService,
+    { provide: "apiCart", useValue: "/api/cart" },
+    { provide: "apiProducts", useValue: "/api/products" },
+    { provide: "apiBranches", useValue: "/api/branches" },
+  ],
 })
 export class StockInventoryModule {}
