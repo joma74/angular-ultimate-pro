@@ -3,14 +3,15 @@ import { Http, Response, URLSearchParams } from "@angular/http"
 import { Observable } from "rxjs/Observable"
 import { Product } from "../models/product.interface"
 import { Stock } from "../models/stock.interface"
+import { API_TOKEN_BRANCHES, API_TOKEN_CART, API_TOKEN_PRODUCTS } from "./token"
 
 @Injectable()
 export class StockInventoryService {
   constructor(
     private http: Http,
-    @Inject("apiCart") private apiCart: string,
-    @Inject("apiProducts") private apiProducts: string,
-    @Inject("apiBranches") private apiBranches: string,
+    @Inject(API_TOKEN_CART) private apiCart: string,
+    @Inject(API_TOKEN_PRODUCTS) private apiProducts: string,
+    @Inject(API_TOKEN_BRANCHES) private apiBranches: string,
   ) {}
 
   public getStock(): Observable<Stock[]> {

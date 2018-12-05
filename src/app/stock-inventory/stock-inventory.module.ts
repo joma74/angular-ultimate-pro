@@ -9,6 +9,11 @@ import { StockProductsComponent } from "./components/stock-products/stock-produc
 import { StockSelectorComponent } from "./components/stock-selector/stock-selector.component"
 import { StockInventoryComponent } from "./containers/stock-inventory/stock-inventory.component"
 import { StockInventoryService } from "./services/stock-inventory.service"
+import {
+  API_TOKEN_BRANCHES,
+  API_TOKEN_CART,
+  API_TOKEN_PRODUCTS,
+} from "./services/token"
 
 @NgModule({
   declarations: [
@@ -22,9 +27,9 @@ import { StockInventoryService } from "./services/stock-inventory.service"
   imports: [CommonModule, HttpModule, ReactiveFormsModule],
   providers: [
     StockInventoryService,
-    { provide: "apiCart", useValue: "/api/cart" },
-    { provide: "apiProducts", useValue: "/api/products" },
-    { provide: "apiBranches", useValue: "/api/branches" },
+    { provide: API_TOKEN_BRANCHES, useValue: "/api/branches" },
+    { provide: API_TOKEN_CART, useValue: "/api/cart" },
+    { provide: API_TOKEN_PRODUCTS, useValue: "/api/products" },
   ],
 })
 export class StockInventoryModule {}

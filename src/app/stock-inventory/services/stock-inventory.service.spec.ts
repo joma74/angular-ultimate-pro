@@ -6,6 +6,7 @@ import {
 } from "@angular/platform-browser-dynamic/testing"
 import { Observable } from "rxjs"
 import { StockInventoryService } from "./stock-inventory.service"
+import { API_TOKEN_BRANCHES, API_TOKEN_CART, API_TOKEN_PRODUCTS } from "./token"
 
 describe("StockInventoryService", () => {
   let service: StockInventoryService
@@ -42,7 +43,13 @@ describe("StockInventoryService", () => {
 
   beforeEach(() => {
     const bed = TestBed.configureTestingModule({
-      providers: [StockInventoryService, { provide: Http, useClass: MockHttp }],
+      providers: [
+        StockInventoryService,
+        { provide: Http, useClass: MockHttp },
+        { provide: API_TOKEN_BRANCHES, useValue: "/api/branches" },
+        { provide: API_TOKEN_CART, useValue: "/api/cart" },
+        { provide: API_TOKEN_PRODUCTS, useValue: "/api/products" },
+      ],
     })
     http = bed.get(Http)
     service = bed.get(StockInventoryService)
