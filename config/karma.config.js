@@ -13,8 +13,12 @@ module.exports = function(config) {
   var _config = {
     autoWatch: false,
     basePath: "",
-    browsers: ["ChromeHeadless"],
+    browsers: ["ChromeHeadless"], // ["Chrome"]
     colors: true,
+
+    client: {
+      captureConsole: true,
+    },
 
     // @ts-ignore
     customLaunchers: {
@@ -58,7 +62,7 @@ module.exports = function(config) {
     },
 
     port: 9876,
-    reporters: ["progress", "kjhtml"],
+    reporters: ["spec"], // reporters: ["spec", "kjhtml"],
     singleRun: true,
   }
 
