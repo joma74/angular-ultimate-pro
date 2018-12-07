@@ -72,6 +72,7 @@ module.exports = function(config) {
 
   if (process.env.DEBUG) {
     _config.browsers = ["Chrome_debugging"]
+    _config.browserDisconnectTolerance = 3
   }
 
   config.set(_config)
