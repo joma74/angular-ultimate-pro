@@ -38,6 +38,17 @@ describe("StockInventoryComponent", () => {
       schemas: [NO_ERRORS_SCHEMA],
     })
 
+    TestBed.overrideComponent(StockInventoryComponent, {
+      set: {
+        providers: [
+          {
+            provide: StockInventoryService,
+            useClass: MockStoreInventoryService,
+          },
+        ],
+      },
+    })
+
     fixture = TestBed.createComponent(StockInventoryComponent)
 
     component = fixture.componentInstance
@@ -85,7 +96,7 @@ describe("StockInventoryComponent", () => {
     })
   })
 
-  it("should store the product reponse", () => {
+  it("should store the product response", () => {
     fixture.detectChanges()
     expect(component.products).toEqual([
       { id: 1, price: 10, name: "Test" },

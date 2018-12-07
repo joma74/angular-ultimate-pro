@@ -13,6 +13,7 @@ import { Stock } from "./../../models/stock.interface"
 import { StockValidators } from "./stock-inventory.validators"
 
 @Component({
+  providers: [StockInventoryService],
   selector: "stock-inventory",
   styleUrls: ["stock-inventory.component.scss"],
   template: `
