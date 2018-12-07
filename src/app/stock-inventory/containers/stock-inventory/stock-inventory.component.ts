@@ -6,14 +6,27 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms"
+import { Http } from "@angular/http"
 import { Observable } from "rxjs"
 import { Product } from "../../models/product.interface"
 import { StockInventoryService } from "../../services/stock-inventory.service"
+import {
+  API_TOKEN_BRANCHES,
+  API_TOKEN_CART,
+  API_TOKEN_PRODUCTS,
+} from "../../services/token"
 import { Stock } from "./../../models/stock.interface"
+import { stockInventoryServiceFactoryFunction } from "./stock-inventory.service.factory"
 import { StockValidators } from "./stock-inventory.validators"
 
 @Component({
-  providers: [StockInventoryService],
+  providers: [
+    {
+      deps: [Http, API_TOKEN_CART, API_TOKEN_PRODUCTS, API_TOKEN_BRANCHES],
+      provide: StockInventoryService,
+      useFactory: stockInventoryServiceFactoryFunction,
+    },
+  ],
   selector: "stock-inventory",
   styleUrls: ["stock-inventory.component.scss"],
   template: `
