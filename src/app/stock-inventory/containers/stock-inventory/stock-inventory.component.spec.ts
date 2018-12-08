@@ -9,6 +9,11 @@ import { Observable } from "rxjs"
 import { Product } from "../../models/product.interface"
 import { Stock } from "../../models/stock.interface"
 import { StockInventoryService } from "../../services/stock-inventory.service"
+import {
+  BranchService,
+  CartService,
+  ProductService,
+} from "../../services/stock-inventory.service.factory"
 import { StockInventoryComponent } from "./stock-inventory.component"
 
 describe("StockInventoryComponent", () => {
@@ -18,7 +23,9 @@ describe("StockInventoryComponent", () => {
 
   let el: DebugElement
 
-  let service: StockInventoryService
+  let inventoryService: StockInventoryService
+  let cartService: CartService
+  let productService: ProductService
 
   beforeAll(() => {
     TestBed.resetTestEnvironment()
@@ -45,6 +52,18 @@ describe("StockInventoryComponent", () => {
             provide: StockInventoryService,
             useClass: MockStoreInventoryService,
           },
+          {
+            provide: CartService,
+            useExisting: StockInventoryService,
+          },
+          {
+            provide: ProductService,
+            useExisting: StockInventoryService,
+          },
+          {
+            provide: BranchService,
+            useExisting: StockInventoryService,
+          },
         ],
       },
     })
@@ -55,7 +74,9 @@ describe("StockInventoryComponent", () => {
 
     el = fixture.debugElement
 
-    service = el.injector.get(StockInventoryService)
+    inventoryService = el.injector.get(StockInventoryService)
+    cartService = el.injector.get(CartService)
+    productService = el.injector.get(ProductService)
   })
 
   class MockStoreInventoryService {
@@ -74,12 +95,20 @@ describe("StockInventoryComponent", () => {
     }
   }
 
-  it("should get cart items and products on init", () => {
-    spyOn(service, "getStock").and.callThrough()
-    spyOn(service, "getProducts").and.callThrough()
+  it("should get cart items and products on init with inventoryService partial interfaces(BranchService, CartService, ProductService)", () => {
+    spyOn(cartService, "getStock").and.callThrough()
+    spyOn(productService, "getProducts").and.callThrough()
     fixture.detectChanges()
-    expect(service.getStock).toHaveBeenCalled()
-    expect(service.getProducts).toHaveBeenCalled()
+    expect(cartService.getStock).toHaveBeenCalled()
+    expect(productService.getProducts).toHaveBeenCalled()
+  })
+
+  it("should get cart items and products on init with inventoryService interface", () => {
+    spyOn(inventoryService, "getStock").and.callThrough()
+    spyOn(inventoryService, "getProducts").and.callThrough()
+    fixture.detectChanges()
+    expect(inventoryService.getStock).toHaveBeenCalled()
+    expect(inventoryService.getProducts).toHaveBeenCalled()
   })
 
   it("should create a product map from the service", () => {

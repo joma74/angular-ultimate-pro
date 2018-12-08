@@ -10,7 +10,12 @@ import { Http } from "@angular/http"
 import { Observable } from "rxjs"
 import { Product } from "../../models/product.interface"
 import { StockInventoryService } from "../../services/stock-inventory.service"
-import { stockInventoryServiceFactoryFunction } from "../../services/stock-inventory.service.factory"
+import {
+  BranchService,
+  CartService,
+  ProductService,
+  stockInventoryServiceFactoryFunction,
+} from "../../services/stock-inventory.service.factory"
 import {
   API_TOKEN_BRANCHES,
   API_TOKEN_CART,
@@ -25,6 +30,18 @@ import { StockValidators } from "./stock-inventory.validators"
       deps: [Http, API_TOKEN_CART, API_TOKEN_PRODUCTS, API_TOKEN_BRANCHES],
       provide: StockInventoryService,
       useFactory: stockInventoryServiceFactoryFunction,
+    },
+    {
+      provide: CartService,
+      useExisting: StockInventoryService,
+    },
+    {
+      provide: ProductService,
+      useExisting: StockInventoryService,
+    },
+    {
+      provide: BranchService,
+      useExisting: StockInventoryService,
     },
   ],
   selector: "stock-inventory",
@@ -79,12 +96,14 @@ export class StockInventoryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private stockService: StockInventoryService,
+    private cartService: CartService,
+    private productService: ProductService,
+    private branchService: BranchService,
   ) {}
 
   public ngOnInit(): void {
-    const stocks$$ = this.stockService.getStock()
-    const products$$ = this.stockService.getProducts()
+    const stocks$$ = this.cartService.getStock()
+    const products$$ = this.productService.getProducts()
 
     Observable.forkJoin(stocks$$, products$$).subscribe(
       ([stocks, products]: [Stock[], Product[]]) => {
@@ -132,7 +151,7 @@ export class StockInventoryComponent implements OnInit {
   }
 
   public validateBranch(control: AbstractControl) {
-    return this.stockService
+    return this.branchService
       .checkBranchId(control.value)
       .map((response: boolean) => {
         return response ? null : { unknownBranch: true }
