@@ -1,5 +1,5 @@
 import { Http } from "@angular/http"
-import { StockInventoryService } from "../../services/stock-inventory.service"
+import { StockInventoryService } from "./stock-inventory.service"
 
 export function stockInventoryServiceFactoryFunction(
   http: Http,

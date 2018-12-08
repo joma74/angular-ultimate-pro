@@ -10,13 +10,13 @@ import { Http } from "@angular/http"
 import { Observable } from "rxjs"
 import { Product } from "../../models/product.interface"
 import { StockInventoryService } from "../../services/stock-inventory.service"
+import { stockInventoryServiceFactoryFunction } from "../../services/stock-inventory.service.factory"
 import {
   API_TOKEN_BRANCHES,
   API_TOKEN_CART,
   API_TOKEN_PRODUCTS,
 } from "../../services/token"
 import { Stock } from "./../../models/stock.interface"
-import { stockInventoryServiceFactoryFunction } from "./stock-inventory.service.factory"
 import { StockValidators } from "./stock-inventory.validators"
 
 @Component({
