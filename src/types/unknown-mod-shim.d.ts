@@ -37,3 +37,8 @@ declare module "preload-webpack-plugin" {
   const _a: any
   export = _a
 }
+
+declare module "hard-source-webpack-plugin" {
+  const _a: any
+  export = _a
+}
