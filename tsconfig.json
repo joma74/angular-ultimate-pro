@@ -6,7 +6,7 @@
     "checkJs": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es5", "es6", "dom"],
+    "lib": ["es6", "dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -15,7 +15,7 @@
     "strictNullChecks": false,
     "suppressImplicitAnyIndexErrors": true,
     "maxNodeModuleJsDepth": 0,
-    "target": "es5",
+    "target": "es6",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "types": ["node", "testcafe"]
