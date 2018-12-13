@@ -8,6 +8,7 @@ const { CheckerPlugin } = require("awesome-typescript-loader")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const DiskPlugin = require("webpack-disk-plugin")
 const prettyFormat = require("pretty-format")
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 
 /**
  * Current Project Dir
@@ -63,6 +64,11 @@ const devConfig = {
       output: {
         path: path.resolve(cpd, "target"),
       },
+    }),
+
+    new HardSourceWebpackPlugin({
+      reportFiles: ["src/**/*.{ts,tsx}"],
+      useCache: true,
     }),
 
     new webpack.HotModuleReplacementPlugin(),
