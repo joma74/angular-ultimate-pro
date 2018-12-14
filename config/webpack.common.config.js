@@ -72,6 +72,7 @@ const webpackConfig = {
                 loader: "css-loader",
                 options: {
                   importLoaders: 1,
+                  minimize: !isDev,
                   sourceMap: isDev,
                 },
               },
