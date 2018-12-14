@@ -4,10 +4,14 @@ const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const prettyFormat = require("pretty-format")
 
 const ENV = (process.env.NODE_ENV = process.env.ENV = "production")
 
-module.exports = webpackMerge(commonConfig, {
+/**
+ * @type {import ("webpack").Configuration}
+ */
+const prodConfig = {
   devtool: "source-map",
   output: {
     chunkFilename: "[id].[hash].chunk.js",
@@ -41,4 +45,13 @@ module.exports = webpackMerge(commonConfig, {
       },
     }),
   ],
-})
+}
+
+const webpackConfig = [webpackMerge(commonConfig, prodConfig)]
+
+const output = prettyFormat(webpackConfig, { highlight: true })
+
+// tslint:disable-next-line:no-console
+console.log(output)
+
+module.exports = webpackConfig
