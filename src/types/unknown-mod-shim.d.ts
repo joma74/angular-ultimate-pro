@@ -47,3 +47,8 @@ declare module "uglifyjs-webpack-plugin" {
   const _a: any
   export = _a
 }
+
+declare module "glob" {
+  const _a: any
+  export = _a
+}

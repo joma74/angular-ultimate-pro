@@ -5,8 +5,17 @@ const webpackMerge = require("webpack-merge")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const prettyFormat = require("pretty-format")
+const PurgecssPlugin = require("purgecss-webpack-plugin")
+const path = require("path")
+const glob = require("glob")
 
 const ENV = (process.env.NODE_ENV = process.env.ENV = "production")
+
+/**
+ * Current Project Dir
+ */
+const cpd = path.join(__dirname, "../")
+const srcd = path.join(cpd, "/src/")
 
 /**
  * @type {import ("webpack").Configuration}
@@ -32,6 +41,10 @@ const prodConfig = {
     }),
 
     new ExtractTextPlugin("[name].[contenthash].css"),
+
+    new PurgecssPlugin({
+      paths: glob.sync(`${srcd}/**/*.{ejs,html,css,ts}`),
+    }),
 
     new webpack.DefinePlugin({
       "process.env": {
