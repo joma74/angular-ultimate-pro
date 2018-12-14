@@ -3,6 +3,7 @@ const helpers = require("./helpers")
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 
 const ENV = (process.env.NODE_ENV = process.env.ENV = "production")
 
@@ -17,10 +18,12 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
 
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       // https://github.com/angular/angular/issues/10618
-      mangle: {
-        keep_fnames: true,
+      uglifyOptions: {
+        mangle: {
+          keep_fnames: true,
+        },
       },
     }),
 

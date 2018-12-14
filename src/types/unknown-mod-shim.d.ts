@@ -42,3 +42,8 @@ declare module "hard-source-webpack-plugin" {
   const _a: any
   export = _a
 }
+
+declare module "uglifyjs-webpack-plugin" {
+  const _a: any
+  export = _a
+}
