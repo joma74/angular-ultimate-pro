@@ -12,7 +12,9 @@ const DashboardPlugin = require("webpack-dashboard/plugin")
 const noop = require("noop-webpack-plugin")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "development")
-const TRAVIS_ENV = process.env.TRAVIS
+const WITHDASHBOARD_ENV = process.env.WITHDASHBOARD
+// tslint:disable-next-line:no-console
+console.log(WITHDASHBOARD_ENV)
 
 /**
  * Current Project Dir
@@ -88,7 +90,7 @@ const devConfig = {
 
     new webpack.HotModuleReplacementPlugin(),
 
-    TRAVIS_ENV ? noop() : new DashboardPlugin({ port: 4002 }),
+    WITHDASHBOARD_ENV ? noop() : new DashboardPlugin({ port: 4002 }),
   ],
 }
 
