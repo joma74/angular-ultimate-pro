@@ -9,6 +9,10 @@ const DiskPlugin = require("webpack-disk-plugin")
 const prettyFormat = require("pretty-format")
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const DashboardPlugin = require("webpack-dashboard/plugin")
+const noop = require("noop-webpack-plugin")
+
+const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "development")
+const TRAVIS_ENV = process.env.TRAVIS
 
 /**
  * Current Project Dir
@@ -46,6 +50,12 @@ const devConfig = {
     publicPath,
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        ENV: JSON.stringify(ENV_MODE),
+      },
+    }),
+
     new CheckerPlugin(),
 
     new ExtractTextPlugin("of[name].css"),
@@ -78,7 +88,7 @@ const devConfig = {
 
     new webpack.HotModuleReplacementPlugin(),
 
-    new DashboardPlugin({ port: 4002 }),
+    TRAVIS_ENV ? noop() : new DashboardPlugin({ port: 4002 }),
   ],
 }
 

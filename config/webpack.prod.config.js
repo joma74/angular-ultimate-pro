@@ -9,7 +9,7 @@ const PurgecssPlugin = require("purgecss-webpack-plugin")
 const StatsPlugin = require("stats-webpack-plugin")
 const glob = require("glob")
 
-const ENV = (process.env.NODE_ENV = process.env.ENV = "production")
+const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
 
 /**
  * @type {import ("webpack").Configuration}
@@ -42,7 +42,7 @@ const prodConfig = {
 
     new webpack.DefinePlugin({
       "process.env": {
-        ENV: JSON.stringify(ENV),
+        ENV: JSON.stringify(ENV_MODE),
       },
     }),
 

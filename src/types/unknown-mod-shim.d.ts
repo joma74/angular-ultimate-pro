@@ -67,3 +67,8 @@ declare module "stats-webpack-plugin" {
   const _a: any
   export = _a
 }
+
+declare module "noop-webpack-plugin" {
+  const _a: any
+  export = _a
+}
