@@ -2,15 +2,10 @@ const helpers = require("./helpers")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const PreloadWebpackPlugin = require("preload-webpack-plugin")
-const path = require("path")
+
 const webpack = require("webpack")
 
 const isDev = process.env.NODE_ENV === "development"
-
-/**
- * Current Project Dir
- */
-const cpd = path.join(__dirname, "../")
 
 /**
  * @type {import ("webpack").Node}
@@ -40,7 +35,10 @@ const webpackConfig = {
           },
           {
             loader: "awesome-typescript-loader",
-            options: { configFileName: helpers.root("tsconfig.json") },
+            options: {
+              configFileName: helpers.root("tsconfig.json"),
+              silent: true,
+            },
           },
           "angular2-template-loader",
         ],
@@ -129,7 +127,7 @@ const webpackConfig = {
     extensions: [".ts", ".js"],
     modules: [
       "node_modules", // We need to specify the node_modules since we are overriding the default.
-      cpd,
+      helpers.root("."),
     ],
   },
 }

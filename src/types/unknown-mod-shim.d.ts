@@ -52,3 +52,18 @@ declare module "glob" {
   const _a: any
   export = _a
 }
+
+declare module "webpack-dashboard" {
+  const _a: any
+  export = _a
+}
+
+declare module "webpack-dashboard/plugin" {
+  const _a: any
+  export = _a
+}
+
+declare module "stats-webpack-plugin" {
+  const _a: any
+  export = _a
+}

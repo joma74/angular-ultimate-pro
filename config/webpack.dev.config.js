@@ -1,7 +1,6 @@
 const commonConfig = require("./webpack.common.config")
 const helpers = require("./helpers")
 const jsonServer = require("json-server")
-const path = require("path")
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 const { CheckerPlugin } = require("awesome-typescript-loader")
@@ -9,12 +8,12 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const DiskPlugin = require("webpack-disk-plugin")
 const prettyFormat = require("pretty-format")
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
+const DashboardPlugin = require("webpack-dashboard/plugin")
 
 /**
  * Current Project Dir
  */
-const cpd = path.join(__dirname, "../")
-const contentNotFromWebpackIsServedFrom = path.join(__dirname, "../src/")
+const contentNotFromWebpackIsServedFrom = helpers.root("src/")
 const publicPath = "/"
 
 /**
@@ -22,7 +21,7 @@ const publicPath = "/"
  */
 const devServer = {
   before(app) {
-    app.use("/api", jsonServer.router(cpd + "/db.json"))
+    app.use("/api", jsonServer.router(helpers.root("/db.json")))
   },
   clientLogLevel: "warning",
   compress: true,
@@ -62,16 +61,24 @@ const devConfig = {
         },
       ],
       output: {
-        path: path.resolve(cpd, "target"),
+        path: helpers.root("/target/"),
       },
     }),
 
     new HardSourceWebpackPlugin({
+      info: {
+        // 'debug', 'log', 'info', 'warn', or 'error'.
+        level: "warn",
+        // 'none' or 'test'.
+        mode: "none",
+      },
       reportFiles: ["src/**/*.{ts,tsx}"],
       useCache: true,
     }),
 
     new webpack.HotModuleReplacementPlugin(),
+
+    new DashboardPlugin({ port: 4002 }),
   ],
 }
 
