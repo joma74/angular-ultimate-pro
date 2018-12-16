@@ -15,7 +15,7 @@
   },
   "scripts": {
     "clean": "del 'target/*' '!.gitkeep'",
-    "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' './src/**/*.js' './config/**/*.js'",
+    "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.js' 'config/**/*.js'",
     "lint-js-fix": "yarn run _lint-js --fix",
     "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
     "prettier-fix": "yarn run prettier --write",
@@ -43,7 +43,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx},!config/profiles": [
+    "*.{js,ts,tsx}": [
       "yarn run _lint-js"
     ],
     "*.{js,ts,tsx,json,md,html}": [
