@@ -8,6 +8,9 @@
       "allow-pascal-case"
     ]
   },
+  "linterOptions": {
+    "exclude": ["config/profiles/**", "dist/**", "node_modules/**", "target/**"]
+  },
   "rules": {
     "array-bracket-spacing": [true, "never"],
     "block-spacing": [true, "always"],
