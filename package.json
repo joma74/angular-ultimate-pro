@@ -133,7 +133,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": ">= 8.9.4",
-    "yarn": ">= 1.7.0"
+    "node": ">= 10.13.0",
+    "yarn": ">= 1.12.0"
   }
 }
