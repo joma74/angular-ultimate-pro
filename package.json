@@ -34,7 +34,7 @@
     "test_servencafe_live": "start-server-and-test serve-dev http-get://localhost:4001/index.html test_cafe_live",
     "test_cafe_live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
     "ci": "npm-run-all _lint-js prettier tsc_validate_once clean test_karma_once test_servencafe_once",
-    "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail",
+    "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail --display-error-details ",
     "ci-prod": "npm-run-all build serve-prod-test-once"
   },
   "resolutions": {
@@ -74,6 +74,7 @@
     "extract-text-webpack-plugin": "^3",
     "extracted-loader": "^1.0.7",
     "file-loader": "^1.1.11",
+    "filemanager-webpack-plugin": "^2.0.5",
     "glob": "^7.1.3",
     "hard-source-webpack-plugin": "^0.13.1",
     "html-loader": "^0.5.5",

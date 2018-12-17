@@ -7,6 +7,7 @@ const prettyFormat = require("pretty-format")
 const PurgecssPlugin = require("purgecss-webpack-plugin")
 const StatsPlugin = require("stats-webpack-plugin")
 const glob = require("glob")
+const FileManagerPlugin = require("filemanager-webpack-plugin")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
 
@@ -50,6 +51,17 @@ const prodConfig = {
 
     new StatsPlugin("./../target/webpack-prod-stats.json", {
       chunkModules: true,
+    }),
+
+    new FileManagerPlugin({
+      onEnd: {
+        copy: [
+          {
+            destination: helpers.root("dist", "assets", "images"),
+            source: helpers.root("src", "assets", "images", "**/*"),
+          },
+        ],
+      },
     }),
   ],
 }
