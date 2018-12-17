@@ -2,7 +2,6 @@ const commonConfig = require("./webpack.common.config")
 const helpers = require("./helpers")
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const prettyFormat = require("pretty-format")
 const PurgecssPlugin = require("purgecss-webpack-plugin")
@@ -15,7 +14,6 @@ const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
  * @type {import ("webpack").Configuration}
  */
 const prodConfig = {
-  devtool: "source-map",
   output: {
     chunkFilename: "[id].[hash].chunk.js",
     filename: "[name].[hash].js",
@@ -33,8 +31,6 @@ const prodConfig = {
         },
       },
     }),
-
-    new ExtractTextPlugin("[name].[contenthash].css"),
 
     new PurgecssPlugin({
       paths: glob.sync(`${helpers.root("/src/")}/**/*.{ejs,html,css,ts}`),

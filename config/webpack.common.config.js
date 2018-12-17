@@ -7,6 +7,10 @@ const webpack = require("webpack")
 
 const isDev = process.env.NODE_ENV === "development"
 
+const extractCSS = new ExtractTextPlugin(
+  isDev ? "assets/css/[name].css" : "assets/css/[name].[contenthash].css",
+)
+
 /**
  * @type {import ("webpack").Node}
  */
@@ -49,7 +53,15 @@ const webpackConfig = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        use: "file-loader?name=assets/[name].[hash].[ext]",
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              context: "src",
+              name: "[path]/[name].[hash].[ext]",
+            },
+          },
+        ],
       },
       {
         exclude: /node_modules/,
@@ -63,7 +75,7 @@ const webpackConfig = {
         test: /\.css$/,
         use: [
           "extracted-loader",
-          ...ExtractTextPlugin.extract({
+          ...extractCSS.extract({
             fallback: "style-loader",
             use: [
               {
@@ -122,6 +134,8 @@ const webpackConfig = {
     }),
 
     new webpack.NamedModulesPlugin(),
+
+    extractCSS,
   ],
   resolve: {
     extensions: [".ts", ".js"],
