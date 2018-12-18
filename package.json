@@ -38,7 +38,7 @@
     "test-servencafe-dev-once": "start-server-and-test serve-dev http-get://localhost:$npm_package_config_dev_svr_port/index.html test-cafe-once",
     "test-servencafe-prod-once": "start-server-and-test serve-prod http-get://localhost:$npm_package_config_prod_svr_port/index.html test-prod-cafe-once",
     "ci-dev": "run-p -l clean-target _lint-js prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
-    "build": "run-p clean-dist && webpack --config config/webpack.prod.config.js --progress --profile --bail --display-error-details ",
+    "build": "run-p clean-dist && webpack --config config/webpack.prod.config.js --profile --bail --display-error-details",
     "ci-prod": "run-s -l clean-target build test-servencafe-prod-once",
     "ci": "run-p -l ci-prod ci-dev"
   },
