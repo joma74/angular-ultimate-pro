@@ -44,7 +44,6 @@ const devConfig = {
   devtool: "cheap-module-eval-source-map",
   entry: {
     app: helpers.root("src/main-dev.ts"),
-    polyfills: helpers.root("src/polyfills.ts"),
     vendor: helpers.root("src/vendor.ts"),
   },
   module: {

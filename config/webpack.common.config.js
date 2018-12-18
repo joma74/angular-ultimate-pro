@@ -24,6 +24,9 @@ const node = {
  * @type {import ("webpack").Configuration}
  */
 const webpackConfig = {
+  entry: {
+    polyfills: helpers.root("src/polyfills.ts"),
+  },
   module: {
     rules: [
       {
@@ -108,7 +111,7 @@ const webpackConfig = {
 
     new PreloadWebpackPlugin({
       fileBlacklist: [/\.hot-update.js/],
-      include: ["app"],
+      include: ["polyfills"],
       rel: "preload",
     }),
 

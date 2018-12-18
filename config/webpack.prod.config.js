@@ -18,7 +18,6 @@ const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
 const prodConfig = {
   entry: {
     app: helpers.root("src/main-prod.ts"),
-    polyfills: helpers.root("src/polyfills.ts"),
   },
   module: {
     rules: [
