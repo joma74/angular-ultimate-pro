@@ -1,13 +1,13 @@
 import { Selector } from "testcafe"
-// import devConfig from "../../config/testcafe.dev.json"
+import devConfig from "../../config/testcafe.dev.json"
 import prodConfig from "../../config/testcafe.prod.json"
 var Mustache = require("mustache")
 
-// const config = process.env.NODE_ENV === "production" ? prodConfig : devConfig
+const config = process.env.NODE_ENV === "production" ? prodConfig : devConfig
 
 const fixtureName = "Index_Page_Test"
 
-fixture(fixtureName).page(`${prodConfig.baseUrl}/index.html`)
+fixture(fixtureName).page(`${config.baseUrl}/index.html`)
 
 const testName = "dom_has_critical_elements"
 
