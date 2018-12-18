@@ -11,27 +11,36 @@
     "target": "target",
     "reports": "target/reports",
     "screenshots": "target/reports/screenshots/actual/",
-    "screenshot-path-pattern": "${FIXTURE}/${TEST}/${USERAGENT}/${FILE_INDEX}.png"
+    "screenshot_path_pattern": "\\${FIXTURE}/\\${TEST}/\\${USERAGENT}/\\${FILE_INDEX}.png",
+    "dev_svr_port": 4001,
+    "dashboard_svr_port": 4002,
+    "prod_svr_port": 4003
   },
   "scripts": {
-    "clean": "del 'target/*' '!.gitkeep'",
+    "clean-dist": "del 'dist/*'",
+    "clean-target": "del 'target/*' '!.gitkeep'",
     "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.js' 'config/**/*.js'",
-    "lint-js-fix": "yarn run _lint-js --fix",
+    "lint-js-fix": "yarn _lint-js --fix",
     "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
-    "prettier-fix": "yarn run prettier --write",
-    "tsc_validate_watch": "yarn tsc_validate_once --watch",
-    "tsc_validate_once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
+    "prettier-fix": "yarn prettier --write",
+    "tsc-validate-watch": "yarn tsc-validate-once --watch",
+    "tsc-validate-once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
     "check-staged": "lint-staged",
-    "serve-dashboard": "webpack-dashboard -p 4002 -c red -- yarn serve",
-    "serve": "cross-env NODE_ENV=development webpack-dev-server --config=config/webpack.dev.config.js --watch --profile --no-progress",
-    "test_karma_once": "karma start karma.config.js",
-    "test_karma_watch": "cross-env DEBUG= karma start karma.config.js --auto-watch --no-single-run",
-    "test_servencafe_once": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_once",
-    "test_cafe_once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml --page-load-timeout 5000 src/tests/index-test.js",
-    "test_servencafe_live": "start-server-and-test serve http-get://localhost:4001/index.html test_cafe_live",
-    "test_cafe_live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
-    "ci": "npm-run-all _lint-js prettier tsc_validate_once clean test_karma_once test_servencafe_once",
-    "build": "rimraf dist && webpack --config config/webpack.prod.config.js --progress --profile --bail"
+    "test-karma-once": "karma start karma.config.js",
+    "test-karma-watch": "cross-env DEBUG= karma start karma.config.js --auto-watch --no-single-run",
+    "serve-dev": "cross-env NODE_ENV=development webpack-dev-server --config=config/webpack.dev.config.js --watch --profile --no-progress",
+    "serve-dev-dashboard": "webpack-dashboard -p $npm_package_config_screenshot_path_pattern -c red -- yarn serve-dev",
+    "serve-prod": "json-server --quiet --watch db.json --port $npm_package_config_prod_svr_port --static dist/",
+    "test-cafe-live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
+    "test-cafe-once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml --page-load-timeout 5000 src/tests/index-test.js",
+    "test-prod-cafe-once": "cross-env NODE_ENV=production run-s -l test-cafe-once",
+    "test-servencafe-live": "start-server-and-test serve-dev http-get://localhost:$npm_package_config_dev_svr_port/index.html test-cafe-live",
+    "test-servencafe-dev-once": "start-server-and-test serve-dev http-get://localhost:$npm_package_config_dev_svr_port/index.html test-cafe-once",
+    "test-servencafe-prod-once": "start-server-and-test serve-prod http-get://localhost:$npm_package_config_prod_svr_port/index.html test-prod-cafe-once",
+    "ci-dev": "run-p -l clean-target _lint-js prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
+    "build": "run-p clean-dist && webpack --config config/webpack.prod.config.js --progress --profile --bail --display-error-details ",
+    "ci-prod": "run-s -l clean-target build test-servencafe-prod-once",
+    "ci": "run-p -l ci-prod ci-dev"
   },
   "resolutions": {
     "**/@types/webpack": "~3",
@@ -39,7 +48,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn tsc_validate_once && lint-staged"
+      "pre-commit": "yarn tsc-validate-once && lint-staged"
     }
   },
   "lint-staged": {
@@ -70,6 +79,7 @@
     "extract-text-webpack-plugin": "^3",
     "extracted-loader": "^1.0.7",
     "file-loader": "^1.1.11",
+    "filemanager-webpack-plugin": "^2.0.5",
     "glob": "^7.1.3",
     "hard-source-webpack-plugin": "^0.13.1",
     "html-loader": "^0.5.5",
@@ -77,7 +87,7 @@
     "husky": "^1.1.1",
     "jasmine": "^3",
     "jasmine-core": "^3",
-    "json-server": "^0.13.0",
+    "json-server": "^0.14.0",
     "karma": "^3",
     "karma-chrome-launcher": "^2",
     "karma-jasmine": "^2",

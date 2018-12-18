@@ -4,7 +4,6 @@ const jsonServer = require("json-server")
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
 const { CheckerPlugin } = require("awesome-typescript-loader")
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const DiskPlugin = require("webpack-disk-plugin")
 const prettyFormat = require("pretty-format")
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
@@ -13,8 +12,6 @@ const noop = require("noop-webpack-plugin")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "development")
 const WITHDASHBOARD_ENV = process.env.WITHDASHBOARD
-// tslint:disable-next-line:no-console
-console.log(WITHDASHBOARD_ENV)
 
 /**
  * Current Project Dir
@@ -59,8 +56,6 @@ const devConfig = {
     }),
 
     new CheckerPlugin(),
-
-    new ExtractTextPlugin("of[name].css"),
 
     // Write out asset files to disk.
     new DiskPlugin({
