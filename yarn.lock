@@ -62,6 +62,16 @@
   resolved "https://registry.yarnpkg.com/@most/prelude/-/prelude-1.7.2.tgz#be4ed406518d4c8c220e45c39fa7251365425b73"
   integrity sha512-GM5ec7+xpkuXiCMyzhyENgH/xZ8t0nAMDBY0QOsVVD6TrZYjJKUnW1eaI18HHX8W+COWMwWR9c0zoPiBp9+tUg==
 
+"@ngtools/webpack@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.4.2.tgz#136a9b3959e95029d7cb67facfff10a03d2dddbf"
+  integrity sha1-E2qbOVnpUCnXy2f6z/8QoD0t3b8=
+  dependencies:
+    enhanced-resolve "^3.1.0"
+    loader-utils "^1.0.2"
+    magic-string "^0.19.0"
+    source-map "^0.5.6"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -2916,7 +2926,7 @@ enhanced-resolve@3.3.0:
     object-assign "^4.0.1"
     tapable "^0.2.5"
 
-enhanced-resolve@^3.4.0:
+enhanced-resolve@^3.1.0, enhanced-resolve@^3.4.0:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-3.4.1.tgz#0421e339fd71419b3da13d129b3979040230476e"
   dependencies:
@@ -5342,6 +5352,13 @@ lru-cache@^4.1.1:
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+magic-string@^0.19.0:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.19.1.tgz#14d768013caf2ec8fdea16a49af82fc377e75201"
+  integrity sha1-FNdoATyvLsj96hakmvgvw3fnUgE=
+  dependencies:
+    vlq "^0.2.1"
 
 make-dir@^1.0.0, make-dir@^1.1.0, make-dir@^1.3.0:
   version "1.3.0"
@@ -8915,6 +8932,11 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+vlq@^0.2.1:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/vlq/-/vlq-0.2.3.tgz#8f3e4328cf63b1540c0d67e1b2778386f8975b26"
+  integrity sha512-DRibZL6DsNhIgYQ+wNdWDL2SL3bKPlVrRiBqV5yuMm++op8W4kGFtaQfCs4KEJn0wBZcHVHJ3eoywX8983k1ow==
 
 vm-browserify@0.0.4:
   version "0.0.4"

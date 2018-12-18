@@ -2,6 +2,7 @@ const commonConfig = require("./webpack.common.config")
 const helpers = require("./helpers")
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
+const AotPlugin = require("@ngtools/webpack").AotPlugin
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const prettyFormat = require("pretty-format")
 const PurgecssPlugin = require("purgecss-webpack-plugin")
@@ -24,11 +25,17 @@ const prodConfig = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
 
+    new AotPlugin({
+      entryModule: helpers.root("src/app/app.module#AppModule"),
+      tsConfigPath: "tsconfig-prod.aot.json",
+    }),
+
     new UglifyJsPlugin({
       // https://github.com/angular/angular/issues/10618
       uglifyOptions: {
         mangle: {
           keep_fnames: true,
+          screw_ie8: true,
         },
       },
     }),

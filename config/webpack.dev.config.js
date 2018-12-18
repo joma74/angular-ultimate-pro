@@ -42,6 +42,11 @@ const devServer = {
 const devConfig = {
   devServer,
   devtool: "cheap-module-eval-source-map",
+  entry: {
+    app: "./src/main.ts",
+    polyfills: "./src/polyfills.ts",
+    vendor: "./src/vendor.ts",
+  },
   output: {
     chunkFilename: "[id].chunk.js",
     filename: "[name].js",
