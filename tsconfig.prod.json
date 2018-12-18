@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/tsjsprod/aot/outDir",
+    "allowJs": true,
+    "baseUrl": "./src",
+    "checkJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es6", "dom"],
+    "module": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "maxNodeModuleJsDepth": 0,
+    "target": "es6",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "types": ["node", "testcafe", "jasmine"]
+  },
+  "exclude": ["config/profiles/**"],
+  "include": ["config/**/*", "src/**/*"],
+  "compileOnSave": false,
+  "typeAcquisition": {
+    "enable": false
+  }
+}

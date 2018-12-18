@@ -16,6 +16,25 @@ const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
  * @type {import ("webpack").Configuration}
  */
 const prodConfig = {
+  entry: {
+    app: helpers.root("src/main-prod.ts"),
+    polyfills: helpers.root("src/polyfills.ts"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: "ng-router-loader",
+          },
+          {
+            loader: "@ngtools/webpack",
+          },
+        ],
+      },
+    ],
+  },
   output: {
     chunkFilename: "[id].[hash].chunk.js",
     filename: "[name].[hash].js",
@@ -26,8 +45,12 @@ const prodConfig = {
     new webpack.NoEmitOnErrorsPlugin(),
 
     new AotPlugin({
+      compilerOptions: {
+        genDir: helpers.root("./dist/tsjsprod/aot/genDir"),
+        strictMetadataEmit: true,
+      },
       entryModule: helpers.root("src/app/app.module#AppModule"),
-      tsConfigPath: "tsconfig-prod.aot.json",
+      tsConfigPath: helpers.root("tsconfig.prod.json"),
     }),
 
     new UglifyJsPlugin({
@@ -35,7 +58,6 @@ const prodConfig = {
       uglifyOptions: {
         mangle: {
           keep_fnames: true,
-          screw_ie8: true,
         },
       },
     }),

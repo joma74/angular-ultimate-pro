@@ -43,9 +43,29 @@ const devConfig = {
   devServer,
   devtool: "cheap-module-eval-source-map",
   entry: {
-    app: "./src/main.ts",
-    polyfills: "./src/polyfills.ts",
-    vendor: "./src/vendor.ts",
+    app: helpers.root("src/main-dev.ts"),
+    polyfills: helpers.root("src/polyfills.ts"),
+    vendor: helpers.root("src/vendor.ts"),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: "ng-router-loader",
+          },
+          {
+            loader: "awesome-typescript-loader",
+            options: {
+              configFileName: helpers.root("tsconfig.json"),
+              silent: true,
+            },
+          },
+          "angular2-template-loader",
+        ],
+      },
+    ],
   },
   output: {
     chunkFilename: "[id].chunk.js",

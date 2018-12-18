@@ -27,22 +27,6 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: [
-          {
-            loader: "ng-router-loader",
-          },
-          {
-            loader: "awesome-typescript-loader",
-            options: {
-              configFileName: helpers.root("tsconfig.json"),
-              silent: true,
-            },
-          },
-          "angular2-template-loader",
-        ],
-      },
-      {
         test: /\.html$/,
         use: "html-loader",
       },
