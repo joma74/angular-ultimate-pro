@@ -7,4 +7,7 @@ import { AppModule } from "./app/app.module"
 
 enableProdMode()
 
-platformBrowser().bootstrapModule(AppModule)
+platformBrowser()
+  .bootstrapModule(AppModule)
+  // tslint:disable-next-line:no-console
+  .catch((err) => console.error(err))
