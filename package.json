@@ -1,9 +1,9 @@
 {
   "name": "angular-ultimate-pro",
   "version": "0.0.1",
-  "description": "Replay after https://github.com/UltimateAngular/angular-fundamentals-src",
+  "description": "Replay after https://github.com/UltimateAngular/angular-pro-src",
   "main": "main",
-  "repository": "https://github.com/joma74/angular-ultimate-fundamentals.git",
+  "repository": "https://github.com/joma74/angular-ultimate-pro.git",
   "author": "joma74 <dev-mails@gmx.net>",
   "license": "MIT",
   "private": false,
@@ -17,8 +17,8 @@
     "prod_svr_port": 4003
   },
   "scripts": {
-    "clean-dist": "del 'dist/*'",
-    "clean-target": "del 'target/*' '!.gitkeep'",
+    "clean-dist": "del-cli 'dist/*'",
+    "clean-target": "del-cli 'target/*' '!*/yarn.build.log' '!*/\\.gitkeep'",
     "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.js' 'config/**/*.js'",
     "lint-js-fix": "yarn _lint-js --fix",
     "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
@@ -29,7 +29,7 @@
     "test-karma-once": "karma start karma.config.js",
     "test-karma-watch": "cross-env DEBUG= karma start karma.config.js --auto-watch --no-single-run",
     "serve-dev": "cross-env NODE_ENV=development webpack-dev-server --config=config/webpack.dev.config.js --watch --profile --no-progress",
-    "serve-dev-dashboard": "webpack-dashboard -p $npm_package_config_screenshot_path_pattern -c red -- yarn serve-dev",
+    "serve-dev-dashboard": "cross-env NODE_ENV=WITHDASHBOARD_ENV webpack-dashboard -p $npm_package_config_dashboard_svr_port -c red -- yarn serve-dev",
     "serve-prod": "json-server --quiet --watch db.json --port $npm_package_config_prod_svr_port --static dist/",
     "test-cafe-live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
     "test-cafe-once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml --page-load-timeout 5000 src/tests/index-test.js",
@@ -40,7 +40,9 @@
     "ci-dev": "run-p -l clean-target _lint-js prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
     "build": "run-s clean-dist && cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --profile --bail --display-error-details",
     "ci-prod": "run-s -l clean-target build test-servencafe-prod-once",
-    "ci": "run-p -l ci-prod ci-dev"
+    "ci-prod-logtofile": "unbuffer yarn ci-prod | tee target/yarn.build.log; less -r target/yarn.build.log",
+    "ci": "run-p -l ci-prod ci-dev",
+    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.build.log; less -r target/yarn.build.log"
   },
   "resolutions": {
     "**/@types/webpack": "~3",
