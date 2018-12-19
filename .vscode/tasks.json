@@ -5,7 +5,7 @@
 	"tasks": [
 		{
 			"type": "npm",
-			"script": "tsc_validate_watch",
+			"script": "tsc-validate-once",
 			"isBackground": true,
 			"problemMatcher": ["$tsc-watch"],
 			"presentation": {
