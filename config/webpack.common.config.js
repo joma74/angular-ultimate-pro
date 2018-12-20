@@ -15,9 +15,12 @@ const extractCSS = new ExtractTextPlugin(
  * @type {import ("webpack").Node}
  */
 const node = {
+  clearImmediate: false,
   crypto: "empty",
-  fs: "empty",
   global: true,
+  module: false,
+  process: true,
+  setImmediate: false,
 }
 
 /**
@@ -102,16 +105,31 @@ const webpackConfig = {
       names: ["app", "vendor", "polyfills"],
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      minChunks: Infinity,
+      name: "manifest",
+    }),
+
     new HtmlWebpackPlugin({
-      //   bodys: ["polyfills", "vendor", "app"],
-      //   chunks: ["app", "vendor", "polyfills"],
+      chunksSortMode: function(a, b) {
+        const entryPoints = [
+          "manifest",
+          "inline",
+          "polyfills",
+          "sw-register",
+          "styles",
+          "vendor",
+          "app",
+        ]
+        return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0])
+      },
       inject: true,
       template: "src/index.ejs",
     }),
 
     new PreloadWebpackPlugin({
       fileBlacklist: [/\.hot-update.js/],
-      include: ["polyfills"],
+      include: ["manifest", "polyfills", "vendor"],
       rel: "preload",
     }),
 
