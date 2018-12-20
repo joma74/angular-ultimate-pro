@@ -2,8 +2,10 @@ import { Component } from "@angular/core"
 
 import "../assets/css/styles.css"
 
+export const ROOT_SELECTOR = "main-app"
+
 @Component({
-  selector: "main-app",
+  selector: ROOT_SELECTOR,
   templateUrl: "./app.component.html",
 })
 export class AppComponent {
