@@ -101,8 +101,51 @@ const webpackConfig = {
     ),
 
     new webpack.optimize.CommonsChunkPlugin({
-      minChunks: Infinity,
-      names: ["app", "vendor", "polyfills"],
+      chunks: ["app", "polyfills"],
+      minChunks: function(module) {
+        // tslint:disable-next-line:no-console
+        console.debug("[rxjs-chunk] " + JSON.stringify(module.context))
+        // tslint:disable-next-line:no-console
+        console.debug("[rxjs-chunk] " + JSON.stringify(module.resource))
+        const result =
+          module.resource && /node_modules\/rxjs/.test(module.resource)
+        // tslint:disable-next-line:no-console
+        console.debug("[rxjs-chunk] Accepted ? " + result)
+        return result
+      },
+      name: "rxjs-chunk",
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      chunks: ["app", "polyfills"],
+      minChunks: function(module) {
+        // tslint:disable-next-line:no-console
+        console.debug("[tslib-polyfills] " + JSON.stringify(module.context))
+        // tslint:disable-next-line:no-console
+        console.debug("[tslib-polyfills] " + JSON.stringify(module.resource))
+        const result =
+          module.resource && /node_modules\/tslib/.test(module.resource)
+        // tslint:disable-next-line:no-console
+        console.debug("[tslib-polyfills] Accepted ? " + result)
+        return result
+      },
+      name: "polyfills",
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      chunks: ["app"],
+      minChunks: function(module) {
+        // tslint:disable-next-line:no-console
+        console.debug("[angular-chunk] " + JSON.stringify(module.context))
+        // tslint:disable-next-line:no-console
+        console.debug("[angular-chunk] " + JSON.stringify(module.resource))
+        const result =
+          module.resource && /node_modules\/@angular/.test(module.resource)
+        // tslint:disable-next-line:no-console
+        console.debug("[angular-chunk] Accepted ? " + result)
+        return result
+      },
+      name: "angular-chunk",
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
@@ -112,16 +155,18 @@ const webpackConfig = {
 
     new HtmlWebpackPlugin({
       chunksSortMode: function(a, b) {
-        const entryPoints = [
+        const chunksNamePart = [
           "manifest",
-          "inline",
           "polyfills",
-          "sw-register",
-          "styles",
-          "vendor",
+          "rxjs-chunk",
+          "tslib-chunk",
+          "angular-chunk",
           "app",
         ]
-        return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0])
+        return (
+          chunksNamePart.indexOf(a.names[0]) -
+          chunksNamePart.indexOf(b.names[0])
+        )
       },
       inject: true,
       template: "src/index.ejs",
@@ -129,7 +174,7 @@ const webpackConfig = {
 
     new PreloadWebpackPlugin({
       fileBlacklist: [/\.hot-update.js/],
-      include: ["manifest", "polyfills", "vendor"],
+      include: "allChunks",
       rel: "preload",
     }),
 
@@ -139,10 +184,7 @@ const webpackConfig = {
   ],
   resolve: {
     extensions: [".ts", ".js"],
-    modules: [
-      "node_modules", // We need to specify the node_modules since we are overriding the default.
-      helpers.root("."),
-    ],
+    modules: [helpers.root("src"), helpers.root("node_modules")],
   },
 }
 

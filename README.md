@@ -12,26 +12,21 @@
 - karma ~1
 - testcafe
 
-## With zone.js as import in app
+## Build Stats
+
+###
 
 ```
-                                                           Asset       Size  Chunks                    Chunk Names
-     assets/images//angular.9db278d630f5fabd8e7ba16c2e329a3a.png    2.38 kB          [emitted]
-                                     app.d6703ecda37c9860d871.js     301 kB       0  [emitted]  [big]  app
-                               polyfills.d6703ecda37c9860d871.js    1.03 kB       1  [emitted]         polyfills
-             assets/css/app.02275117d722577ce7a4b51b88d112f2.css    2.77 kB       0  [emitted]         app
-                                                      index.html  732 bytes          [emitted]
-                             ./../target/webpack-prod-stats.json    0 bytes          [emitted]
-```
-
-## With zone.js as import in polyfills
-
-```
-                                                          Asset       Size  Chunks                    Chunk Names
-    assets/images//angular.9db278d630f5fabd8e7ba16c2e329a3a.png    2.38 kB          [emitted]
-                                    app.156913ed7e5afe9520a8.js     259 kB       0  [emitted]  [big]  app
-                              polyfills.156913ed7e5afe9520a8.js      77 kB       1  [emitted]         polyfills
-            assets/css/app.02275117d722577ce7a4b51b88d112f2.css    2.77 kB       0  [emitted]         app
-                                                     index.html  732 bytes          [emitted]
-                            ./../target/webpack-prod-stats.json    0 bytes          [emitted]
+Hash: 01be3d5981d5f50fe0d9
+Time: 20112ms
+                                                      Asset     Size  Chunks             Chunk Names
+assets/images//angular.9db278d630f5fabd8e7ba16c2e329a3a.png  2.38 kB          [emitted]
+                          polyfills.01be3d5981d5f50fe0d9.js  85.3 kB       0  [emitted]  polyfills
+                         rxjs-chunk.01be3d5981d5f50fe0d9.js  28.1 kB       1  [emitted]  rxjs-chunk
+                                app.01be3d5981d5f50fe0d9.js  4.11 kB       2  [emitted]  app
+                      angular-chunk.01be3d5981d5f50fe0d9.js   226 kB       3  [emitted]  angular-chunk
+                           manifest.01be3d5981d5f50fe0d9.js  1.03 kB       4  [emitted]  manifest
+        assets/css/app.02275117d722577ce7a4b51b88d112f2.css  2.76 kB       2  [emitted]  app
+                                                 index.html  1.28 kB          [emitted]
+                        ./../target/webpack-prod-stats.json  0 bytes          [emitted]
 ```

@@ -44,7 +44,6 @@ const devConfig = {
   devtool: "cheap-module-eval-source-map",
   entry: {
     app: helpers.root("src/main-dev.ts"),
-    vendor: helpers.root("src/vendor.ts"),
   },
   module: {
     rules: [
@@ -111,6 +110,9 @@ const devConfig = {
 
     WITHDASHBOARD_ENV ? noop() : new DashboardPlugin({ port: 4002 }),
   ],
+  resolve: {
+    modules: [helpers.root("src"), helpers.root("node_modules")],
+  },
 }
 
 const webpackConfig = [webpackMerge(commonConfig, devConfig)]
@@ -118,6 +120,6 @@ const webpackConfig = [webpackMerge(commonConfig, devConfig)]
 const output = prettyFormat(webpackConfig, { highlight: true })
 
 // tslint:disable-next-line:no-console
-console.log(output)
+console.debug(output)
 
 module.exports = webpackConfig

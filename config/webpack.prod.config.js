@@ -25,9 +25,6 @@ const prodConfig = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: "ng-router-loader",
-          },
-          {
             loader: "@ngtools/webpack",
           },
         ],
@@ -48,16 +45,20 @@ const prodConfig = {
         genDir: helpers.root("./dist/tsjsprod/aot/genDir"),
         strictMetadataEmit: true,
       },
-      entryModule: helpers.root("src/app/app.module#AppModule"),
+      mainPath: helpers.root("src/main-prod.ts"),
       tsConfigPath: helpers.root("tsconfig.prod.json"),
     }),
 
     new UglifyJsPlugin({
       // https://github.com/angular/angular/issues/10618
       uglifyOptions: {
+        compress: {
+          passes: 1,
+        },
         mangle: {
           keep_fnames: true,
         },
+        nameCache: {},
       },
     }),
 
@@ -92,6 +93,9 @@ const prodConfig = {
       },
     }),
   ],
+  resolve: {
+    modules: [helpers.root("src"), helpers.root("node_modules")],
+  },
   stats: {
     chunksSort: "size",
     modulesSort: "size",
@@ -103,6 +107,6 @@ const webpackConfig = [webpackMerge(commonConfig, prodConfig)]
 const output = prettyFormat(webpackConfig, { highlight: true })
 
 // tslint:disable-next-line:no-console
-console.log(output)
+console.debug(output)
 
 module.exports = webpackConfig

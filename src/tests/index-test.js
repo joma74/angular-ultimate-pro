@@ -56,7 +56,7 @@ async function checkHeading(t) {
   const heading = Selector("h1[data-desc='heading']")
   const headingText = await heading.innerText
   const expected = Mustache.render(
-    "{{ title }} from Angular App with Webpack {{ major }}.{{ minor }}.{{ patch }}",
+    "{{ title }} from Angular 4 App with Webpack {{ major }}.{{ minor }}.{{ patch }}",
     {
       major: "3",
       minor: "12",
