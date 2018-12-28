@@ -1,6 +1,5 @@
 const helpers = require("./helpers")
 const path = require("path")
-// const NameAllModulesPlugin = require("name-all-modules-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const PreloadWebpackPlugin = require("preload-webpack-plugin")
@@ -128,8 +127,6 @@ const webpackConfig = {
       }
       return generatedModuleName
     }),
-
-    // new NameAllModulesPlugin(),
 
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app", "angular-chunk"],
