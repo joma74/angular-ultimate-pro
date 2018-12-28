@@ -11,6 +11,7 @@ const glob = require("glob")
 const FileManagerPlugin = require("filemanager-webpack-plugin")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
+const isLLDEBUG = process.env.LL === "debug"
 
 /**
  * @type {import ("webpack").Configuration}
@@ -32,13 +33,17 @@ const prodConfig = {
     ],
   },
   output: {
-    chunkFilename: "[id].[hash].chunk.js",
-    filename: "[name].[hash].js",
+    chunkFilename: "[name].[chunkhash].js",
+    filename: "[name].[chunkhash].js",
+    hashDigestLength: 6,
+    hashFunction: "md5",
     path: helpers.root("dist"),
     publicPath: "/",
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
+
+    new webpack.HashedModuleIdsPlugin(),
 
     new AotPlugin({
       compilerOptions: {
@@ -59,6 +64,7 @@ const prodConfig = {
           keep_fnames: true,
         },
         nameCache: {},
+        parallel: true,
       },
     }),
 
@@ -93,9 +99,6 @@ const prodConfig = {
       },
     }),
   ],
-  resolve: {
-    modules: [helpers.root("src"), helpers.root("node_modules")],
-  },
   stats: {
     chunksSort: "size",
     modulesSort: "size",
@@ -104,9 +107,10 @@ const prodConfig = {
 
 const webpackConfig = [webpackMerge(commonConfig, prodConfig)]
 
-const output = prettyFormat(webpackConfig, { highlight: true })
-
-// tslint:disable-next-line:no-console
-console.debug(output)
+if (isLLDEBUG) {
+  const output = prettyFormat(webpackConfig, { highlight: true })
+  // tslint:disable-next-line:no-console
+  console.debug(output)
+}
 
 module.exports = webpackConfig

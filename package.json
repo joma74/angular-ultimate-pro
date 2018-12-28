@@ -101,6 +101,7 @@
     "karma-webpack": "~3",
     "lint-staged": "^7.3.0",
     "mustache": "^3.0.0",
+    "name-all-modules-plugin": "^1.0.1",
     "ng-router-loader": "^2.1.0",
     "node-sass": "^4.9.0",
     "noop-webpack-plugin": "^1.0.1",

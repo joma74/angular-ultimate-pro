@@ -1,26 +1,35 @@
 const helpers = require("./helpers")
+const path = require("path")
+// const NameAllModulesPlugin = require("name-all-modules-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const PreloadWebpackPlugin = require("preload-webpack-plugin")
-
 const webpack = require("webpack")
 
-const isDev = process.env.NODE_ENV === "development"
+const isNodeEnvDev = process.env.NODE_ENV === "development"
 
-const extractCSS = new ExtractTextPlugin(
-  isDev ? "assets/css/[name].css" : "assets/css/[name].[contenthash].css",
-)
+const isLLDEBUG = process.env.LL === "debug"
+
+const extractCSS = new ExtractTextPlugin({
+  allChunks: true,
+  filename: isNodeEnvDev
+    ? "assets/css/[name].css"
+    : "assets/css/[name].[contenthash:6].css",
+})
 
 /**
  * @type {import ("webpack").Node}
  */
 const node = {
+  Buffer: false,
   clearImmediate: false,
+  clearTimeout: true,
   crypto: "empty",
   global: true,
   module: false,
   process: true,
   setImmediate: false,
+  setTimeout: true,
 }
 
 /**
@@ -43,7 +52,7 @@ const webpackConfig = {
             loader: "file-loader",
             options: {
               context: "src",
-              name: "[path]/[name].[hash].[ext]",
+              name: "[path]/[name].[hash:6].[ext]",
             },
           },
         ],
@@ -59,7 +68,6 @@ const webpackConfig = {
         include: helpers.root("src", "assets", "css"),
         test: /\.css$/,
         use: [
-          "extracted-loader",
           ...extractCSS.extract({
             fallback: "style-loader",
             use: [
@@ -67,8 +75,8 @@ const webpackConfig = {
                 loader: "css-loader",
                 options: {
                   importLoaders: 1,
-                  minimize: !isDev,
-                  sourceMap: isDev,
+                  minimize: !isNodeEnvDev,
+                  sourceMap: isNodeEnvDev,
                 },
               },
               {
@@ -100,63 +108,91 @@ const webpackConfig = {
       {}, // a map of your routes
     ),
 
+    new webpack.NamedChunksPlugin((chunk) => {
+      if (chunk.name) {
+        return chunk.name
+      }
+      const generatedModuleName = chunk
+        .mapModules(
+          /**
+           * @param {{ context: string; request: string; }} m
+           */
+          (m) => path.relative(m.context, m.request),
+        )
+        .join("_")
+      if (isLLDEBUG) {
+        // tslint:disable-next-line:no-console
+        console.debug(
+          "[NamedChunksPlugin] generated name of >>" + generatedModuleName,
+        )
+      }
+      return generatedModuleName
+    }),
+
+    // new NameAllModulesPlugin(),
+
     new webpack.optimize.CommonsChunkPlugin({
-      chunks: ["app", "polyfills"],
+      chunks: ["app", "angular-chunk"],
       minChunks: function(module) {
-        // tslint:disable-next-line:no-console
-        console.debug("[rxjs-chunk] " + JSON.stringify(module.context))
-        // tslint:disable-next-line:no-console
-        console.debug("[rxjs-chunk] " + JSON.stringify(module.resource))
+        if (isLLDEBUG) {
+          // tslint:disable-next-line:no-console
+          console.debug("[rxjs-chunk] " + JSON.stringify(module.resource))
+        }
         const result =
           module.resource && /node_modules\/rxjs/.test(module.resource)
-        // tslint:disable-next-line:no-console
-        console.debug("[rxjs-chunk] Accepted ? " + result)
+        if (isLLDEBUG) {
+          // tslint:disable-next-line:no-console
+          console.debug("[rxjs-chunk] Accepted ? " + result)
+        }
         return result
       },
       name: "rxjs-chunk",
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
-      chunks: ["app", "polyfills"],
+      chunks: ["app", "angular-chunk"],
       minChunks: function(module) {
-        // tslint:disable-next-line:no-console
-        console.debug("[tslib-polyfills] " + JSON.stringify(module.context))
-        // tslint:disable-next-line:no-console
-        console.debug("[tslib-polyfills] " + JSON.stringify(module.resource))
+        if (isLLDEBUG) {
+          // tslint:disable-next-line:no-console
+          console.debug("[tslib-chunk] " + JSON.stringify(module.resource))
+        }
         const result =
           module.resource && /node_modules\/tslib/.test(module.resource)
-        // tslint:disable-next-line:no-console
-        console.debug("[tslib-polyfills] Accepted ? " + result)
+        if (isLLDEBUG) {
+          // tslint:disable-next-line:no-console
+          console.debug("[tslib-chunk] Accepted ? " + result)
+        }
         return result
       },
-      name: "polyfills",
+      name: "tslib-chunk",
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app"],
       minChunks: function(module) {
-        // tslint:disable-next-line:no-console
-        console.debug("[angular-chunk] " + JSON.stringify(module.context))
-        // tslint:disable-next-line:no-console
-        console.debug("[angular-chunk] " + JSON.stringify(module.resource))
+        if (isLLDEBUG) {
+          // tslint:disable-next-line:no-console
+          console.debug("[angular-chunk] " + JSON.stringify(module.resource))
+        }
         const result =
           module.resource && /node_modules\/@angular/.test(module.resource)
-        // tslint:disable-next-line:no-console
-        console.debug("[angular-chunk] Accepted ? " + result)
+        if (isLLDEBUG) {
+          // tslint:disable-next-line:no-console
+          console.debug("[angular-chunk] Accepted ? " + result)
+        }
         return result
       },
       name: "angular-chunk",
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
-      minChunks: Infinity,
-      name: "manifest",
+      name: "wp-runtime",
     }),
 
     new HtmlWebpackPlugin({
       chunksSortMode: function(a, b) {
         const chunksNamePart = [
-          "manifest",
+          "wp-runtime",
           "polyfills",
           "rxjs-chunk",
           "tslib-chunk",
@@ -168,6 +204,7 @@ const webpackConfig = {
           chunksNamePart.indexOf(b.names[0])
         )
       },
+      hash: false,
       inject: true,
       template: "src/index.ejs",
     }),
@@ -177,8 +214,6 @@ const webpackConfig = {
       include: "allChunks",
       rel: "preload",
     }),
-
-    new webpack.NamedModulesPlugin(),
 
     extractCSS,
   ],

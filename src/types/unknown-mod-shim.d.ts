@@ -77,3 +77,8 @@ declare module "filemanager-webpack-plugin" {
   const _a: any
   export = _a
 }
+
+declare module "name-all-modules-plugin" {
+  const _a: any
+  export = _a
+}

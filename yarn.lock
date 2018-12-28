@@ -5735,6 +5735,11 @@ mv@^2.1.1:
     ncp "~2.0.0"
     rimraf "~2.4.0"
 
+name-all-modules-plugin@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/name-all-modules-plugin/-/name-all-modules-plugin-1.0.1.tgz#0abfb6ad835718b9fb4def0674e06657a954375c"
+  integrity sha1-Cr+2rYNXGLn7Te8GdOBmV6lUN1w=
+
 nan@^2.10.0, nan@^2.9.2:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.11.0.tgz#574e360e4d954ab16966ec102c0c049fd961a099"
