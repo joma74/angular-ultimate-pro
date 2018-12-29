@@ -1,8 +1,7 @@
-const helpers = require("./helpers")
-const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const PreloadWebpackPlugin = require("preload-webpack-plugin")
+const helpers = require("./helpers")
 const webpack = require("webpack")
 
 const isNodeEnvDev = process.env.NODE_ENV === "development"
@@ -103,27 +102,6 @@ const webpackConfig = {
       helpers.root("./src"), // location of your src
       {}, // a map of your routes
     ),
-
-    new webpack.NamedChunksPlugin((chunk) => {
-      if (chunk.name) {
-        return chunk.name
-      }
-      const generatedModuleName = chunk
-        .mapModules(
-          /**
-           * @param {{ context: string; request: string; }} m
-           */
-          (m) => path.relative(m.context, m.request),
-        )
-        .join("_")
-      if (isLLDEBUG) {
-        // tslint:disable-next-line:no-console
-        console.debug(
-          "[NamedChunksPlugin] generated name of >>" + generatedModuleName,
-        )
-      }
-      return generatedModuleName
-    }),
 
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app", "angular-chunk"],
