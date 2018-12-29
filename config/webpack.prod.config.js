@@ -100,6 +100,7 @@ const prodConfig = {
       },
     }),
   ],
+  stats: isLLDEBUG ? "verbose" : "normal",
 }
 
 const webpackConfig = [webpackMerge(commonConfig, prodConfig)]
