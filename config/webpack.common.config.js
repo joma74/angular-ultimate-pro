@@ -169,7 +169,8 @@ const webpackConfig = {
           console.debug("[angular-chunk] " + JSON.stringify(module.resource))
         }
         const result =
-          module.resource && /node_modules\/@angular/.test(module.resource)
+          (module.resource && /node_modules\/@angular/.test(module.resource)) ||
+          /node_modules\/zone\.js/.test(module.resource)
         if (isLLDEBUG) {
           // tslint:disable-next-line:no-console
           console.debug("[angular-chunk] Accepted ? " + result)

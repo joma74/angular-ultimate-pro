@@ -100,10 +100,6 @@ const prodConfig = {
       },
     }),
   ],
-  stats: {
-    chunksSort: "size",
-    modulesSort: "size",
-  },
 }
 
 const webpackConfig = [webpackMerge(commonConfig, prodConfig)]

@@ -1,11 +1,12 @@
 /// <reference types="webpack-env" />
 
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic"
-
 import { ApplicationRef, NgModuleRef } from "@angular/core"
 import { enableDebugTools } from "@angular/platform-browser"
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic"
 import { AppModule } from "./app"
 import { ROOT_SELECTOR } from "./app/app.component"
+
+import "zone.js/dist/zone"
 
 declare var module: __WebpackModuleApi.Module
 
