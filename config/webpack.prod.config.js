@@ -19,6 +19,7 @@ const isLLDEBUG = process.env.LL === "debug"
 const prodConfig = {
   entry: {
     app: helpers.root("src/main-prod.ts"),
+    polyfills: helpers.root("src/polyfills-prod.ts"),
   },
   module: {
     rules: [

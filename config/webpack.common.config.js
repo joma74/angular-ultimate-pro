@@ -35,9 +35,6 @@ const node = {
  * @type {import ("webpack").Configuration}
  */
 const webpackConfig = {
-  entry: {
-    polyfills: helpers.root("src/polyfills.ts"),
-  },
   module: {
     rules: [
       {
