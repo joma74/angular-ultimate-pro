@@ -13,7 +13,7 @@ const noop = require("noop-webpack-plugin")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "development")
 const isLLDEBUG = process.env.LL === "debug"
-const WITHDASHBOARD_ENV = process.env.WITHDASHBOARD
+const isWITHDASHBOARD = !!process.env.WITHDASHBOARD
 
 /**
  * Current Project Dir
@@ -76,14 +76,17 @@ const devConfig = {
     publicPath,
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
-    new NameAllModulesPlugin(),
-
     new webpack.DefinePlugin({
       "process.env": {
         ENV: JSON.stringify(ENV_MODE),
       },
     }),
+
+    new webpack.NamedModulesPlugin(),
+
+    new NameAllModulesPlugin(),
+
+    new webpack.HotModuleReplacementPlugin(),
 
     new CheckerPlugin(),
 
@@ -121,10 +124,9 @@ const devConfig = {
       },
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
-
-    WITHDASHBOARD_ENV ? noop() : new DashboardPlugin({ port: 4002 }),
+    isWITHDASHBOARD ? noop() : new DashboardPlugin({ port: 4002 }),
   ],
+  stats: isLLDEBUG && !isWITHDASHBOARD ? "verbose" : "normal",
 }
 
 let webpackConfig = [webpackMerge(commonConfig, devConfig)]

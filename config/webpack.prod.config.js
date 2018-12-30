@@ -42,6 +42,12 @@ const prodConfig = {
     publicPath: "/",
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": {
+        ENV: JSON.stringify(ENV_MODE),
+      },
+    }),
+
     new webpack.NoEmitOnErrorsPlugin(),
 
     new webpack.optimize.ModuleConcatenationPlugin(),
@@ -73,12 +79,6 @@ const prodConfig = {
 
     new PurgecssPlugin({
       paths: glob.sync(`${helpers.root("/src/")}/**/*.{ejs,html,css,ts}`),
-    }),
-
-    new webpack.DefinePlugin({
-      "process.env": {
-        ENV: JSON.stringify(ENV_MODE),
-      },
     }),
 
     new webpack.LoaderOptionsPlugin({
