@@ -44,6 +44,8 @@ const prodConfig = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
 
+    new webpack.optimize.ModuleConcatenationPlugin(),
+
     new webpack.HashedModuleIdsPlugin(),
 
     new AotPlugin({
