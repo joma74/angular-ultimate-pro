@@ -113,7 +113,12 @@ const webpackConfig = {
           /**
            * @param {{ context: string; request: string; }} m
            */
-          (m) => path.relative(m.context, m.request),
+          (m) => {
+            let newModuleNamePart = path.relative(m.context, m.request)
+            const re = new RegExp(helpers.escapeRegExp(helpers.root("")), "g")
+            newModuleNamePart = newModuleNamePart.replace(re, ".")
+            return newModuleNamePart
+          },
         )
         .join("_")
       if (isLLDEBUG) {
