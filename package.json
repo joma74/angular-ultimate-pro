@@ -18,7 +18,7 @@
   },
   "scripts": {
     "clean-dist": "del-cli 'dist/*'",
-    "clean-target": "del-cli 'target/*' '!*/yarn.build.log' '!*/\\.gitkeep'",
+    "clean-target": "del-cli 'target/*' '!*/yarn.*.log' '!*/\\.gitkeep'",
     "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.js' 'config/**/*.js'",
     "lint-js-fix": "yarn _lint-js --fix",
     "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
@@ -39,10 +39,11 @@
     "test-servencafe-prod-once": "start-server-and-test serve-prod http-get://localhost:$npm_package_config_prod_svr_port/index.html test-prod-cafe-once",
     "ci-dev": "run-p -l clean-target _lint-js prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
     "build": "run-s clean-dist && cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --profile --bail --display-error-details",
+    "build-logtofile": "unbuffer yarn build | tee target/yarn.build.log; gnome-terminal -x sh -c 'less +G -r target/yarn.build.log'",
     "ci-prod": "run-s -l clean-target build test-servencafe-prod-once",
-    "ci-prod-logtofile": "unbuffer yarn ci-prod | tee target/yarn.build.log; less +G -r target/yarn.build.log",
+    "ci-prod-logtofile": "unbuffer yarn ci-prod | tee target/yarn.prod.log; gnome-terminal -x sh -c 'less +G -r target/yarn.prod.log'",
     "ci": "run-p -l ci-prod ci-dev",
-    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.build.log; less +G -r target/yarn.build.log"
+    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.all.log; gnome-terminal -x sh -c 'less +G -r target/yarn.all.log'"
   },
   "resolutions": {
     "**/@types/webpack": "~3",
