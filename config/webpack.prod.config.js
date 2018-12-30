@@ -85,9 +85,7 @@ const prodConfig = {
       },
     }),
 
-    new StatsPlugin("./../target/webpack-prod-stats.json", {
-      chunkModules: true,
-    }),
+    new StatsPlugin("./../target/webpack-prod-stats.json"),
 
     new FileManagerPlugin({
       onEnd: {
