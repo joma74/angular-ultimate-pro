@@ -20,5 +20,14 @@ function escapeRegExp(theRegExp) {
   return theRegExp.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") // $& means the whole matched string
 }
 
+/**
+ *
+ * @param {string} theString
+ */
+function convertToBoolean(theString) {
+  return !!theString
+}
+
+exports.convertToBoolean = convertToBoolean
 exports.escapeRegExp = escapeRegExp
 exports.root = root

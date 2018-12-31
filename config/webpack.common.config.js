@@ -122,24 +122,6 @@ const webpackConfig = {
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
-      chunks: ["app", "angular-chunk"],
-      minChunks: function(module) {
-        if (isLLDEBUG) {
-          // tslint:disable-next-line:no-console
-          console.debug("[tslib-chunk] " + JSON.stringify(module.resource))
-        }
-        const result =
-          module.resource && /node_modules\/tslib/.test(module.resource)
-        if (isLLDEBUG) {
-          // tslint:disable-next-line:no-console
-          console.debug("[tslib-chunk] Accepted ? " + result)
-        }
-        return result
-      },
-      name: "tslib-chunk",
-    }),
-
-    new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app"],
       minChunks: function(module) {
         if (isLLDEBUG) {
@@ -148,7 +130,8 @@ const webpackConfig = {
         }
         const result =
           (module.resource && /node_modules\/@angular/.test(module.resource)) ||
-          /node_modules\/zone\.js/.test(module.resource)
+          /node_modules\/zone\.js/.test(module.resource) ||
+          /node_modules\/tslib/.test(module.resource)
         if (isLLDEBUG) {
           // tslint:disable-next-line:no-console
           console.debug("[angular-chunk] Accepted ? " + result)
@@ -168,7 +151,6 @@ const webpackConfig = {
           "wp-runtime",
           "polyfills",
           "rxjs-chunk",
-          "tslib-chunk",
           "angular-chunk",
           "app",
         ]
