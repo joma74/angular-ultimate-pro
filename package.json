@@ -7,6 +7,28 @@
   "author": "joma74 <dev-mails@gmx.net>",
   "license": "MIT",
   "private": false,
+  "bundlesize": [
+    {
+      "compression": "none",
+      "maxSize": "262.0 kB",
+      "path": "./dist/angular-chunk.*.js"
+    },
+    {
+      "compression": "none",
+      "maxSize": "500 B",
+      "path": "./dist/polyfills.*.js"
+    },
+    {
+      "compression": "none",
+      "maxSize": "27.5 kB",
+      "path": "./dist/rxjs-chunk.*.js"
+    },
+    {
+      "compression": "none",
+      "maxSize": "1.5 kB",
+      "path": "./dist/wp-runtime.*.js"
+    }
+  ],
   "config": {
     "target": "target",
     "reports": "target/reports",
@@ -21,8 +43,9 @@
     "clean-target": "del-cli 'target/*' '!*/yarn.*.log' '!*/\\.gitkeep'",
     "_lint-js": "tslint --project '.' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.js' 'config/**/*.js'",
     "lint-js-fix": "yarn _lint-js --fix",
-    "prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
-    "prettier-fix": "yarn prettier --write",
+    "_prettier": "prettier --list-different '**/*.{js,ts,tsx,json,md,html}'",
+    "prettier-fix": "yarn _prettier --write",
+    "check-bundlesize": "bundlesize",
     "tsc-validate-watch": "yarn tsc-validate-once --watch",
     "tsc-validate-once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
     "check-staged": "lint-staged",
@@ -37,13 +60,14 @@
     "test-servencafe-live": "start-server-and-test serve-dev http-get://localhost:$npm_package_config_dev_svr_port/index.html test-cafe-live",
     "test-servencafe-dev-once": "start-server-and-test serve-dev http-get://localhost:$npm_package_config_dev_svr_port/index.html test-cafe-once",
     "test-servencafe-prod-once": "start-server-and-test serve-prod http-get://localhost:$npm_package_config_prod_svr_port/index.html test-prod-cafe-once",
-    "ci-dev": "run-p -l clean-target _lint-js prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
-    "build": "run-s clean-dist && cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --profile --bail --display-error-details",
+    "ci-dev": "run-p -l clean-target _lint-js _prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
+    "_build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --profile --bail --display-error-details",
+    "build": "run-s clean-dist _build check-bundlesize",
     "build-logtofile": "unbuffer yarn build | tee target/yarn.build.log; gnome-terminal -x sh -c 'less +G -r target/yarn.build.log'",
     "ci-prod": "run-s -l clean-target build test-servencafe-prod-once",
-    "ci-prod-logtofile": "unbuffer yarn ci-prod | tee target/yarn.prod.log; gnome-terminal -x sh -c 'less +G -r target/yarn.prod.log'",
+    "ci-prod-logtofile": "unbuffer yarn ci-prod | tee target/yarn.ci-prod.log; gnome-terminal -x sh -c 'less +G -r target/yarn.ci-prod.log'",
     "ci": "run-p -l ci-prod ci-dev",
-    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.all.log; gnome-terminal -x sh -c 'less +G -r target/yarn.all.log'"
+    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.ci.log; gnome-terminal -x sh -c 'less +G -r target/yarn.ci.log'"
   },
   "resolutions": {
     "**/@types/webpack": "~3",
@@ -78,6 +102,7 @@
     "@types/webpack-merge": "^0",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "~4",
+    "bundlesize": "^0.17.0",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
     "del-cli": "^1.1.0",
