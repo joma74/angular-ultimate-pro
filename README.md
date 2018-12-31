@@ -344,111 +344,110 @@ Child
 ```
 Version: webpack 3.12.0
 Child
-    Hash: 1ae4e8
-    Time: 45914ms
+    Hash: 9a92f1
+    Time: 47488ms
     PublicPath: /
-                                  Asset       Size  Chunks                    Chunk Names
-      assets/images//angular.9db278.png    2.38 kB          [emitted]
-                   rxjs-chunk.f9ed5f.js      28 kB       0  [emitted]         rxjs-chunk
-                          app.255213.js    3.27 kB       1  [emitted]         app
-                    polyfills.62a64b.js   52 bytes       2  [emitted]         polyfills
-                angular-chunk.5d3b50.js     267 kB       3  [emitted]  [big]  angular-chunk
-                  tslib-chunk.c3ed0a.js  370 bytes       4  [emitted]         tslib-chunk
-                   wp-runtime.3b9c96.js    1.03 kB       5  [emitted]         wp-runtime
-              assets/css/app.022751.css    2.77 kB       1  [emitted]         app
-                             index.html    1.23 kB          [emitted]
-    ./../target/webpack-prod-stats.json    0 bytes          [emitted]
-    Entrypoint app [big] = wp-runtime.3b9c96.js rxjs-chunk.f9ed5f.js tslib-chunk.c3ed0a.js angular-chunk.5d3b50.js app.255213.js assets/css/app.022751.css
-    Entrypoint polyfills = wp-runtime.3b9c96.js polyfills.62a64b.js
+                                  Asset      Size  Chunks                    Chunk Names
+      assets/images//angular.9db278.png   2.38 kB          [emitted]
+                   rxjs-chunk.f9ed5f.js     28 kB       0  [emitted]         rxjs-chunk
+                          app.255213.js   3.27 kB       1  [emitted]         app
+                    polyfills.62a64b.js  52 bytes       2  [emitted]         polyfills
+                angular-chunk.33fec4.js    268 kB       3  [emitted]  [big]  angular-chunk
+                   wp-runtime.bf9c8e.js   1.03 kB       4  [emitted]         wp-runtime
+              assets/css/app.022751.css   2.77 kB       1  [emitted]         app
+                             index.html   1.09 kB          [emitted]
+    ./../target/webpack-prod-stats.json   0 bytes          [emitted]
+    Entrypoint app [big] = wp-runtime.bf9c8e.js rxjs-chunk.f9ed5f.js angular-chunk.33fec4.js app.255213.js assets/css/app.022751.css
+    Entrypoint polyfills = wp-runtime.bf9c8e.js polyfills.62a64b.js
 ```
 
 <details><summary>Chunks stats details</summary>
 <p>
 
 ```
-    chunk    {0} rxjs-chunk.f9ed5f.js (rxjs-chunk) 90.4 kB {5} [initial] [rendered]
+    chunk    {0} rxjs-chunk.f9ed5f.js (rxjs-chunk) 90.4 kB {4} [initial] [rendered]
      [+3eL] ./node_modules/rxjs/util/tryCatch.js 422 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/tryCatch [B00U] ./node_modules/rxjs/Subscription.js 5:17-43
-            [] -> factory:111ms building:9ms dependencies:1ms = 121ms
+            [] -> factory:66ms building:4ms dependencies:2ms = 72ms
      [+ayw] ./node_modules/rxjs/operator/share.js 1.15 kB {0} [depth 2] [built]
             [only some exports used: share]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             harmony import rxjs/operator/share [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 9:0-44
-            [] -> factory:79ms building:74ms = 153ms
+            [] -> factory:18ms building:11ms = 29ms
      [00YY] ./node_modules/rxjs/util/identity.js 118 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../util/identity [rKQy] ./node_modules/rxjs/operators/mergeAll.js 3:17-44
-            [] -> factory:44ms building:42ms = 86ms
+            [] -> factory:16ms building:19ms = 35ms
      [1KT0] ./node_modules/rxjs/observable/merge.js 3.89 kB {0} [depth 2] [built]
             [only some exports used: merge]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             harmony import rxjs/observable/merge [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 8:0-46
-            [] -> factory:79ms building:66ms dependencies:8ms = 153ms
+            [] -> factory:18ms building:9ms dependencies:2ms = 29ms
      [1r8+] ./node_modules/rxjs/util/isArrayLike.js 137 bytes {0} [depth 6] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./isArrayLike [CURp] ./node_modules/rxjs/util/subscribeToResult.js 3:20-44
-            [] -> factory:49ms building:1ms = 50ms
+            [] -> factory:11ms building:2ms = 13ms
      [6BaH] ./node_modules/rxjs/operators/multicast.js 2.61 kB {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./multicast [sTFn] ./node_modules/rxjs/operators/share.js 2:18-40
-            [] -> factory:39ms building:43ms = 82ms
+            [] -> factory:15ms building:20ms = 35ms
      [9dR0] ./node_modules/rxjs/operators/refCount.js 3.41 kB {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./refCount [sTFn] ./node_modules/rxjs/operators/share.js 3:17-38
             cjs require ../operators/refCount [sIYO] ./node_modules/rxjs/observable/ConnectableObservable.js 11:17-49
-            [] -> factory:40ms building:60ms dependencies:2ms = 102ms
+            [] -> factory:15ms building:31ms dependencies:6ms = 52ms
      [9eyw] ./node_modules/rxjs/util/pipe.js 611 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/pipe [rCTf] ./node_modules/rxjs/Observable.js 5:13-35
-            [] -> factory:45ms building:85ms = 130ms
+            [] -> factory:33ms building:63ms = 96ms
      [ANGw] ./node_modules/rxjs/operators/mergeMap.js 6.65 kB {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./mergeMap [rKQy] ./node_modules/rxjs/operators/mergeAll.js 2:17-38
-            [] -> factory:42ms building:34ms = 76ms
+            [] -> factory:16ms building:12ms = 28ms
      [B00U] ./node_modules/rxjs/Subscription.js 8.18 kB {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./Subscription [EEr4] ./node_modules/rxjs/Subject.js 9:21-46
             cjs require ./Subscription [ZJf8] ./node_modules/rxjs/SubjectSubscription.js 7:21-46
             cjs require ./Subscription [mmVS] ./node_modules/rxjs/Subscriber.js 8:21-46
             cjs require ../Subscription [sIYO] ./node_modules/rxjs/observable/ConnectableObservable.js 10:21-47
-            [] -> factory:118ms building:33ms = 151ms
+            [] -> factory:41ms building:17ms = 58ms
      [CURp] ./node_modules/rxjs/util/subscribeToResult.js 3.03 kB {0} [depth 5] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../util/subscribeToResult [ANGw] ./node_modules/rxjs/operators/mergeMap.js 7:26-62
-            [] -> factory:52ms building:17ms dependencies:4ms = 73ms
+            [] -> factory:33ms building:12ms dependencies:3ms = 48ms
      [EEr4] ./node_modules/rxjs/Subject.js 5.69 kB {0} [depth 2] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             harmony import rxjs/Subject [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 10:0-39
             cjs require ../Subject [sTFn] ./node_modules/rxjs/operators/share.js 4:16-37
             cjs require ../Subject [sIYO] ./node_modules/rxjs/observable/ConnectableObservable.js 7:16-37
-            [] -> factory:78ms building:21ms dependencies:3ms = 102ms
+            [] -> factory:17ms building:5ms dependencies:4ms = 26ms
      [GIjk] ./node_modules/rxjs/util/UnsubscriptionError.js 1.07 kB {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/UnsubscriptionError [B00U] ./node_modules/rxjs/Subscription.js 7:28-65
-            [] -> factory:114ms building:15ms = 129ms
+            [] -> factory:66ms building:8ms = 74ms
      [ICpg] ./node_modules/rxjs/util/isObject.js 151 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/isObject [B00U] ./node_modules/rxjs/Subscription.js 3:17-43
             cjs require ./isObject [CURp] ./node_modules/rxjs/util/subscribeToResult.js 5:17-38
-            [] -> factory:110ms building:9ms = 119ms
+            [] -> factory:65ms building:4ms = 69ms
      [IZVw] ./node_modules/rxjs/util/ObjectUnsubscribedError.js 955 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/ObjectUnsubscribedError [EEr4] ./node_modules/rxjs/Subject.js 10:32-73
-            [] -> factory:124ms building:78ms = 202ms
+            [] -> factory:42ms building:53ms = 95ms
      [QqRK] ./node_modules/rxjs/InnerSubscriber.js 1.29 kB {0} [depth 6] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../InnerSubscriber [CURp] ./node_modules/rxjs/util/subscribeToResult.js 8:24-53
-            [] -> factory:50ms building:10ms dependencies:0ms = 60ms
+            [] -> factory:12ms building:8ms dependencies:0ms = 20ms
      [RRVv] ./node_modules/rxjs/observable/ScalarObservable.js 1.92 kB {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./ScalarObservable [Yh8Q] ./node_modules/rxjs/observable/ArrayObservable.js 8:25-54
-            [] -> factory:91ms building:25ms dependencies:0ms = 116ms
+            [] -> factory:50ms building:9ms dependencies:1ms = 60ms
      [SKH6] ./node_modules/rxjs/util/isFunction.js 148 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/isFunction [B00U] ./node_modules/rxjs/Subscription.js 4:19-47
             cjs require ./util/isFunction [mmVS] ./node_modules/rxjs/Subscriber.js 7:19-47
-            [] -> factory:111ms building:8ms = 119ms
+            [] -> factory:65ms building:5ms = 70ms
      [VOfZ] ./node_modules/rxjs/util/root.js 885 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/root [rCTf] ./node_modules/rxjs/Observable.js 2:13-35
@@ -456,54 +455,54 @@ Child
             cjs require ../util/root [mbVC] ./node_modules/rxjs/symbol/observable.js 2:13-36
             cjs require ./root [CURp] ./node_modules/rxjs/util/subscribeToResult.js 2:13-30
             cjs require ../util/root [cdmN] ./node_modules/rxjs/symbol/iterator.js 2:13-36
-            [] -> factory:44ms building:82ms dependencies:1ms = 127ms
+            [] -> factory:33ms building:59ms dependencies:1ms = 93ms
      [WhVc] ./node_modules/rxjs/util/errorObject.js 177 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/errorObject [B00U] ./node_modules/rxjs/Subscription.js 6:20-49
             cjs require ./errorObject [+3eL] ./node_modules/rxjs/util/tryCatch.js 2:20-44
-            [] -> factory:113ms building:8ms = 121ms
+            [] -> factory:66ms building:6ms = 72ms
      [Xajo] ./node_modules/rxjs/util/isArray.js 146 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/isArray [B00U] ./node_modules/rxjs/Subscription.js 2:16-41
-            [] -> factory:110ms building:9ms = 119ms
+            [] -> factory:65ms building:4ms = 69ms
      [YOd+] ./node_modules/rxjs/util/noop.js 117 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./noop [9eyw] ./node_modules/rxjs/util/pipe.js 2:13-30
-            [] -> factory:51ms building:31ms = 82ms
+            [] -> factory:19ms building:11ms = 30ms
      [Yh8Q] ./node_modules/rxjs/observable/ArrayObservable.js 4.61 kB {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./ArrayObservable [1KT0] ./node_modules/rxjs/observable/merge.js 3:24-52
-            [] -> factory:75ms building:53ms dependencies:0ms = 128ms
+            [] -> factory:37ms building:32ms dependencies:1ms = 70ms
      [ZJf8] ./node_modules/rxjs/SubjectSubscription.js 1.4 kB {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./SubjectSubscription [EEr4] ./node_modules/rxjs/Subject.js 11:28-60
-            [] -> factory:120ms building:51ms dependencies:0ms = 171ms
+            [] -> factory:42ms building:29ms dependencies:1ms = 72ms
      [aQl7] ./node_modules/rxjs/util/isPromise.js 207 bytes {0} [depth 6] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./isPromise [CURp] ./node_modules/rxjs/util/subscribeToResult.js 4:18-40
-            [] -> factory:49ms building:2ms = 51ms
+            [] -> factory:12ms building:1ms = 13ms
      [cdmN] ./node_modules/rxjs/symbol/iterator.js 1.34 kB {0} [depth 6] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../symbol/iterator [CURp] ./node_modules/rxjs/util/subscribeToResult.js 7:17-46
-            [] -> factory:49ms building:3ms dependencies:0ms = 52ms
+            [] -> factory:12ms building:2ms dependencies:0ms = 14ms
      [fWbP] ./node_modules/rxjs/util/isScheduler.js 178 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../util/isScheduler [1KT0] ./node_modules/rxjs/observable/merge.js 4:20-50
             cjs require ../util/isScheduler [Yh8Q] ./node_modules/rxjs/observable/ArrayObservable.js 10:20-50
-            [] -> factory:79ms building:78ms = 157ms
+            [] -> factory:38ms building:58ms = 96ms
      [jBEF] ./node_modules/rxjs/observable/EmptyObservable.js 3.01 kB {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./EmptyObservable [Yh8Q] ./node_modules/rxjs/observable/ArrayObservable.js 9:24-52
-            [] -> factory:91ms building:26ms dependencies:0ms = 117ms
+            [] -> factory:51ms building:10ms dependencies:0ms = 61ms
      [lHsB] ./node_modules/rxjs/util/toSubscriber.js 760 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./util/toSubscriber [rCTf] ./node_modules/rxjs/Observable.js 3:21-51
-            [] -> factory:44ms building:84ms dependencies:53ms = 181ms
+            [] -> factory:33ms building:61ms dependencies:21ms = 115ms
      [mbVC] ./node_modules/rxjs/symbol/observable.js 718 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./symbol/observable [rCTf] ./node_modules/rxjs/Observable.js 4:19-49
             cjs require ../symbol/observable [CURp] ./node_modules/rxjs/util/subscribeToResult.js 9:19-50
-            [] -> factory:45ms building:92ms dependencies:0ms = 137ms
+            [] -> factory:34ms building:64ms dependencies:0ms = 98ms
      [mmVS] ./node_modules/rxjs/Subscriber.js 10.3 kB {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./Subscriber [EEr4] ./node_modules/rxjs/Subject.js 8:19-42
@@ -512,13 +511,13 @@ Child
             cjs require ./Subscriber [wAkD] ./node_modules/rxjs/OuterSubscriber.js 7:19-42
             cjs require ../Subscriber [sIYO] ./node_modules/rxjs/observable/ConnectableObservable.js 9:19-43
             cjs require ./Subscriber [QqRK] ./node_modules/rxjs/InnerSubscriber.js 7:19-42
-            [] -> factory:118ms building:71ms dependencies:73ms = 262ms
+            [] -> factory:41ms building:38ms dependencies:36ms = 115ms
      [r8ZY] ./node_modules/rxjs/symbol/rxSubscriber.js 363 bytes {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./symbol/rxSubscriber [EEr4] ./node_modules/rxjs/Subject.js 12:21-53
             cjs require ./symbol/rxSubscriber [mmVS] ./node_modules/rxjs/Subscriber.js 10:21-53
             cjs require ../symbol/rxSubscriber [lHsB] ./node_modules/rxjs/util/toSubscriber.js 3:21-54
-            [] -> factory:130ms building:91ms dependencies:1ms = 222ms
+            [] -> factory:43ms building:64ms dependencies:1ms = 108ms
      [rCTf] ./node_modules/rxjs/Observable.js 13.2 kB {0} [depth 2] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             harmony import rxjs/Observable [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 7:0-45
@@ -529,35 +528,35 @@ Child
             cjs require ../Observable [jBEF] ./node_modules/rxjs/observable/EmptyObservable.js 7:19-43
             cjs require ../Observable [CURp] ./node_modules/rxjs/util/subscribeToResult.js 6:19-43
             cjs require ../Observable [sIYO] ./node_modules/rxjs/observable/ConnectableObservable.js 8:19-43
-            [] -> factory:77ms building:107ms = 184ms
+            [] -> factory:17ms building:15ms = 32ms
      [rKQy] ./node_modules/rxjs/operators/mergeAll.js 2.32 kB {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../operators/mergeAll [1KT0] ./node_modules/rxjs/observable/merge.js 5:17-49
-            [] -> factory:84ms building:94ms = 178ms
+            [] -> factory:39ms building:65ms = 104ms
      [sIYO] ./node_modules/rxjs/observable/ConnectableObservable.js 6.96 kB {0} [depth 5] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../observable/ConnectableObservable [6BaH] ./node_modules/rxjs/operators/multicast.js 2:30-76
-            [] -> factory:50ms building:26ms dependencies:6ms = 82ms
+            [] -> factory:26ms building:18ms dependencies:2ms = 46ms
      [sTFn] ./node_modules/rxjs/operators/share.js 1.02 kB {0} [depth 3] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../operators/share [+ayw] ./node_modules/rxjs/operator/share.js 2:14-43
-            [] -> factory:76ms building:98ms dependencies:1ms = 175ms
+            [] -> factory:37ms building:67ms dependencies:1ms = 105ms
      [wAkD] ./node_modules/rxjs/OuterSubscriber.js 1.11 kB {0} [depth 5] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ../OuterSubscriber [ANGw] ./node_modules/rxjs/operators/mergeMap.js 8:24-53
-            [] -> factory:60ms building:15ms dependencies:0ms = 75ms
+            [] -> factory:34ms building:15ms dependencies:0ms = 49ms
      [yrou] ./node_modules/rxjs/Observer.js 193 bytes {0} [depth 4] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require ./Observer [mmVS] ./node_modules/rxjs/Subscriber.js 9:17-38
             cjs require ../Observer [lHsB] ./node_modules/rxjs/util/toSubscriber.js 4:17-39
-            [] -> factory:77ms building:31ms = 108ms
+            [] -> factory:37ms building:10ms = 47ms
     chunk    {1} app.255213.js, assets/css/app.022751.css (app) 9.34 kB {3} [initial] [rendered]
         > app []
      [6jZC] ./src lazy 160 bytes {1} [depth 2] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             import() context lazy . [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 5659:15-36
             import() context lazy . [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 5675:15-102
-            [] -> factory:39ms building:1ms = 40ms
+            [] -> factory:8ms building:1ms = 9ms
      [DuR2] (webpack)/buildin/global.js 509 bytes {1} [depth 2] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             cjs require global [ZSR1] ./node_modules/zone.js/dist/zone.js 1:0-44
@@ -568,25 +567,25 @@ Child
             [no exports used]
             ModuleConcatenation bailout: Module is not an ECMAScript module
             harmony import ../assets/css/styles.css [THjQ] ./src/main-prod.ts + 4 modules 1:0-34
-            [] -> factory:781ms building:11968ms = 12749ms
+ ]             [] -> factory:920ms building:12040ms = 12960ms
      [THjQ] ./src/main-prod.ts + 4 modules 8.63 kB {1} [depth 0] [built]
             [no exports]
             ModuleConcatenation bailout: Module is an entry point
             ModuleConcatenation bailout: Cannot concat with ./node_modules/@angular/core/@angular/core.es5.js (<- Module uses injected variables (global))
             ModuleConcatenation bailout: Cannot concat with ./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js
             ModuleConcatenation bailout: Cannot concat with ./node_modules/zone.js/dist/zone.js (<- Module is not an ECMAScript module)
-    chunk    {2} polyfills.62a64b.js (polyfills) 42 bytes {5} [initial] [rendered]
+    chunk    {2} polyfills.62a64b.js (polyfills) 42 bytes {4} [initial] [rendered]
         > polyfills [3msP] ./src/polyfills-prod.ts
      [3msP] ./src/polyfills-prod.ts 42 bytes {2} [depth 0] [built]
             ModuleConcatenation bailout: Module is not an ECMAScript module
-             factory:15391ms building:81ms = 15472ms
-    chunk    {3} angular-chunk.5d3b50.js (angular-chunk) 900 kB [initial] [rendered]
+             factory:16149ms building:79ms = 16228ms
+    chunk    {3} angular-chunk.33fec4.js (angular-chunk) 909 kB [initial] [rendered]
      [2Je8] ./node_modules/@angular/common/@angular/common.es5.js 132 kB {3} [depth 2] [built]
             [exports: NgLocaleLocalization, NgLocalization, ɵparseCookieValue, CommonModule, DeprecatedI18NPipesModule, NgClass, NgFor, NgForOf, NgForOfContext, NgIf, NgIfContext, NgPlural, NgPluralCase, NgStyle, NgSwitch, NgSwitchCase, NgSwitchDefault, NgTemplateOutlet, NgComponentOutlet, DOCUMENT, AsyncPipe, DatePipe, I18nPluralPipe, I18nSelectPipe, JsonPipe, LowerCasePipe, CurrencyPipe, DecimalPipe, PercentPipe, SlicePipe, UpperCasePipe, TitleCasePipe, ɵPLATFORM_BROWSER_ID, ɵPLATFORM_SERVER_ID, ɵPLATFORM_WORKER_APP_ID, ɵPLATFORM_WORKER_UI_ID, isPlatformBrowser, isPlatformServer, isPlatformWorkerApp, isPlatformWorkerUi, VERSION, PlatformLocation, LOCATION_INITIALIZED, LocationStrategy, APP_BASE_HREF, HashLocationStrategy, PathLocationStrategy, Location, ɵa, ɵb]
             [only some exports used: CommonModule, DOCUMENT, NgLocaleLocalization, NgLocalization, PlatformLocation, ɵPLATFORM_BROWSER_ID, ɵparseCookieValue]
             harmony import @angular/common [THjQ] ./src/main-prod.ts + 4 modules 11:0-38
             harmony import @angular/common [Qbdm] ./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js 7:0-116
-            [] -> factory:913ms building:11918ms dependencies:53ms = 12884ms
+            [] -> factory:992ms building:12014ms dependencies:22ms = 13028ms
      [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 492 kB {3} [depth 1] [built]
             [exports: Class, createPlatform, assertPlatform, destroyPlatform, getPlatform, PlatformRef, ApplicationRef, enableProdMode, isDevMode, createPlatformFactory, NgProbeToken, APP_ID, PACKAGE_ROOT_URL, PLATFORM_INITIALIZER, PLATFORM_ID, APP_BOOTSTRAP_LISTENER, APP_INITIALIZER, ApplicationInitStatus, DebugElement, DebugNode, asNativeElements, getDebugNode, Testability, TestabilityRegistry, setTestabilityGetter, TRANSLATIONS, TRANSLATIONS_FORMAT, LOCALE_ID, MissingTranslationStrategy, ApplicationModule, wtfCreateScope, wtfLeave, wtfStartTimeRange, wtfEndTimeRange, Type, EventEmitter, ErrorHandler, Sanitizer, SecurityContext, ANALYZE_FOR_ENTRY_COMPONENTS, Attribute, ContentChild, ContentChildren, Query, ViewChild, ViewChildren, Component, Directive, HostBinding, HostListener, Input, Output, Pipe, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule, ViewEncapsulation, Version, VERSION, forwardRef, resolveForwardRef, Injector, ReflectiveInjector, ResolvedReflectiveFactory, ReflectiveKey, InjectionToken, OpaqueToken, Inject, Optional, Injectable, Self, SkipSelf, Host, NgZone, RenderComponentType, Renderer, Renderer2, RendererFactory2, RendererStyleFlags2, RootRenderer, COMPILER_OPTIONS, Compiler, CompilerFactory, ModuleWithComponentFactories, ComponentFactory, ComponentRef, ComponentFactoryResolver, ElementRef, NgModuleFactory, NgModuleRef, NgModuleFactoryLoader, getModuleFactory, QueryList, SystemJsNgModuleLoader, SystemJsNgModuleLoaderConfig, TemplateRef, ViewContainerRef, EmbeddedViewRef, ViewRef, ChangeDetectionStrategy, ChangeDetectorRef, DefaultIterableDiffer, IterableDiffers, KeyValueDiffers, SimpleChange, WrappedValue, platformCore, ɵALLOW_MULTIPLE_PLATFORMS, ɵAPP_ID_RANDOM_PROVIDER, ɵValueUnwrapper, ɵdevModeEqual, ɵisListLikeIterable, ɵChangeDetectorStatus, ɵisDefaultChangeDetectionStrategy, ɵConsole, ɵERROR_COMPONENT_TYPE, ɵComponentFactory, ɵCodegenComponentFactoryResolver, ɵViewMetadata, ɵReflectionCapabilities, ɵRenderDebugInfo, ɵglobal, ɵlooseIdentical, ɵstringify, ɵmakeDecorator, ɵisObservable, ɵisPromise, ɵclearProviderOverrides, ɵoverrideProvider, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR, ɵregisterModuleFactory, ɵEMPTY_ARRAY, ɵEMPTY_MAP, ɵand, ɵccf, ɵcmf, ɵcrt, ɵdid, ɵeld, ɵelementEventFullName, ɵgetComponentViewDefinitionFactory, ɵinlineInterpolate, ɵinterpolate, ɵmod, ɵmpd, ɵncd, ɵnov, ɵpid, ɵprd, ɵpad, ɵpod, ɵppd, ɵqud, ɵted, ɵunv, ɵvid, AUTO_STYLE, trigger, animate, group, sequence, style, state, keyframes, transition, ɵx, ɵy, ɵbc, ɵz, ɵbb, ɵba, ɵbd, ɵw, ɵk, ɵl, ɵm, ɵe, ɵf, ɵg, ɵh, ɵi, ɵj, ɵb, ɵc, ɵd, ɵn, ɵp, ɵo, ɵs, ɵq, ɵr, ɵa, ɵt, ɵu]
             [only some exports used: APP_ID, APP_INITIALIZER, ApplicationInitStatus, ApplicationModule, ApplicationRef, Attribute, ChangeDetectorRef, Compiler, ComponentFactoryResolver, Directive, ElementRef, ErrorHandler, EventEmitter, Host, Inject, Injectable, InjectionToken, Injector, Input, IterableDiffers, KeyValueDiffers, LOCALE_ID, NgModule, NgModuleRef, NgProbeToken, NgZone, Optional, PLATFORM_ID, PLATFORM_INITIALIZER, Pipe, Renderer, RendererFactory2, RendererStyleFlags2, Sanitizer, SecurityContext, SkipSelf, TemplateRef, Testability, Version, ViewContainerRef, ViewEncapsulation, WrappedValue, createPlatformFactory, enableProdMode, getDebugNode, isDevMode, platformCore, setTestabilityGetter, ɵCodegenComponentFactoryResolver, ɵConsole, ɵccf, ɵcmf, ɵcrt, ɵdid, ɵe, ɵeld, ɵf, ɵglobal, ɵisListLikeIterable, ɵisObservable, ɵisPromise, ɵk, ɵl, ɵm, ɵmod, ɵmpd, ɵstringify, ɵted, ɵvid]
@@ -596,27 +595,26 @@ Child
             harmony import @angular/core [THjQ] ./src/main-prod.ts + 4 modules 7:0-36
             harmony import @angular/core [Qbdm] ./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js 8:0-462
             harmony import @angular/core [2Je8] ./node_modules/@angular/common/@angular/common.es5.js 7:0-392
-            [] -> factory:536ms building:13353ms dependencies:38ms = 13927ms
+            [] -> factory:394ms building:13780ms dependencies:6ms = 14180ms
      [Qbdm] ./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js 146 kB {3} [depth 1] [built]
             [exports: BrowserModule, platformBrowser, Meta, Title, disableDebugTools, enableDebugTools, By, NgProbeToken, DOCUMENT, EVENT_MANAGER_PLUGINS, EventManager, HAMMER_GESTURE_CONFIG, HammerGestureConfig, DomSanitizer, VERSION, ɵBROWSER_SANITIZATION_PROVIDERS, ɵINTERNAL_BROWSER_PLATFORM_PROVIDERS, ɵinitDomAdapter, ɵBrowserDomAdapter, ɵBrowserPlatformLocation, ɵTRANSITION_ID, ɵBrowserGetTestability, ɵELEMENT_PROBE_PROVIDERS, ɵDomAdapter, ɵgetDOM, ɵsetRootDomAdapter, ɵDomRendererFactory2, ɵNAMESPACE_URIS, ɵflattenStyles, ɵshimContentAttribute, ɵshimHostAttribute, ɵDomEventsPlugin, ɵHammerGesturesPlugin, ɵKeyEventsPlugin, ɵDomSharedStylesHost, ɵSharedStylesHost, ɵb, ɵa, ɵh, ɵg, ɵf, ɵc, ɵd, ɵe]
             [only some exports used: BrowserModule, DomSanitizer, EVENT_MANAGER_PLUGINS, EventManager, HAMMER_GESTURE_CONFIG, HammerGestureConfig, Meta, NgProbeToken, Title, platformBrowser, ɵDomEventsPlugin, ɵDomRendererFactory2, ɵDomSharedStylesHost, ɵHammerGesturesPlugin, ɵKeyEventsPlugin, ɵSharedStylesHost, ɵa, ɵc, ɵe]
             harmony import @angular/platform-browser [THjQ] ./src/main-prod.ts + 4 modules 2:0-60
             harmony import @angular/platform-browser [THjQ] ./src/main-prod.ts + 4 modules 12:0-48
-            [] -> factory:537ms building:1674ms dependencies:11ms = 2222ms
-     [ZSR1] ./node_modules/zone.js/dist/zone.js 130 kB {3} [depth 1] [built]
-            [no exports used]
-            ModuleConcatenation bailout: Module is not an ECMAScript module
-            harmony import zone.js/dist/zone [THjQ] ./src/main-prod.ts + 4 modules 3:0-27
-            [] -> factory:535ms building:1524ms = 2059ms
-    chunk    {4} tslib-chunk.c3ed0a.js (tslib-chunk) 9.05 kB [initial] [rendered]
-     [TToO] ./node_modules/tslib/tslib.es6.js 9.05 kB {4} [depth 2] [built]
+            [] -> factory:395ms building:1957ms dependencies:5ms = 2357ms
+     [TToO] ./node_modules/tslib/tslib.es6.js 9.05 kB {3} [depth 2] [built]
             [exports: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault]
             [only some exports used: __extends]
             harmony import tslib [Qbdm] ./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js 1:0-33
             harmony import tslib [2Je8] ./node_modules/@angular/common/@angular/common.es5.js 1:0-33
             harmony import tslib [3j3K] ./node_modules/@angular/core/@angular/core.es5.js 1:0-33
-            [] -> factory:10931ms building:53ms = 10984ms
-    chunk    {5} wp-runtime.3b9c96.js (wp-runtime) 0 bytes [entry] [rendered]
+            [] -> factory:10849ms building:42ms = 10891ms
+     [ZSR1] ./node_modules/zone.js/dist/zone.js 130 kB {3} [depth 1] [built]
+            [no exports used]
+            ModuleConcatenation bailout: Module is not an ECMAScript module
+            harmony import zone.js/dist/zone [THjQ] ./src/main-prod.ts + 4 modules 3:0-27
+            [] -> factory:393ms building:1864ms = 2257ms
+    chunk    {4} wp-runtime.bf9c8e.js (wp-runtime) 0 bytes [entry] [rendered]
     Child html-webpack-plugin for "index.html":
         PublicPath: /
          1 asset
@@ -626,18 +624,18 @@ Child
          [3IRH] (webpack)/buildin/module.js 517 bytes {0} [depth 2] [built]
                 ModuleConcatenation bailout: Module is not an ECMAScript module
                 cjs require module [M4fF] ./node_modules/lodash/lodash.js 1:0-41
-                [] -> factory:585ms building:21ms = 606ms
+                [] -> factory:884ms building:22ms = 906ms
          [DuR2] (webpack)/buildin/global.js 509 bytes {0} [depth 2] [built]
                 ModuleConcatenation bailout: Module is not an ECMAScript module
                 cjs require global [M4fF] ./node_modules/lodash/lodash.js 1:0-41
-                [] -> factory:584ms building:21ms = 605ms
+                [] -> factory:884ms building:21ms = 905ms
          [M4fF] ./node_modules/lodash/lodash.js 540 kB {0} [depth 1] [built]
                 ModuleConcatenation bailout: Module is not an ECMAScript module
                 cjs require !!../node_modules/lodash/lodash.js [wSpO] ./node_modules/html-webpack-plugin/lib/loader.js!./src/index.ejs 1:8-53
-                [] -> factory:7ms building:15272ms = 15279ms
+                [] -> factory:5ms building:16198ms = 16203ms
          [wSpO] ./node_modules/html-webpack-plugin/lib/loader.js!./src/index.ejs 897 bytes {0} [depth 0] [built]
                 ModuleConcatenation bailout: Module is not an ECMAScript module
-                 factory:1289ms building:66ms = 1355ms
+                 factory:1138ms building:33ms = 1171ms
     Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js??ref--3-2!node_modules/postcss-loader/lib/index.js??ref--3-3!src/assets/css/styles.css:
         PublicPath: /
         Entrypoint undefined = extract-text-webpack-plugin-output-filename
@@ -646,10 +644,10 @@ Child
          [FZ+f] ./node_modules/css-loader/lib/css-base.js 2.26 kB {0} [depth 1] [built]
                 ModuleConcatenation bailout: Module is not an ECMAScript module
                 cjs require ../../../node_modules/css-loader/lib/css-base.js [ZZTi] ./node_modules/css-loader??ref--3-2!./node_modules/postcss-loader/lib??ref--3-3!./src/assets/css/styles.css 1:27-86
-                [] -> factory:357ms building:5ms = 362ms
+                [] -> factory:377ms building:4ms = 381ms
          [ZZTi] ./node_modules/css-loader??ref--3-2!./node_modules/postcss-loader/lib??ref--3-3!./src/assets/css/styles.css 311 kB {0} [depth 0] [built]
                 ModuleConcatenation bailout: Module is not an ECMAScript module
-                 factory:2ms building:11565ms = 11567ms
+                 factory:7ms building:11632ms = 11639ms
 
 ```
 
