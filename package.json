@@ -50,7 +50,7 @@
     "tsc-validate-once": "node_modules/typescript/bin/tsc --project ./tsconfig.json --noEmit true",
     "check-staged": "lint-staged",
     "test-karma-once": "karma start karma.config.js",
-    "test-karma-watch": "cross-env DEBUG= karma start karma.config.js --auto-watch --no-single-run",
+    "test-karma-watch": "cross-env DEBUG=ON karma start karma.config.js --auto-watch --no-single-run",
     "serve-dev": "cross-env NODE_ENV=development webpack-dev-server --config=config/webpack.dev.config.js --watch --profile --no-progress",
     "serve-dev-dashboard": "cross-env NODE_ENV=WITHDASHBOARD_ENV webpack-dashboard -p $npm_package_config_dashboard_svr_port -c red -- yarn serve-dev",
     "serve-prod": "json-server --quiet --watch db.json --port $npm_package_config_prod_svr_port --static dist/",

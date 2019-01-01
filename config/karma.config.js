@@ -1,7 +1,12 @@
-// @ts-ignore
-require("karma-jasmine-html-reporter")
+const helpers = require("./helpers")
+const webpackConfig = require("./webpack.test.config")
+const prettyFormat = require("pretty-format")
 
-var webpackConfig = require("./webpack.test.config")
+const inDebugLoongTimeoutMS = 60 * 60 * 1000
+
+const isTRAVIS = helpers.convertToBoolean(process.env.TRAVIS)
+const isDEBUG = helpers.convertToBoolean(process.env.DEBUG)
+const isLLDEBUG = process.env.LL === "debug"
 
 /**
  * @param  {import ("karma").Config} config
@@ -13,7 +18,17 @@ module.exports = function(config) {
   var _config = {
     autoWatch: false,
     basePath: "",
+
+    browserDisconnectTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+    browserDisconnectTolerance: isDEBUG ? 100 : 0,
+    browserNoActivityTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+    // @ts-ignore
+    browserSocketTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+
     browsers: ["ChromeHeadless"], // ["Chrome"]
+
+    captureTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+
     colors: true,
 
     client: {
@@ -66,13 +81,19 @@ module.exports = function(config) {
     singleRun: true,
   }
 
-  if (process.env.TRAVIS) {
+  if (isTRAVIS) {
     _config.browsers = ["Chrome_travis_ci"]
   }
 
-  if (process.env.DEBUG) {
+  if (isDEBUG) {
     _config.browsers = ["Chrome_debugging"]
   }
 
   config.set(_config)
+
+  if (isLLDEBUG) {
+    const output = prettyFormat(config, { highlight: true })
+    // tslint:disable-next-line:no-console
+    console.debug(output)
+  }
 }
