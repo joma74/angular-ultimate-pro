@@ -53,7 +53,7 @@
     "test-karma-watch": "cross-env DEBUG=ON karma start karma.config.js --auto-watch --no-single-run",
     "serve-dev": "cross-env NODE_ENV=development webpack-dev-server --config=config/webpack.dev.config.js --watch --profile --no-progress",
     "serve-dev-dashboard": "cross-env NODE_ENV=WITHDASHBOARD_ENV webpack-dashboard -p $npm_package_config_dashboard_svr_port -c red -- yarn serve-dev",
-    "serve-prod": "json-server --quiet --watch db.json --port $npm_package_config_prod_svr_port --static dist/",
+    "serve-prod": "json-server --quiet --watch db.json --port $npm_package_config_prod_svr_port --static dist",
     "test-cafe-live": "testcafe-live 'chrome' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml src/tests/",
     "test-cafe-once": "testcafe 'firefox:headless,chrome:headless --no-sandbox --disable-gpu' -S -s $npm_package_config_screenshots -p $npm_package_config_screenshot_path_pattern -r spec,xunit:$npm_package_config_reports/report.xml --page-load-timeout 5000 src/tests/index-test.js",
     "test-prod-cafe-once": "cross-env NODE_ENV=production yarn test-cafe-once",

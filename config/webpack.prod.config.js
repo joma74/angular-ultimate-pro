@@ -1,14 +1,19 @@
-const commonConfig = require("./webpack.common.config")
+const glob = require("glob")
 const helpers = require("./helpers")
+const prettyFormat = require("pretty-format")
+/**
+ * https://web.archive.org/web/20180216190554/https://webpack.js.org/concepts/
+ */
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
+
 const AotPlugin = require("@ngtools/webpack").AotPlugin
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
-const prettyFormat = require("pretty-format")
 const PurgecssPlugin = require("purgecss-webpack-plugin")
 const StatsPlugin = require("stats-webpack-plugin")
-const glob = require("glob")
 const FileManagerPlugin = require("filemanager-webpack-plugin")
+
+const commonDevProdConfig = require("./webpack.common.devprod.config")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
 const isLLDEBUG = process.env.LL === "debug"
@@ -17,6 +22,7 @@ const isLLDEBUG = process.env.LL === "debug"
  * @type {import ("webpack").Configuration}
  */
 const prodConfig = {
+  devtool: false,
   entry: {
     app: helpers.root("src/main-prod.ts"),
     polyfills: helpers.root("src/polyfills-prod.ts"),
@@ -55,19 +61,21 @@ const prodConfig = {
     new webpack.HashedModuleIdsPlugin(),
 
     new AotPlugin({
-      compilerOptions: {
-        genDir: helpers.root("./dist/tsjsprod/aot/genDir"),
-        strictMetadataEmit: true,
-      },
       mainPath: helpers.root("src/main-prod.ts"),
+      skipCodeGeneration: false,
+      sourceMap: true,
       tsConfigPath: helpers.root("tsconfig.prod.json"),
     }),
 
+    // see https://github.com/webpack-contrib/uglifyjs-webpack-plugin/tree/v1.2.1
     new UglifyJsPlugin({
+      sourceMap: true,
       // https://github.com/angular/angular/issues/10618
       uglifyOptions: {
+        comments: false,
         compress: {
           passes: 1,
+          warnings: false,
         },
         mangle: {
           keep_fnames: true,
@@ -75,6 +83,15 @@ const prodConfig = {
         nameCache: {},
         parallel: true,
       },
+    }),
+
+    // For options see node_modules/webpack/lib/SourceMapDevToolPlugin.js
+    new webpack.SourceMapDevToolPlugin({
+      // only accepted param is [url]
+      // append: "\n//# sourceMappingURL=http://localhost:4003/[url]",
+      filename: "sourcemaps/[file].map",
+      // onec css is included in regex, all breaks?!
+      test: /\.(js|jsx)($|\?)/i,
     }),
 
     new PurgecssPlugin({
@@ -87,7 +104,7 @@ const prodConfig = {
       },
     }),
 
-    new StatsPlugin("./../target/webpack-prod-stats.json"),
+    new StatsPlugin("./../../target/webpack-prod-stats.json"),
 
     new FileManagerPlugin({
       onEnd: {
@@ -103,7 +120,7 @@ const prodConfig = {
   stats: isLLDEBUG ? "verbose" : "normal",
 }
 
-const webpackConfig = [webpackMerge(commonConfig, prodConfig)]
+const webpackConfig = [webpackMerge(commonDevProdConfig, prodConfig)]
 
 if (isLLDEBUG) {
   const output = prettyFormat(webpackConfig, { highlight: true })

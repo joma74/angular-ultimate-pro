@@ -1,15 +1,20 @@
-const commonConfig = require("./webpack.common.config")
-const NameAllModulesPlugin = require("name-all-modules-plugin")
 const helpers = require("./helpers")
 const jsonServer = require("json-server")
+const prettyFormat = require("pretty-format")
+/**
+ * https://web.archive.org/web/20180216190554/https://webpack.js.org/concepts/
+ */
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge")
+
+const NameAllModulesPlugin = require("name-all-modules-plugin")
 const { CheckerPlugin } = require("awesome-typescript-loader")
 const DiskPlugin = require("webpack-disk-plugin")
-const prettyFormat = require("pretty-format")
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const DashboardPlugin = require("webpack-dashboard/plugin")
 const noop = require("noop-webpack-plugin")
+
+const commonDevProdConfig = require("./webpack.common.devprod.config")
 
 const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "development")
 const isLLDEBUG = process.env.LL === "debug"
@@ -72,7 +77,7 @@ const devConfig = {
   output: {
     chunkFilename: "[id].chunk.js",
     filename: "[name].js",
-    path: helpers.root("dist"),
+    path: helpers.root("dist", "public"),
     publicPath,
   },
   plugins: [
@@ -114,11 +119,11 @@ const devConfig = {
         // All caches together must be larger than `sizeThreshold` before any
         // caches will be deleted. Together they must be at least this
         // (default: 50 MB) big in bytes.
-        sizeThreshold: 50 * 1024 * 1024,
+        sizeThreshold: 100 * 1024 * 1024,
       },
       info: {
         // 'debug', 'log', 'info', 'warn', or 'error'.
-        level: "warn",
+        level: "debug",
         // 'none' or 'test'.
         mode: "none",
       },
@@ -129,7 +134,7 @@ const devConfig = {
   stats: isLLDEBUG && !isWITHDASHBOARD ? "verbose" : "normal",
 }
 
-let webpackConfig = [webpackMerge(commonConfig, devConfig)]
+let webpackConfig = [webpackMerge(commonDevProdConfig, devConfig)]
 
 webpackConfig = [
   webpackMerge.smart(
