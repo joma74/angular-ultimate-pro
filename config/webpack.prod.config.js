@@ -29,8 +29,8 @@ const commonDevProdConfig = require("./webpack.common.devprod.config")
 const prodConfig = {
   devtool: false,
   entry: {
-    app: helpers.root("src/main-prod.ts"),
-    polyfills: helpers.root("src/polyfills-prod.ts"),
+    app: helpers.rootAbs("src/main-prod.ts"),
+    polyfills: helpers.rootAbs("src/polyfills-prod.ts"),
   },
   module: {
     rules: [
@@ -49,7 +49,7 @@ const prodConfig = {
     filename: "[name].[chunkhash].js",
     hashDigestLength: 6,
     hashFunction: "md5",
-    path: helpers.root("dist"),
+    path: helpers.rootAbs("dist"),
     publicPath: "/",
   },
   plugins: [
@@ -66,10 +66,10 @@ const prodConfig = {
     new webpack.HashedModuleIdsPlugin(),
 
     new AotPlugin({
-      mainPath: helpers.root("src/main-prod.ts"),
+      mainPath: helpers.rootAbs("src/main-prod.ts"),
       skipCodeGeneration: false,
       sourceMap: true,
-      tsConfigPath: helpers.root("tsconfig.prod.json"),
+      tsConfigPath: helpers.rootAbs("tsconfig.prod.json"),
     }),
 
     // see https://github.com/webpack-contrib/uglifyjs-webpack-plugin/tree/v1.2.1
@@ -100,7 +100,7 @@ const prodConfig = {
     }),
 
     new PurgecssPlugin({
-      paths: glob.sync(`${helpers.root("/src/")}/**/*.{ejs,html,css,ts}`),
+      paths: glob.sync(`${helpers.rootAbs("/src/")}/**/*.{ejs,html,css,ts}`),
     }),
 
     new webpack.LoaderOptionsPlugin({
@@ -115,8 +115,8 @@ const prodConfig = {
       onEnd: {
         copy: [
           {
-            destination: helpers.root("dist", "assets", "images"),
-            source: helpers.root("src", "assets", "images", "**/*"),
+            destination: helpers.rootAbs("dist", "assets", "images"),
+            source: helpers.rootAbs("src", "assets", "images", "**/*"),
           },
         ],
       },

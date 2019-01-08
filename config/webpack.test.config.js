@@ -37,7 +37,7 @@ const webpackConfig = {
         use: [
           {
             loader: "awesome-typescript-loader",
-            options: { configFileName: helpers.root("tsconfig.json") },
+            options: { configFileName: helpers.rootAbs("tsconfig.json") },
           },
           "angular2-template-loader",
         ],
@@ -52,17 +52,17 @@ const webpackConfig = {
       },
       {
         exclude: /node_modules/,
-        include: helpers.root("src", "app"),
+        include: helpers.rootAbs("src", "app"),
         loaders: ["raw-loader", "sass-loader"], // sass-loader not scss-loader
         test: /\.scss$/,
       },
       {
-        exclude: helpers.root("src", "app"),
+        exclude: helpers.rootAbs("src", "app"),
         test: /\.css$/,
         use: "null-loader",
       },
       {
-        include: helpers.root("src", "app"),
+        include: helpers.rootAbs("src", "app"),
         test: /\.css$/,
         use: "raw-loader",
       },
@@ -73,7 +73,7 @@ const webpackConfig = {
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)@angular/,
-      helpers.root("./src"), // location of your src
+      helpers.rootAbs("./src"), // location of your src
       {}, // a map of your routes
     ),
 

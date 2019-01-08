@@ -8,7 +8,7 @@ const _rootRel = path.relative(".", "..")
  * @param {...string} args
  * @returns {string} an absolute path
  */
-function root(args) {
+function rootAbs(args) {
   args = Array.prototype.slice.call(arguments, 0)
   return path.join.apply(path, [_root].concat(args))
 }
@@ -42,6 +42,6 @@ function convertToBoolean(theString) {
 module.exports = {
   convertToBoolean,
   escapeRegExp,
-  root,
+  rootAbs: rootAbs,
   rootRel,
 }

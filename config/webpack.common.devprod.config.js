@@ -56,13 +56,13 @@ const webpackConfig = {
       },
       {
         exclude: /node_modules/,
-        include: helpers.root("src", "app"),
+        include: helpers.rootAbs("src", "app"),
         loaders: ["raw-loader", "sass-loader"], // sass-loader not scss-loader
         test: /\.scss$/,
       },
       {
         exclude: /node_modules/,
-        include: helpers.root("src", "assets", "css"),
+        include: helpers.rootAbs("src", "assets", "css"),
         test: /\.css$/,
         use: [
           ...extractCSS.extract({
@@ -89,7 +89,7 @@ const webpackConfig = {
         ],
       },
       {
-        include: helpers.root("src", "app"),
+        include: helpers.rootAbs("src", "app"),
         test: /\.css$/,
         use: "raw-loader",
       },
@@ -101,7 +101,7 @@ const webpackConfig = {
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)@angular/,
-      helpers.root("./src"), // location of your src
+      helpers.rootAbs("./src"), // location of your src
       {}, // a map of your routes
     ),
 
@@ -176,7 +176,7 @@ const webpackConfig = {
   ],
   resolve: {
     extensions: [".ts", ".js"],
-    modules: [helpers.root("src"), helpers.root("node_modules")],
+    modules: [helpers.rootAbs("src"), helpers.rootAbs("node_modules")],
   },
 }
 

@@ -29,7 +29,7 @@ const commonDevProdConfig = require("./webpack.common.devprod.config")
 /**
  * Current Project Dir
  */
-const contentNotFromWebpackIsServedFrom = helpers.root("src/")
+const contentNotFromWebpackIsServedFrom = helpers.rootAbs("src")
 const publicPath = "/"
 
 /**
@@ -37,7 +37,7 @@ const publicPath = "/"
  */
 const devServer = {
   before(app) {
-    app.use("/api", jsonServer.router(helpers.root("/db.json")))
+    app.use("/api", jsonServer.router(helpers.rootAbs("db.json")))
   },
   clientLogLevel: "warning",
   compress: true,
@@ -56,8 +56,8 @@ const devConfig = {
   devServer,
   devtool: "cheap-module-eval-source-map",
   entry: {
-    app: helpers.root("src/main-dev.ts"),
-    polyfills: helpers.root("src/polyfills-dev.ts"),
+    app: helpers.rootAbs("src", "main-dev.ts"),
+    polyfills: helpers.rootAbs("src", "polyfills-dev.ts"),
   },
   module: {
     rules: [
@@ -70,7 +70,7 @@ const devConfig = {
           {
             loader: "awesome-typescript-loader",
             options: {
-              configFileName: helpers.root("tsconfig.json"),
+              configFileName: helpers.rootAbs("tsconfig.json"),
               reportFiles: ["src/**/*.{ts,tsx}"],
               silent: true,
             },
@@ -83,7 +83,7 @@ const devConfig = {
   output: {
     chunkFilename: "[id].chunk.js",
     filename: "[name].js",
-    path: helpers.root("dist", "public"),
+    path: helpers.rootAbs("dist", "public"),
     publicPath,
   },
   plugins: [
@@ -112,7 +112,7 @@ const devConfig = {
         },
       ],
       output: {
-        path: helpers.root("/target/"),
+        path: helpers.rootAbs("target"),
       },
     }),
 
@@ -156,7 +156,7 @@ webpackConfig = [
         rules: [
           {
             exclude: /node_modules/,
-            include: helpers.root("src", "assets", "css"),
+            include: helpers.rootAbs("src", "assets", "css"),
             test: /\.css$/,
             use: [{ loader: "extracted-loader" }],
           },
