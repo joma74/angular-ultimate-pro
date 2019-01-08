@@ -1,3 +1,6 @@
+const ENVLL = require("./env/ENVLL")
+const ENVMODE = require("./env/ENVMODE")
+
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const PreloadWebpackPlugin = require("preload-webpack-plugin")
@@ -7,13 +10,9 @@ const helpers = require("./helpers")
  */
 const webpack = require("webpack")
 
-const isNodeEnvDev = process.env.NODE_ENV === "development"
-
-const isLLDEBUG = process.env.LL === "debug"
-
 const extractCSS = new ExtractTextPlugin({
   allChunks: true,
-  filename: isNodeEnvDev
+  filename: ENVMODE.hasVDevelopment()
     ? "assets/css/[name].css"
     : "assets/css/[name].[contenthash:6].css",
 })
@@ -73,8 +72,8 @@ const webpackConfig = {
                 loader: "css-loader",
                 options: {
                   importLoaders: 1,
-                  minimize: !isNodeEnvDev,
-                  sourceMap: isNodeEnvDev,
+                  minimize: ENVMODE.hasVProduction(),
+                  sourceMap: ENVMODE.hasVProduction(),
                 },
               },
               {
@@ -109,13 +108,13 @@ const webpackConfig = {
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app", "angular-chunk"],
       minChunks: function(module) {
-        if (isLLDEBUG) {
+        if (ENVLL.isDebugEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[rxjs-chunk] " + JSON.stringify(module.resource))
         }
         const result =
           module.resource && /node_modules\/rxjs/.test(module.resource)
-        if (isLLDEBUG) {
+        if (ENVLL.isDebugEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[rxjs-chunk] Accepted ? " + result)
         }
@@ -127,7 +126,7 @@ const webpackConfig = {
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app"],
       minChunks: function(module) {
-        if (isLLDEBUG) {
+        if (ENVLL.isDebugEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[angular-chunk] " + JSON.stringify(module.resource))
         }
@@ -135,7 +134,7 @@ const webpackConfig = {
           (module.resource && /node_modules\/@angular/.test(module.resource)) ||
           /node_modules\/zone\.js/.test(module.resource) ||
           /node_modules\/tslib/.test(module.resource)
-        if (isLLDEBUG) {
+        if (ENVLL.isDebugEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[angular-chunk] Accepted ? " + result)
         }

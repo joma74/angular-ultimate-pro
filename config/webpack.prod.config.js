@@ -1,3 +1,6 @@
+const ENVLL = require("./env/ENVLL")
+const ENVMODE = require("./env/ENVMODE")
+
 const glob = require("glob")
 const helpers = require("./helpers")
 const prettyFormat = require("pretty-format")
@@ -13,10 +16,12 @@ const PurgecssPlugin = require("purgecss-webpack-plugin")
 const StatsPlugin = require("stats-webpack-plugin")
 const FileManagerPlugin = require("filemanager-webpack-plugin")
 
-const commonDevProdConfig = require("./webpack.common.devprod.config")
+/**
+ * set MODE first!!
+ */
+const ENV_MODE = ENVMODE.setToProduction()
 
-const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "production")
-const isLLDEBUG = process.env.LL === "debug"
+const commonDevProdConfig = require("./webpack.common.devprod.config")
 
 /**
  * @type {import ("webpack").Configuration}
@@ -88,7 +93,7 @@ const prodConfig = {
     // For options see node_modules/webpack/lib/SourceMapDevToolPlugin.js
     new webpack.SourceMapDevToolPlugin({
       // only accepted param is [url]
-      // append: "\n//# sourceMappingURL=http://localhost:4003/[url]",
+      // append: `\n//# sourceMappingURL=http://localhost:${ENVAPPSRVPORT.getVProd()}/[url]`,
       filename: "sourcemaps/[file].map",
       // onec css is included in regex, all breaks?!
       test: /\.(js|jsx)($|\?)/i,
@@ -117,12 +122,12 @@ const prodConfig = {
       },
     }),
   ],
-  stats: isLLDEBUG ? "verbose" : "normal",
+  stats: ENVLL.isDebugEnabled() ? "verbose" : "normal",
 }
 
 const webpackConfig = [webpackMerge(commonDevProdConfig, prodConfig)]
 
-if (isLLDEBUG) {
+if (ENVLL.isDebugEnabled()) {
   const output = prettyFormat(webpackConfig, { highlight: true })
   // tslint:disable-next-line:no-console
   console.debug(output)

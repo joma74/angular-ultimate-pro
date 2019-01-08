@@ -55,13 +55,16 @@
       "name": "Launch webpack-dev-server",
       "cwd": "${workspaceFolder}",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "LL": "debug",
+        "WITHDASHBOARD": "on"
       },
       "program": "${workspaceRoot}/node_modules/.bin/webpack-dev-server",
       "args": [
         "--watch",
+        "--profile",
         "--no-progress",
-        "--config=webpack.config.js"
+        "--config=config/webpack.dev.config.js"
       ],
       "stopOnEntry": true
     }

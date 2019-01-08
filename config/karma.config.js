@@ -1,12 +1,13 @@
-const helpers = require("./helpers")
+const ENVDEBUG = require("./env/ENVDEBUG")
+const ENVLL = require("./env/ENVLL")
+const ENVTRAVIS = require("./env/ENVTRAVIS")
+const ENVKARMASVRPORT = require("./env/ENVKARMASVRPORT")
+const ENVBROWSERRMTDBGPORT = require("./env/ENVBROWSERRMTDBGPORT")
+
 const webpackConfig = require("./webpack.test.config")
 const prettyFormat = require("pretty-format")
 
 const inDebugLoongTimeoutMS = 60 * 60 * 1000
-
-const isTRAVIS = helpers.convertToBoolean(process.env.TRAVIS)
-const isDEBUG = helpers.convertToBoolean(process.env.DEBUG)
-const isLLDEBUG = process.env.LL === "debug"
 
 /**
  * @param  {import ("karma").Config} config
@@ -19,15 +20,15 @@ module.exports = function(config) {
     autoWatch: false,
     basePath: "",
 
-    browserDisconnectTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
-    browserDisconnectTolerance: isDEBUG ? 100 : 0,
-    browserNoActivityTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+    browserDisconnectTimeout: ENVDEBUG.isSet() ? inDebugLoongTimeoutMS : 0,
+    browserDisconnectTolerance: ENVDEBUG.isSet() ? 100 : 0,
+    browserNoActivityTimeout: ENVDEBUG.isSet() ? inDebugLoongTimeoutMS : 0,
     // @ts-ignore
-    browserSocketTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+    browserSocketTimeout: ENVDEBUG.isSet() ? inDebugLoongTimeoutMS : 0,
 
     browsers: ["ChromeHeadless"], // ["Chrome"]
 
-    captureTimeout: isDEBUG ? inDebugLoongTimeoutMS : 0,
+    captureTimeout: ENVDEBUG.isSet() ? inDebugLoongTimeoutMS : 0,
 
     colors: true,
 
@@ -39,7 +40,7 @@ module.exports = function(config) {
     customLaunchers: {
       Chrome_debugging: {
         base: "ChromeHeadless",
-        flags: ["--remote-debugging-port=9222"],
+        flags: [`--remote-debugging-port=${ENVBROWSERRMTDBGPORT.get()}`],
       },
       Chrome_travis_ci: {
         base: "ChromeHeadless",
@@ -76,22 +77,22 @@ module.exports = function(config) {
       noInfo: true,
     },
 
-    port: 9876,
+    port: parseInt(ENVKARMASVRPORT.get()),
     reporters: ["spec"], // reporters: ["spec", "kjhtml"],
     singleRun: true,
   }
 
-  if (isTRAVIS) {
+  if (ENVTRAVIS.isSet()) {
     _config.browsers = ["Chrome_travis_ci"]
   }
 
-  if (isDEBUG) {
+  if (ENVDEBUG.isSet()) {
     _config.browsers = ["Chrome_debugging"]
   }
 
   config.set(_config)
 
-  if (isLLDEBUG) {
+  if (ENVLL.isDebugEnabled()) {
     const output = prettyFormat(config, { highlight: true })
     // tslint:disable-next-line:no-console
     console.debug(output)

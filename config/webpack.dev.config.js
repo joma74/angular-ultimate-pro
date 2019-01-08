@@ -1,3 +1,9 @@
+const ENVLL = require("./env/ENVLL")
+const ENVMODE = require("./env/ENVMODE")
+const ENVAPPSRVPORT = require("./env/ENVAPPSRVPORT")
+const ENVWITHDASHBOARD = require("./env/ENVWITHDASHBOARD")
+const ENVDASHBOARDSVRPORT = require("./env/ENVDASHBOARDSVRPORT")
+
 const helpers = require("./helpers")
 const jsonServer = require("json-server")
 const prettyFormat = require("pretty-format")
@@ -12,13 +18,13 @@ const { CheckerPlugin } = require("awesome-typescript-loader")
 const DiskPlugin = require("webpack-disk-plugin")
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const DashboardPlugin = require("webpack-dashboard/plugin")
-const noop = require("noop-webpack-plugin")
+
+/**
+ * set MODE first!!
+ */
+const ENV_MODE = ENVMODE.setToDevelopment()
 
 const commonDevProdConfig = require("./webpack.common.devprod.config")
-
-const ENV_MODE = (process.env.NODE_ENV = process.env.ENV = "development")
-const isLLDEBUG = process.env.LL === "debug"
-const isWITHDASHBOARD = !!process.env.WITHDASHBOARD
 
 /**
  * Current Project Dir
@@ -37,9 +43,9 @@ const devServer = {
   compress: true,
   contentBase: contentNotFromWebpackIsServedFrom,
   historyApiFallback: true,
-  host: "0.0.0.0",
+  host: "localhost",
   hot: true,
-  port: 4001,
+  port: parseInt(ENVAPPSRVPORT.getVDev()),
   stats: "normal",
   watchContentBase: false,
 }
@@ -128,10 +134,17 @@ const devConfig = {
         mode: "none",
       },
     }),
-
-    isWITHDASHBOARD ? noop() : new DashboardPlugin({ port: 4002 }),
   ],
-  stats: isLLDEBUG && !isWITHDASHBOARD ? "verbose" : "normal",
+  stats:
+    ENVLL.isDebugEnabled() && ENVWITHDASHBOARD.isNotSet()
+      ? "verbose"
+      : "normal",
+}
+
+if (ENVWITHDASHBOARD.isSet()) {
+  devConfig.plugins.push(
+    new DashboardPlugin({ port: ENVDASHBOARDSVRPORT.get() }),
+  )
 }
 
 let webpackConfig = [webpackMerge(commonDevProdConfig, devConfig)]
@@ -154,7 +167,7 @@ webpackConfig = [
   ),
 ]
 
-if (isLLDEBUG) {
+if (ENVLL.isDebugEnabled()) {
   const output = prettyFormat(webpackConfig, { highlight: true })
   // tslint:disable-next-line:no-console
   console.debug(output)

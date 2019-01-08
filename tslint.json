@@ -6,7 +6,8 @@
       "check-format",
       "allow-leading-underscore",
       "allow-pascal-case"
-    ]
+    ],
+    "radix": false
   },
   "linterOptions": {
     "exclude": ["config/profiles/**", "dist/**", "node_modules/**", "target/**"]
@@ -52,6 +53,7 @@
     "object-literal-shorthand": true,
     "prefer-object-spread": false,
     "prefer-const": true,
+    "radix": false,
     "switch-default": true,
     "ter-arrow-spacing": true,
     "ter-no-mixed-spaces-and-tabs": true,
@@ -68,5 +70,6 @@
       "allow-leading-underscore",
       "allow-pascal-case"
     ]
-  }
+  },
+  "rulesDirectory": ""
 }
