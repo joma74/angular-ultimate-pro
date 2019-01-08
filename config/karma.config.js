@@ -53,15 +53,13 @@ module.exports = function(config) {
     // @ts-ignore
     failOnEmptyTestSuite: false,
 
-    files: [
-      { pattern: "./config/karma.testloader.webpack.js", watched: false },
-    ],
+    files: [{ pattern: "./karma.testloader.webpack.js", watched: false }],
 
     logLevel: config.LOG_INFO,
     mime: { "text/x-typescript": ["ts", "tsx"] },
 
     preprocessors: {
-      "./config/karma.testloader.webpack.js": ["webpack", "sourcemap"],
+      "./karma.testloader.webpack.js": ["webpack", "sourcemap"],
     },
 
     webpack: webpackConfig,
