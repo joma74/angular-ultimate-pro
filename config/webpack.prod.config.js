@@ -109,7 +109,7 @@ const prodConfig = {
       },
     }),
 
-    new StatsPlugin("./../../target/webpack-prod-stats.json"),
+    new StatsPlugin(helpers.rootRel("target", "webpack-prod-stats.json")),
 
     new FileManagerPlugin({
       onEnd: {

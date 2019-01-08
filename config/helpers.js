@@ -1,15 +1,26 @@
 const path = require("path")
 
 const _root = path.resolve(__dirname, "..")
+const _rootRel = path.relative(".", "..")
 
 /**
  * Joins the path of args with this "./.." as root
  * @param {...string} args
- * @returns {string}
+ * @returns {string} an absolute path
  */
 function root(args) {
   args = Array.prototype.slice.call(arguments, 0)
   return path.join.apply(path, [_root].concat(args))
+}
+
+/**
+ * Joins the path of args with this "./.." as root
+ * @param {...string} args
+ * @returns {string} an absolute path
+ */
+function rootRel(args) {
+  args = Array.prototype.slice.call(arguments, 0)
+  return path.join.apply(path, [_rootRel].concat(args))
 }
 
 /**
@@ -28,6 +39,9 @@ function convertToBoolean(theString) {
   return !!theString
 }
 
-exports.convertToBoolean = convertToBoolean
-exports.escapeRegExp = escapeRegExp
-exports.root = root
+module.exports = {
+  convertToBoolean,
+  escapeRegExp,
+  root,
+  rootRel,
+}
