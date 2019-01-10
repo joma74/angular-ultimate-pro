@@ -1,4 +1,3 @@
-// @ts-ignore
 import { AngularSelector, waitForAngular } from "testcafe-angular-selectors"
 
 const fixtureName = "Index_Page_Test"
@@ -49,7 +48,7 @@ test(testName, async (t) => {
 /**
  *
  * @param {TestController} t
- * @param {AngularSelector} component
+ * @param {Selector} component
  * @param {string} dataDescOf
  * @param {string} expectedHeadingText
  */
