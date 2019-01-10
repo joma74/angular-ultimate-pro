@@ -69,7 +69,8 @@
     "ci-prod": "run-s -l clean-target build test-servencafe-prod-once",
     "ci-prod-logtofile": "unbuffer yarn ci-prod | tee target/yarn.ci-prod.log; gnome-terminal -x sh -c 'less +G -r target/yarn.ci-prod.log'",
     "ci": "run-p -l ci-prod ci-dev",
-    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.ci.log; gnome-terminal -x sh -c 'less +G -r target/yarn.ci.log'"
+    "ci-logtofile": "unbuffer yarn ci | tee target/yarn.ci.log; gnome-terminal -x sh -c 'less +G -r target/yarn.ci.log'",
+    "postinstall": "make-dir dist target"
   },
   "resolutions": {
     "**/@types/webpack": "~3",
@@ -128,6 +129,7 @@
     "karma-spec-reporter": "^0.0.32",
     "karma-webpack": "~3",
     "lint-staged": "^7.3.0",
+    "make-dir-cli": "^1.0.0",
     "mustache": "^3.0.0",
     "name-all-modules-plugin": "^1.0.1",
     "ng-router-loader": "^2.1.0",
