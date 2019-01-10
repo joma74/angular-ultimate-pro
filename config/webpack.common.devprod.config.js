@@ -108,13 +108,13 @@ const webpackConfig = {
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app", "angular-chunk"],
       minChunks: function(module) {
-        if (ENVLL.isDebugEnabled()) {
+        if (ENVLL.isTraceEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[rxjs-chunk] " + JSON.stringify(module.resource))
         }
         const result =
           module.resource && /node_modules\/rxjs/.test(module.resource)
-        if (ENVLL.isDebugEnabled()) {
+        if (ENVLL.isTraceEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[rxjs-chunk] Accepted ? " + result)
         }
@@ -126,7 +126,7 @@ const webpackConfig = {
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app"],
       minChunks: function(module) {
-        if (ENVLL.isDebugEnabled()) {
+        if (ENVLL.isTraceEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[angular-chunk] " + JSON.stringify(module.resource))
         }
@@ -134,7 +134,7 @@ const webpackConfig = {
           (module.resource && /node_modules\/@angular/.test(module.resource)) ||
           /node_modules\/zone\.js/.test(module.resource) ||
           /node_modules\/tslib/.test(module.resource)
-        if (ENVLL.isDebugEnabled()) {
+        if (ENVLL.isTraceEnabled()) {
           // tslint:disable-next-line:no-console
           console.debug("[angular-chunk] Accepted ? " + result)
         }
