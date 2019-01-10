@@ -7423,8 +7423,8 @@ term-size@^1.2.0:
     execa "^0.7.0"
 
 testcafe-angular-selectors@^0.3.0:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/testcafe-angular-selectors/-/testcafe-angular-selectors-0.3.1.tgz#329fc6d532aec68893c82a2f0ce5e74796226486"
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/testcafe-angular-selectors/-/testcafe-angular-selectors-0.3.2.tgz#7fb0a658deb9fa559a04bb102226569680847ce0"
 
 testcafe-browser-tools@1.6.5:
   version "1.6.5"
