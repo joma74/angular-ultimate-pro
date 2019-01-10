@@ -2,4 +2,15 @@
 
 @tailwind components;
 
+div span {
+  display: block;
+  flex: 0 1 auto;
+}
+
+img {
+  display: block;
+  min-height: 48px;
+  min-width: 48px;
+}
+
 @tailwind utilities;
