@@ -7280,9 +7280,9 @@ term-size@^1.2.0:
     execa "^0.7.0"
 
 testcafe-angular-selectors@^0.3.0:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/testcafe-angular-selectors/-/testcafe-angular-selectors-0.3.1.tgz#329fc6d532aec68893c82a2f0ce5e74796226486"
-  integrity sha512-EVX985E23FdknauddOj3WrsMXCW1Ild9CLRJtL4u+WljKfZXnTWcLl+bIo/7aAIyL8lPE2WcQEXS5UL8HqEyVA==
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/testcafe-angular-selectors/-/testcafe-angular-selectors-0.3.2.tgz#7fb0a658deb9fa559a04bb102226569680847ce0"
+  integrity sha512-4Wo17aBqqMxTW/8rpM/+tTN/HVHO7UtESuEyJkoLUaGEOuG4SF+KX47ksAKON4XzQWWNpJCYP1OnMFNv7gfPgw==
 
 testcafe-browser-tools@1.6.5:
   version "1.6.5"
