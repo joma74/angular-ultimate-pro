@@ -168,7 +168,10 @@ webpackConfig = [
 ]
 
 if (ENVLL.isDebugEnabled()) {
-  const output = prettyFormat(webpackConfig, { highlight: true })
+  const output = prettyFormat(webpackConfig, {
+    highlight: true,
+    maxDepth: ENVLL.isTraceEnabled() ? Infinity : 5,
+  })
   // tslint:disable-next-line:no-console
   console.debug(output)
 }

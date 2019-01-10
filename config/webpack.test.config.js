@@ -1,7 +1,11 @@
+const ENVLL = require("./env/ENVLL")
 const ENVMODE = require("./env/ENVMODE")
 
-const webpack = require("webpack")
 const helpers = require("./helpers")
+const prettyFormat = require("pretty-format")
+
+const webpack = require("webpack")
+
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 
 /**
@@ -99,6 +103,15 @@ const webpackConfig = {
   resolve: {
     extensions: [".ts", ".js"],
   },
+}
+
+if (ENVLL.isDebugEnabled()) {
+  const output = prettyFormat(webpackConfig, {
+    highlight: true,
+    maxDepth: ENVLL.isTraceEnabled() ? Infinity : 5,
+  })
+  // tslint:disable-next-line:no-console
+  console.debug(output)
 }
 
 module.exports = webpackConfig
