@@ -10,7 +10,7 @@
   "bundlesize": [
     {
       "compression": "none",
-      "maxSize": "262.0 kB",
+      "maxSize": "266.0 kB",
       "path": "./dist/angular-chunk.*.js"
     },
     {
