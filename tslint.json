@@ -39,6 +39,7 @@
     "no-ex-assign": true,
     "no-extra-boolean-cast": true,
     "no-extra-semi": true,
+    "no-implicit-dependencies": [true, "dev"],
     "no-invalid-regexp": true,
     "no-irregular-whitespace": true,
     "no-regex-spaces": 1,
