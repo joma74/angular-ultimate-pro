@@ -3,13 +3,11 @@ const ENVAPPSRVPORT = require("../../config/env/ENVAPPSRVPORT")
 import { Selector } from "testcafe"
 var Mustache = require("mustache")
 
-const fixtureName = "Index_Page_Test"
+fixture("Index_Page_Test").page(
+  `http://localhost:${ENVAPPSRVPORT.get()}/index.html`,
+)
 
-fixture(fixtureName).page(`http://localhost:${ENVAPPSRVPORT.get()}/index.html`)
-
-const testName = "dom_has_critical_elements"
-
-test(testName, async (t) => {
+test("dom_has_critical_elements", async (t) => {
   await t.takeScreenshot()
   await checkHeading(t)
 
