@@ -23,7 +23,9 @@ addons:
     packages:
       - imagemagick
 
-script: yarn ci
+script:
+  - yarn install
+  - yarn ci
 
 notifications:
   email:
