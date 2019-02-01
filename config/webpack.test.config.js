@@ -1,12 +1,14 @@
 const ENVLL = require("./env/ENVLL")
 const ENVMODE = require("./env/ENVMODE")
 
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const helpers = require("./helpers")
 const prettyFormat = require("pretty-format")
 
 const webpack = require("webpack")
+const webpackMerge = require("webpack-merge")
 
-const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
+const commonConfig = require("./webpack.common.config")
 
 /**
  * set MODE first!!
@@ -15,24 +17,9 @@ const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const ENV_MODE = ENVMODE.setToDevelopment()
 
 /**
- * @type {import ("webpack").Node}
- */
-const node = {
-  Buffer: false,
-  clearImmediate: false,
-  clearTimeout: true,
-  crypto: "empty",
-  global: true,
-  module: false,
-  process: true,
-  setImmediate: false,
-  setTimeout: true,
-}
-
-/**
  * @type {import ("webpack").Configuration}
  */
-const webpackConfig = {
+const testConfig = {
   devtool: "inline-source-map",
   module: {
     rules: [
@@ -40,8 +27,15 @@ const webpackConfig = {
         test: /\.tsx?$/,
         use: [
           {
+            loader: "ng-router-loader",
+          },
+          {
             loader: "awesome-typescript-loader",
-            options: { configFileName: helpers.rootAbs("tsconfig.json") },
+            options: {
+              configFileName: helpers.rootAbs("tsconfig.json"),
+              reportFiles: ["src/**/*.{ts,tsx}"],
+              silent: true,
+            },
           },
           "angular2-template-loader",
         ],
@@ -72,7 +66,6 @@ const webpackConfig = {
       },
     ],
   },
-  node,
   plugins: [
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
@@ -104,6 +97,8 @@ const webpackConfig = {
     extensions: [".ts", ".js"],
   },
 }
+
+let webpackConfig = [webpackMerge(commonConfig, testConfig)]
 
 if (ENVLL.isDebugEnabled()) {
   const output = prettyFormat(webpackConfig, {

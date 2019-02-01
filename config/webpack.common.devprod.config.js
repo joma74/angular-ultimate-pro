@@ -9,6 +9,9 @@ const helpers = require("./helpers")
  * https://web.archive.org/web/20180216190554/https://webpack.js.org/concepts/
  */
 const webpack = require("webpack")
+const webpackMerge = require("webpack-merge")
+
+const commonConfig = require("./webpack.common.config")
 
 const extractCSS = new ExtractTextPlugin({
   allChunks: true,
@@ -18,24 +21,9 @@ const extractCSS = new ExtractTextPlugin({
 })
 
 /**
- * @type {import ("webpack").Node}
- */
-const node = {
-  Buffer: false,
-  clearImmediate: false,
-  clearTimeout: true,
-  crypto: "empty",
-  global: true,
-  module: false,
-  process: true,
-  setImmediate: false,
-  setTimeout: true,
-}
-
-/**
  * @type {import ("webpack").Configuration}
  */
-const webpackConfig = {
+const webcommonDevProdConfig = {
   module: {
     rules: [
       {
@@ -95,7 +83,6 @@ const webpackConfig = {
       },
     ],
   },
-  node,
   plugins: [
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin(
@@ -179,5 +166,7 @@ const webpackConfig = {
     modules: [helpers.rootAbs("src"), helpers.rootAbs("node_modules")],
   },
 }
+
+let webpackConfig = [webpackMerge(commonConfig, webcommonDevProdConfig)]
 
 module.exports = webpackConfig

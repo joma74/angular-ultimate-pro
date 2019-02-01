@@ -125,7 +125,7 @@ const prodConfig = {
   stats: ENVLL.isDebugEnabled() ? "verbose" : "normal",
 }
 
-const webpackConfig = [webpackMerge(commonDevProdConfig, prodConfig)]
+const webpackConfig = [webpackMerge(...commonDevProdConfig, prodConfig)]
 
 if (ENVLL.isDebugEnabled()) {
   const output = prettyFormat(webpackConfig, {

@@ -147,7 +147,7 @@ if (ENVWITHDASHBOARD.isSet()) {
   )
 }
 
-let webpackConfig = [webpackMerge(commonDevProdConfig, devConfig)]
+let webpackConfig = [webpackMerge(...commonDevProdConfig, devConfig)]
 
 webpackConfig = [
   webpackMerge.smart(
