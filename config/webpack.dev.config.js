@@ -16,7 +16,6 @@ const webpackMerge = require("webpack-merge")
 const NameAllModulesPlugin = require("name-all-modules-plugin")
 const { CheckerPlugin } = require("awesome-typescript-loader")
 const DiskPlugin = require("webpack-disk-plugin")
-const HardSourceWebpackPlugin = require("hard-source-webpack-plugin")
 const DashboardPlugin = require("webpack-dashboard/plugin")
 
 /**
@@ -113,25 +112,6 @@ const devConfig = {
       ],
       output: {
         path: helpers.rootAbs("target"),
-      },
-    }),
-
-    new HardSourceWebpackPlugin({
-      // Clean up large, old caches automatically.
-      cachePrune: {
-        // Caches younger than `maxAge` are not considered for deletion. They must
-        // be at least this (default: 2 days) old in milliseconds.
-        maxAge: 2 * 24 * 60 * 60 * 1000,
-        // All caches together must be larger than `sizeThreshold` before any
-        // caches will be deleted. Together they must be at least this
-        // (default: 50 MB) big in bytes.
-        sizeThreshold: 100 * 1024 * 1024,
-      },
-      info: {
-        // 'debug', 'log', 'info', 'warn', or 'error'.
-        level: "debug",
-        // 'none' or 'test'.
-        mode: "none",
       },
     }),
   ],

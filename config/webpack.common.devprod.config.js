@@ -23,13 +23,9 @@ const extractCSS = new ExtractTextPlugin({
 /**
  * @type {import ("webpack").Configuration}
  */
-const webcommonDevProdConfig = {
+const commonDevProdConfig = {
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: "html-loader",
-      },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         use: [
@@ -41,12 +37,6 @@ const webcommonDevProdConfig = {
             },
           },
         ],
-      },
-      {
-        exclude: /node_modules/,
-        include: helpers.rootAbs("src", "app"),
-        loaders: ["raw-loader", "sass-loader"], // sass-loader not scss-loader
-        test: /\.scss$/,
       },
       {
         exclude: /node_modules/,
@@ -84,14 +74,6 @@ const webcommonDevProdConfig = {
     ],
   },
   plugins: [
-    // Workaround for angular/angular#11580
-    new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /angular(\\|\/)core(\\|\/)@angular/,
-      helpers.rootAbs("./src"), // location of your src
-      {}, // a map of your routes
-    ),
-
     new webpack.optimize.CommonsChunkPlugin({
       chunks: ["app", "angular-chunk"],
       minChunks: function(module) {
@@ -161,12 +143,8 @@ const webcommonDevProdConfig = {
 
     extractCSS,
   ],
-  resolve: {
-    extensions: [".ts", ".js"],
-    modules: [helpers.rootAbs("src"), helpers.rootAbs("node_modules")],
-  },
 }
 
-let webpackConfig = [webpackMerge(commonConfig, webcommonDevProdConfig)]
+let webpackConfig = [webpackMerge(commonConfig, commonDevProdConfig)]
 
 module.exports = webpackConfig
