@@ -148,9 +148,9 @@
   integrity sha512-056oRlBBp7MDzr+HoU5su099s/s7wjZ3KcHxLfv+Byqb9MwdLUvsfLgw1VS97hsh3ddxSPyQu+olHMnoVTUY6g==
 
 "@types/karma@^3":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-3.0.1.tgz#98ebc5cc626d5d8e0a06bbb9ef1ee0a46859d246"
-  integrity sha512-rhG6SCZEMbfkuvCBFsT9D7//X3wH2HlRwisZOayx/Jcd86Kg8UBv62/0T3C934CGiCE5Uupd+5FyEXkxOhxeYg==
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-3.0.2.tgz#c66654ea7167ae9fb62880ad2ef99cc18b64940d"
+  integrity sha512-xm+iMKgLSpTPo1Z7wLKbrZt8aLzA1udb9UOb9+OSDMFIufqlbp0DXQpY75EQ3ETi6EJiaohIodBlMs+UD4NSMQ==
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
