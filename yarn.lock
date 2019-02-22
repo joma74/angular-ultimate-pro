@@ -7802,8 +7802,8 @@ type-is@~1.6.15, type-is@~1.6.16:
     mime-types "~2.1.18"
 
 typescript@^2.2.2, typescript@~3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3.tgz#f1657fc7daa27e1a8930758ace9ae8da31403221"
+  version "3.3.3333"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
 
 uglify-js@3.4.x:
   version "3.4.9"
