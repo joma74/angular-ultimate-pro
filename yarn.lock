@@ -208,8 +208,8 @@
     "@types/webpack" "*"
 
 "@types/webpack-env@^1":
-  version "1.13.7"
-  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.7.tgz#137a4e57aa31ab57b1baf66f5dc3b6bf085e9944"
+  version "1.13.9"
+  resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.9.tgz#a67287861c928ebf4159a908d1fb1a2a34d4097a"
 
 "@types/webpack-merge@^0":
   version "0.0.8"
