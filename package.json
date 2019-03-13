@@ -149,7 +149,7 @@
     "stats-webpack-plugin": "^0.7.0",
     "style-loader": "^0.21.0",
     "tailwindcss": "^0.6.4",
-    "testcafe": ">1.0.0-alpha <1.0.0",
+    "testcafe": "^1",
     "testcafe-angular-selectors": "^0.3.0",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
