@@ -73,8 +73,8 @@
     "postinstall": "make-dir dist target"
   },
   "resolutions": {
-    "**/@types/webpack": "~3",
-    "**/typescript": "~3"
+    "**/@types/webpack": "^3",
+    "**/typescript": "^3"
   },
   "husky": {
     "hooks": {
@@ -99,7 +99,7 @@
     "@types/karma": "^3",
     "@types/mustache": "^0.8.31",
     "@types/pretty-format": "^20.0.0",
-    "@types/webpack": "~3",
+    "@types/webpack": "^3",
     "@types/webpack-dev-server": "^2",
     "@types/webpack-env": "^1",
     "@types/webpack-merge": "^0",
@@ -128,7 +128,7 @@
     "karma-jasmine-html-reporter": "^1",
     "karma-sourcemap-loader": "^0",
     "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "~3",
+    "karma-webpack": "^3",
     "lint-staged": "^7.3.0",
     "make-dir-cli": "^1.0.0",
     "mustache": "^3.0.0",
@@ -148,15 +148,15 @@
     "start-server-and-test": "^1.7.1",
     "stats-webpack-plugin": "^0.7.0",
     "style-loader": "^0.21.0",
-    "tailwindcss": "^0.6.4",
+    "tailwindcss": "^0",
     "testcafe": "^1",
-    "testcafe-angular-selectors": "^0.3.0",
+    "testcafe-angular-selectors": "^0",
     "tslint": "^5.10.0",
     "tslint-config-prettier": "^1.13.0",
     "tslint-eslint-rules": "^5.3.1",
-    "typescript": "~3",
+    "typescript": "^3",
     "uglifyjs-webpack-plugin": "1.2.1",
-    "webpack": "~3",
+    "webpack": "^3",
     "webpack-dashboard": "^2.0.0",
     "webpack-dev-server": "2.11.2",
     "webpack-disk-plugin": "^0.0.2",
