@@ -174,11 +174,7 @@
   version "0.8.32"
   resolved "https://registry.yarnpkg.com/@types/mustache/-/mustache-0.8.32.tgz#7db3b81f2bf450bd38805f596d20eca97c4ed595"
 
-"@types/node@*":
-  version "10.11.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.11.0.tgz#ddd0d67a3b6c3810dd1a59e36675fa82de5e19ae"
-
-"@types/node@^10.12.19":
+"@types/node@*", "@types/node@^10.12.19":
   version "10.14.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.4.tgz#1c586b991457cbb58fef51bc4e0cfcfa347714b5"
   integrity sha512-DT25xX/YgyPKiHFOpNuANIQIVvYEwCWXgK2jYYwqgaMrYE6+tq+DtmMwlD3drl6DJbUwtlIDnn0d7tIn/EbXBg==
@@ -234,8 +230,9 @@
     "@types/webpack" "*"
 
 "@types/webpack@*", "@types/webpack@~3":
-  version "3.8.17"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.17.tgz#08d1220432a8c0b11a28ed16ca09d04478a420ff"
+  version "3.8.18"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.18.tgz#dd57fbedf23a07653817365fefc4586e9c48f0bd"
+  integrity sha512-qRk84mxsmMImpDAS7WHwdVSUabNSvdYD9M15U7OXaEo+ZkMW6zmdwmZRWr8SF6ZAA93ppkh5lNky5TiCuqcfAA==
   dependencies:
     "@types/node" "*"
     "@types/tapable" "^0"
