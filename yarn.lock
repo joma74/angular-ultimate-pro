@@ -230,8 +230,9 @@
     "@types/webpack" "*"
 
 "@types/webpack@*", "@types/webpack@~3":
-  version "3.8.17"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.17.tgz#08d1220432a8c0b11a28ed16ca09d04478a420ff"
+  version "3.8.18"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-3.8.18.tgz#dd57fbedf23a07653817365fefc4586e9c48f0bd"
+  integrity sha512-qRk84mxsmMImpDAS7WHwdVSUabNSvdYD9M15U7OXaEo+ZkMW6zmdwmZRWr8SF6ZAA93ppkh5lNky5TiCuqcfAA==
   dependencies:
     "@types/node" "*"
     "@types/tapable" "^0"
