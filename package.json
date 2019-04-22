@@ -27,6 +27,11 @@
       "compression": "none",
       "maxSize": "1.5 kB",
       "path": "./dist/wp-runtime.*.js"
+    },
+    {
+      "compression": "none",
+      "maxSize": "2.6 kB",
+      "path": "./dist/assets/css/app.*.css"
     }
   ],
   "config": {
