@@ -126,8 +126,8 @@ const commonDevProdConfig = {
           "app",
         ]
         return (
-          chunksNamePart.indexOf(a.names[0]) -
-          chunksNamePart.indexOf(b.names[0])
+          (chunksNamePart.indexOf(a.names[0]) -
+          chunksNamePart.indexOf(b.names[0]))
         )
       },
       hash: false,
