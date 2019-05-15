@@ -68,6 +68,7 @@
     "test-servencafe-dev-once": "cross-var start-server-and-test serve-dev http-get://localhost:$npm_package_config_app_svrdev_port/index.html test-dev-cafe-once",
     "test-servencafe-prod-once": "cross-var start-server-and-test serve-prod http-get://localhost:$npm_package_config_app_svrprod_port/index.html test-prod-cafe-once",
     "ci-dev": "run-p -l clean-target _lint-js _prettier tsc-validate-once && run-p -l test-karma-once test-servencafe-dev-once",
+    "ci-dev-logtofile": "unbuffer yarn ci-dev | tee target/yarn.ci-dev.log; gnome-terminal -x sh -c 'less +G -r target/yarn.ci-dev.log'",
     "_build": "webpack --config=config/webpack.prod.config.js --profile --bail --display-error-details",
     "build": "run-s clean-dist _build check-bundlesize",
     "build-logtofile": "unbuffer yarn build | tee target/yarn.build.log; gnome-terminal -x sh -c 'less +G -r target/yarn.build.log'",
