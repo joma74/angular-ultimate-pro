@@ -82,7 +82,7 @@ const devConfig = {
   output: {
     chunkFilename: "[id].chunk.js",
     filename: "[name].js",
-    path: helpers.rootAbs("dist", "public"),
+    path: helpers.rootAbs("dist"),
     publicPath,
   },
   plugins: [
