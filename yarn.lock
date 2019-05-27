@@ -169,8 +169,9 @@
   integrity sha512-056oRlBBp7MDzr+HoU5su099s/s7wjZ3KcHxLfv+Byqb9MwdLUvsfLgw1VS97hsh3ddxSPyQu+olHMnoVTUY6g==
 
 "@types/karma@^1":
-  version "1.7.7"
-  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-1.7.7.tgz#447f38edf7c171bef9f2b9b641121d54a34b8810"
+  version "1.7.8"
+  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-1.7.8.tgz#e8c7f654c3dbd0978c7b047f3593b35eca95e5c5"
+  integrity sha512-/s9ZtTDo52/KuC9DmwjpfBL5XsH9ikOX4c05VUnomIcFvOgxj8iR8qU9SCMD1LE8U97NAPExF78sM9FYEGQT6Q==
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
