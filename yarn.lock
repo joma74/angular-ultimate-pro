@@ -229,13 +229,12 @@
   integrity sha512-6pUnBg6DuSB55xnxJ5+gW9JOkFrPsXkYAuqqEE8oyrpgDiPQ+TZ+1Zt4S+CHcRJcxyNYXeIXG4vHSzdF6y9Uvw==
 
 "@types/karma@^3":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-3.0.2.tgz#c66654ea7167ae9fb62880ad2ef99cc18b64940d"
-  integrity sha512-xm+iMKgLSpTPo1Z7wLKbrZt8aLzA1udb9UOb9+OSDMFIufqlbp0DXQpY75EQ3ETi6EJiaohIodBlMs+UD4NSMQ==
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@types/karma/-/karma-3.0.8.tgz#f4415a4890402a747f915e5c5c349baafba271f7"
+  integrity sha512-o/NYKukkIfyzC2kZZnZs/7yVOfhKvdjyh5d6bdPkxQPM5T0BwpjwE+JbdsupojoGnzdtF4d2+s8fd6ydkgrvRg==
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
-    log4js "^3.0.0"
 
 "@types/lodash@^4.14.72":
   version "4.14.116"
