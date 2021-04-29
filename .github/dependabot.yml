@@ -1,0 +1,167 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: "@types/webpack"
+    versions:
+    - "< 3.8.17, >= 3.8.16.a"
+  - dependency-name: testcafe
+    versions:
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.13.0
+  - dependency-name: start-server-and-test
+    versions:
+    - 1.11.7
+    - 1.12.0
+  - dependency-name: jasmine
+    versions:
+    - 3.6.4
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: jasmine-core
+    versions:
+    - 3.6.0
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+  - dependency-name: handlebars
+    versions:
+    - 4.7.6
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  target-branch: advanced-components-1
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: testcafe
+    versions:
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.13.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  target-branch: advanced-components-2
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: testcafe
+    versions:
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.13.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  target-branch: advanced-components-3
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: testcafe
+    versions:
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.13.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  target-branch: reactive-forms-1
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: testcafe
+    versions:
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.13.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+    timezone: Europe/Vienna
+  open-pull-requests-limit: 10
+  target-branch: routing-1
+  versioning-strategy: lockfile-only
+  ignore:
+  - dependency-name: testcafe
+    versions:
+    - 1.10.1
+    - 1.11.0
+    - 1.12.0
+    - 1.13.0
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  - dependency-name: typescript
+    versions:
+    - 3.9.7
